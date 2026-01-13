@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="7-day deep study courses on navigating contemporary crises with ancient wisdom: uncertainty, authoritarianism, surveillance, and more.">
+    <title>Deep Studies | 7-Day Courses | The Path</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        .studies-hero {
+            padding: calc(80px + var(--space-2xl)) var(--space-lg) var(--space-xl);
+            background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
+            text-align: center;
+            position: relative;
+        }
+        .studies-hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .studies-hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .studies-hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            color: var(--color-text);
+            font-weight: 300;
+            margin-bottom: var(--space-lg);
+        }
+        .studies-hero .lead {
+            color: var(--color-text-light);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        .studies-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: var(--space-2xl) var(--space-lg);
+            display: grid;
+            gap: var(--space-xl);
+        }
+        .study-card {
+            background: linear-gradient(135deg, var(--color-bg-alt) 0%, var(--color-bg-light) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            display: grid;
+            grid-template-columns: 1fr 200px;
+            gap: var(--space-xl);
+            padding: var(--space-xl);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .study-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--color-gold) 0%, var(--color-gold-dark) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .study-card:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        .study-card:hover::before {
+            opacity: 1;
+        }
+        .study-content h2 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-text);
+            font-weight: 400;
+            margin-bottom: var(--space-sm);
+        }
+        .study-content .crisis-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            color: var(--color-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: var(--space-md);
+        }
+        .study-content p {
+            color: var(--color-text-light);
+            line-height: 1.8;
+            margin-bottom: var(--space-md);
+        }
+        .study-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+            margin-bottom: var(--space-md);
+        }
+        .study-topics span {
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            padding: var(--space-xs) var(--space-sm);
+            background: var(--color-bg);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        .study-meta-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: var(--color-bg);
+            padding: var(--space-lg);
+            border-left: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        .study-duration {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--color-gold);
+            line-height: 1;
+            margin-bottom: var(--space-xs);
+        }
+        .study-duration-label {
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-lg);
+        }
+        .study-cta {
+            display: inline-block;
+            padding: var(--space-sm) var(--space-lg);
+            background: var(--color-gold-dark);
+            color: var(--color-bg);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .study-cta:hover {
+            background: var(--color-gold);
+            color: var(--color-bg);
+        }
+        @media (max-width: 768px) {
+            .study-card {
+                grid-template-columns: 1fr;
+            }
+            .study-meta-card {
+                border-left: none;
+                border-top: 1px solid rgba(212, 175, 55, 0.1);
+            }
+        }
+        .coming-soon {
+            opacity: 0.5;
+        }
+        .coming-soon .study-cta {
+            background: var(--color-bg-light);
+            color: var(--color-text-muted);
+            cursor: not-allowed;
+        }
+        .studies-quote {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: var(--space-xl) var(--space-lg);
+            text-align: center;
+        }
+        .studies-quote blockquote {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--color-text);
+            line-height: 1.7;
+            border: none;
+            padding: 0;
+        }
+        .studies-quote blockquote::before {
+            display: none;
+        }
+        .studies-quote cite {
+            display: block;
+            margin-top: var(--space-lg);
+            color: var(--color-gold);
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">The Path</a>
+            <button class="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+            <ul class="nav-links">
+                <li><a href="scripture.html">Scripture</a></li>
+                <li><a href="teachings.html">Teachings</a></li>
+                <li><a href="martyrs.html">The Martyrs</a></li>
+                <li><a href="study-guide.html">Study Guide</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="studies-hero">
+        <div class="studies-hero-content">
+            <h1>Deep Studies</h1>
+            <p class="lead">Seven-day courses that go beyond introduction into transformation. Each addresses a contemporary crisis with the wisdom of the mystics and the witness of the martyrs. Choose the study that speaks to your current situation.</p>
+        </div>
+    </header>
+
+    <main class="studies-grid">
+
+        <article class="study-card">
+            <div class="study-content">
+                <span class="crisis-tag">Relativism • Uncertainty</span>
+                <h2>Living Without Certainty</h2>
+                <p>How to act decisively, love fully, and find meaning when you can't be sure you're right. The mystics navigated this terrain before us. They saw through the easy certainties of their traditions — then found something deeper than certainty.</p>
+                <div class="study-topics">
+                    <span>Unknowing</span>
+                    <span>Conviction vs Certainty</span>
+                    <span>Paradox</span>
+                    <span>Living Questions</span>
+                </div>
+            </div>
+            <div class="study-meta-card">
+                <span class="study-duration">7</span>
+                <span class="study-duration-label">Days</span>
+                <a href="study-uncertainty.html" class="study-cta">Begin Study</a>
+            </div>
+        </article>
+
+        <article class="study-card">
+            <div class="study-content">
+                <span class="crisis-tag">Authoritarianism • Democracy</span>
+                <h2>When the World Slides Toward Tyranny</h2>
+                <p>What do you do when democratic institutions fail, when authoritarian movements rise, when people you know choose strong leaders over uncertain freedom? The martyrs of 1848-1849 faced exactly this. They left us more than history — they left instructions.</p>
+                <div class="study-topics">
+                    <span>Pattern Recognition</span>
+                    <span>Non-negotiables</span>
+                    <span>Networks of Trust</span>
+                    <span>Seeds and Time</span>
+                </div>
+            </div>
+            <div class="study-meta-card">
+                <span class="study-duration">7</span>
+                <span class="study-duration-label">Days</span>
+                <a href="study-resistance.html" class="study-cta">Begin Study</a>
+            </div>
+        </article>
+
+        <article class="study-card">
+            <div class="study-content">
+                <span class="crisis-tag">Surveillance • Technology</span>
+                <h2>Agency Under Surveillance</h2>
+                <p>You are watched, tracked, predicted, and nudged. Algorithms know your patterns better than you know yourself. How do you maintain authentic agency when your every move is data? The mystics who were watched by inquisitors have something to teach us.</p>
+                <div class="study-topics">
+                    <span>The Inner Sanctuary</span>
+                    <span>Strategic Opacity</span>
+                    <span>Authentic Action</span>
+                    <span>Unpredictable Grace</span>
+                </div>
+            </div>
+            <div class="study-meta-card">
+                <span class="study-duration">7</span>
+                <span class="study-duration-label">Days</span>
+                <a href="study-agency.html" class="study-cta">Begin Study</a>
+            </div>
+        </article>
+
+        <article class="study-card coming-soon">
+            <div class="study-content">
+                <span class="crisis-tag">Free Will • Determinism</span>
+                <h2>Meaning Despite Determinism</h2>
+                <p>Science suggests your choices are determined by prior causes. Neuroscience shows decisions are made before you're conscious of them. If free will is illusion, how do you live meaningfully? The mystics saw beyond this dilemma.</p>
+                <div class="study-topics">
+                    <span>Beyond Either/Or</span>
+                    <span>Participation</span>
+                    <span>Choiceless Choice</span>
+                    <span>Flow States</span>
+                </div>
+            </div>
+            <div class="study-meta-card">
+                <span class="study-duration">7</span>
+                <span class="study-duration-label">Days</span>
+                <span class="study-cta">Coming Soon</span>
+            </div>
+        </article>
+
+        <article class="study-card coming-soon">
+            <div class="study-content">
+                <span class="crisis-tag">Exhaustion • Restoration</span>
+                <h2>Burnout and the Return to Life</h2>
+                <p>You have nothing left for the ones you love. Creating meaning feels like another task you're failing at. The mystics knew this exhaustion. They called it the dark night of the soul — and they found the path through.</p>
+                <div class="study-topics">
+                    <span>Subtraction Not Addition</span>
+                    <span>The Dark Night</span>
+                    <span>Restoration</span>
+                    <span>Sustainable Fire</span>
+                </div>
+            </div>
+            <div class="study-meta-card">
+                <span class="study-duration">7</span>
+                <span class="study-duration-label">Days</span>
+                <span class="study-cta">Coming Soon</span>
+            </div>
+        </article>
+
+    </main>
+
+    <section class="studies-quote">
+        <blockquote>"The path requires surrender of the need to understand before you experience. The analyzing mind is useful, but it cannot lead. It can map territory it has never entered."</blockquote>
+        <cite>— Journey 20:4</cite>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 The Path of Illumination. All sacred texts are in the public domain.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
