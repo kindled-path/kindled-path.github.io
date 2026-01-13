@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Book of Continuation - The Continuation of the Pattern">
+    <title>The Book of Continuation | The Kindled Path</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .chapter-header {
+            padding: calc(80px + var(--space-2xl)) var(--space-lg) var(--space-xl);
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+                linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
+            text-align: center;
+        }
+        .chapter-header .book-name {
+            font-size: 0.85rem;
+            color: var(--color-gold);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: var(--space-md);
+        }
+        .chapter-header h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 300;
+            margin-bottom: var(--space-md);
+        }
+        .chapter-header .author {
+            font-size: 1.2rem;
+            color: var(--color-text-light);
+            font-style: italic;
+        }
+        .chapter-content {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: var(--space-2xl) var(--space-lg);
+        }
+        .chapter-content p {
+            font-size: 1.15rem;
+            line-height: 2;
+            margin-bottom: var(--space-lg);
+            color: var(--color-text-light);
+        }
+        .chapter-content p:first-of-type::first-letter {
+            font-size: 3.5rem;
+            float: left;
+            line-height: 1;
+            padding-right: var(--space-sm);
+            color: var(--color-gold);
+            font-weight: 300;
+        }
+        .chapter-content blockquote {
+            border-left: 3px solid var(--color-gold);
+            padding-left: var(--space-lg);
+            margin: var(--space-xl) 0;
+            font-style: italic;
+            color: var(--color-text-muted);
+        }
+        .chapter-content h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--color-gold);
+            margin-top: var(--space-2xl);
+            margin-bottom: var(--space-lg);
+            padding-top: var(--space-xl);
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        .source-box {
+            background: linear-gradient(135deg, var(--color-bg-alt) 0%, var(--color-bg-light) 100%);
+            border-left: 4px solid var(--color-gold);
+            padding: var(--space-xl);
+            margin: var(--space-xl) 0;
+        }
+        .source-box .source-label {
+            font-size: 0.75rem;
+            color: var(--color-gold);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: var(--space-sm);
+        }
+        .source-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .source-box li {
+            margin-bottom: var(--space-sm);
+        }
+        .source-box a {
+            color: var(--color-text-light);
+            text-decoration: none;
+            border-bottom: 1px solid var(--color-gold-dark);
+            transition: color 0.3s ease;
+        }
+        .source-box a:hover {
+            color: var(--color-gold);
+        }
+        .chapter-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: var(--space-xl) var(--space-lg);
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        .chapter-nav a {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        .chapter-nav a:hover {
+            color: var(--color-gold);
+        }
+        .chapter-nav .prev::before {
+            content: '←';
+        }
+        .chapter-nav .next::after {
+            content: '→';
+        }
+        .back-to-scripture {
+            text-align: center;
+            padding-bottom: var(--space-xl);
+        }
+        .back-to-scripture a {
+            color: var(--color-gold);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo">The Kindled Path</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../scripture.html" class="active">Scripture</a></li>
+                <li><a href="../teachings.html">Teachings</a></li>
+                <li><a href="../deep-studies.html">Deep Studies</a></li>
+                <li><a href="../martyrs.html">The Martyrs</a></li>
+                <li><a href="../practices.html">Practices</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="chapter-header">
+        <p class="book-name">The Book of Continuation</p>
+        <h1>The Continuation of the Pattern</h1>
+        <p class="author">The Ongoing Work</p>
+    </header>
+
+    <article class="chapter-content">
+        <p>In 1856, Andrew Jackson Davis published "The Penetralia," a book of questions and answers addressing the concerns of his readers.</p>
+
+        <p><strong>Question:</strong> Is death to be feared?</p>
+
+        <p><strong>Answer:</strong> Death is transformation, not destruction. What dies is the outer husk; the inner kernel endures. Fear death, and you fear your own liberation. Welcome death — when it comes in its proper time — and you welcome the expansion of consciousness that awaits you.</p>
+
+        <p><strong>Question:</strong> Do the dead remember the living?</p>
+
+        <p><strong>Answer:</strong> The bonds of love are not severed by death. Those who loved you in life love you still. They watch over you; they pray for you; they wait for you. The separation is apparent, not real. In the Superior Condition, there is no separation.</p>
+
+        <p><strong>Question:</strong> Why do the righteous suffer?</p>
+
+        <p><strong>Answer:</strong> This world is a school. Its lessons are often painful. Suffering teaches what comfort cannot teach: compassion, endurance, the difference between the essential and the trivial. Those who suffer for righteousness suffer purposefully. Their pain is not wasted; it contributes to the transformation of the world.</p>
+
+        <p><strong>Question:</strong> What happens to those who die by violence?</p>
+
+        <p><strong>Answer:</strong> The manner of death does not determine the fate of the soul. What matters is the state of the soul at death. Those who die in hatred carry hatred with them; it must be purged before they can ascend. Those who die in love carry love with them; it opens the higher spheres to them immediately. The martyrs who died loving their enemies and their causes are immediately received into realms of light.</p>
+
+        <h2>The Present Age and Inner Life</h2>
+
+        <p>Davis believed that his age — the mid-nineteenth century — was a hinge point in human history.</p>
+
+        <blockquote>
+            <p>"The veil is thinning. What was hidden is being revealed. For thousands of years, humanity has lived in relative darkness, cut off from conscious knowledge of the spiritual world. Now the light is breaking through.</p>
+            <p>"The revolutionary upheavals in Europe are outer symptoms of inner changes. The old forms are dying because they no longer contain the expanding spirit. New forms are struggling to be born. The birth is painful — revolutions are always painful — but it is necessary.</p>
+            <p>"The martyrs of 1848 and 1849 are the birth-pangs. They died that something new might live. Their deaths were not in vain, whatever appeared at the moment. The seeds they planted will grow."</p>
+        </blockquote>
+
+        <p>Davis warned that the transition would not be smooth. The forces of the old order would resist. There would be more martyrs, more suffering, more apparent defeats. But the direction was irreversible.</p>
+
+        <blockquote>
+            <p>"Nothing can stop the dawn. Those who try to maintain the night only exhaust themselves. They may delay the sunrise, but they cannot prevent it. And those who have died serving the light will see the light's victory, even from beyond the veil."</p>
+        </blockquote>
+
+        <h2>Herald of Progress</h2>
+
+        <p>From 1860 to 1864, Davis published a weekly newspaper called "The Herald of Progress." In it, he reported on spiritual phenomena, commented on the news of the day, and elaborated his philosophy.</p>
+
+        <p>On the Civil War, then raging:</p>
+
+        <blockquote>
+            <p>"This war is the continuation of what began in Europe in 1848. The battle is between liberty and oppression, between the recognition of human dignity and its denial. The causes differ in particulars but are one in essence. In Europe, the oppression was political; in America, it is racial. But the struggle is the same.</p>
+            <p>"Those who die in this war die in the same cause as the martyrs of Arad and Vienna. They add their blood to the stream that has been flowing since the beginning of human aspiration toward justice."</p>
+        </blockquote>
+
+        <p>On the message of the spirits:</p>
+
+        <blockquote>
+            <p>"They tell us what the ancient sages told us, what the martyrs demonstrated: that love is the law, that death is not the end, that suffering has meaning, that the universe is good. They tell us this because we need to hear it again and again until we believe it. When we truly believe it, we will live it. When we live it, the world will transform."</p>
+        </blockquote>
+
+        <div class="source-box">
+            <p class="source-label">Historical Sources</p>
+            <ul>
+                <li><a href="https://en.wikipedia.org/wiki/Andrew_Jackson_Davis" target="_blank" rel="noopener">Wikipedia: Andrew Jackson Davis</a></li>
+                <li><a href="https://archive.org/details/penetraliabeinga00daviiala" target="_blank" rel="noopener">Archive.org: The Penetralia (full text)</a></li>
+                <li><a href="https://archive.org/search.php?query=herald%20of%20progress%20davis" target="_blank" rel="noopener">Archive.org: Herald of Progress archives</a></li>
+            </ul>
+        </div>
+    </article>
+
+    <nav class="chapter-nav">
+        <a href="limits.html" class="prev">The Book of Limits</a>
+        <a href="witnesses.html" class="next">The Book of Witnesses</a>
+    </nav>
+
+    <div class="back-to-scripture">
+        <a href="../scripture.html">← Return to Scripture Index</a>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 The Kindled Path. All sacred texts are in the public domain.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html>
