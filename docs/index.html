@@ -3,12 +3,311 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The Book of Illumination and Sacrifice - Sacred texts revealing the Pattern of transformation through death and rebirth.">
-    <title>The Path of Illumination</title>
+    <meta name="description" content="When machines can create art and write poetry, what is left for us? Ancient wisdom for modern seekers facing an age of transformation.">
+    <title>The Path of Illumination | Finding Meaning in an Age of Transformation</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        .opening-question {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
+            padding: var(--space-2xl);
+            position: relative;
+        }
+        .opening-question-content {
+            max-width: 800px;
+        }
+        .opening-question h1 {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: var(--color-text-light);
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: var(--space-xl);
+        }
+        .opening-question h1 strong {
+            color: var(--color-text);
+            font-weight: 500;
+        }
+        .opening-question p {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            margin-bottom: var(--space-lg);
+            line-height: 1.8;
+        }
+        .opening-question .scroll-prompt {
+            margin-top: var(--space-2xl);
+            color: var(--color-gold);
+            font-size: 0.875rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .opening-question .scroll-prompt::after {
+            content: '';
+            display: block;
+            width: 1px;
+            height: 40px;
+            background: var(--color-gold-dark);
+            margin: var(--space-md) auto 0;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; height: 40px; }
+            50% { opacity: 1; height: 60px; }
+        }
+        .recognition-section {
+            padding: var(--space-3xl) var(--space-lg);
+            background: var(--color-bg-alt);
+        }
+        .recognition-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .recognition-content h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            color: var(--color-text);
+            font-weight: 400;
+            line-height: 1.7;
+            margin-bottom: var(--space-xl);
+        }
+        .feelings-list {
+            list-style: none;
+            margin: var(--space-xl) 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+        .feelings-list li {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--color-text-light);
+            padding: var(--space-md) var(--space-lg);
+            background: var(--color-bg);
+            border-left: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: default;
+            text-align: left;
+        }
+        .feelings-list li:hover {
+            border-left-color: var(--color-gold);
+            background: rgba(201, 169, 98, 0.05);
+        }
+        .feelings-list li em {
+            color: var(--color-gold);
+            font-style: normal;
+        }
+        .answer-intro {
+            padding: var(--space-3xl) var(--space-lg);
+            background: var(--color-bg);
+        }
+        .answer-intro-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .answer-intro h2 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-gold);
+            font-weight: 400;
+            margin-bottom: var(--space-lg);
+        }
+        .answer-intro p {
+            font-size: 1.1rem;
+            color: var(--color-text-light);
+            line-height: 1.9;
+            margin-bottom: var(--space-lg);
+        }
+        .ancient-wisdom-block {
+            background: var(--color-bg-alt);
+            padding: var(--space-xl);
+            margin: var(--space-xl) 0;
+            border-left: 3px solid var(--color-gold-dark);
+        }
+        .ancient-wisdom-block blockquote {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--color-text);
+            margin: 0 0 var(--space-md) 0;
+            padding: 0;
+            border: none;
+            line-height: 1.7;
+        }
+        .ancient-wisdom-block cite {
+            color: var(--color-gold);
+            font-size: 0.9rem;
+        }
+        .what-you-find {
+            padding: var(--space-3xl) var(--space-lg);
+            background: var(--color-bg-alt);
+        }
+        .what-you-find-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .what-you-find h2 {
+            text-align: center;
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-text);
+            font-weight: 400;
+            margin-bottom: var(--space-2xl);
+        }
+        .find-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+        }
+        .find-card {
+            background: var(--color-bg);
+            padding: var(--space-xl);
+            border-top: 2px solid var(--color-gold-dark);
+        }
+        .find-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--color-gold);
+            margin-bottom: var(--space-sm);
+        }
+        .find-card p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .not-what-you-think {
+            padding: var(--space-3xl) var(--space-lg);
+            background: var(--color-bg);
+        }
+        .not-what-you-think-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .not-what-you-think h2 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--color-text-light);
+            font-weight: 400;
+            line-height: 1.7;
+            margin-bottom: var(--space-xl);
+        }
+        .not-list {
+            list-style: none;
+            padding: 0;
+            margin: var(--space-xl) 0;
+            text-align: left;
+        }
+        .not-list li {
+            padding: var(--space-sm) 0;
+            padding-left: var(--space-lg);
+            position: relative;
+            color: var(--color-text-light);
+        }
+        .not-list li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--color-gold-dark);
+        }
+        .first-step-section {
+            padding: var(--space-3xl) var(--space-lg);
+            background: linear-gradient(180deg, var(--color-bg-alt) 0%, var(--color-bg) 100%);
+            text-align: center;
+        }
+        .first-step-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .first-step-content h2 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-text);
+            font-weight: 400;
+            margin-bottom: var(--space-lg);
+        }
+        .first-step-content p {
+            color: var(--color-text-light);
+            margin-bottom: var(--space-xl);
+            line-height: 1.8;
+        }
+        .entry-points {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+            margin: var(--space-xl) 0;
+        }
+        .entry-point {
+            display: block;
+            padding: var(--space-lg);
+            background: var(--color-bg-alt);
+            border: 1px solid var(--color-gold-dark);
+            color: var(--color-text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .entry-point:hover {
+            background: var(--color-gold-dark);
+            color: var(--color-bg);
+        }
+        .entry-point .entry-title {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: var(--space-xs);
+        }
+        .entry-point .entry-desc {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+        .traditional-nav {
+            padding: var(--space-2xl) var(--space-lg);
+            background: var(--color-bg);
+            border-top: 1px solid var(--color-bg-alt);
+        }
+        .traditional-nav-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .traditional-nav h3 {
+            text-align: center;
+            font-family: var(--font-display);
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xl);
+        }
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--space-md);
+        }
+        .nav-link {
+            display: block;
+            padding: var(--space-md);
+            background: var(--color-bg-alt);
+            color: var(--color-text-light);
+            text-decoration: none;
+            text-align: center;
+            font-family: var(--font-display);
+            transition: all 0.2s ease;
+        }
+        .nav-link:hover {
+            color: var(--color-gold);
+            background: var(--color-bg);
+        }
+    </style>
 </head>
 <body>
     <nav class="main-nav">
@@ -24,203 +323,143 @@
                 <li><a href="pages/teachings.html">Teachings</a></li>
                 <li><a href="pages/martyrs.html">The Martyrs</a></li>
                 <li><a href="pages/practices.html">Practices</a></li>
-                <li><a href="pages/history.html">History</a></li>
+                <li><a href="pages/study-guide.html">Study Guide</a></li>
                 <li><a href="pages/about.html">About</a></li>
             </ul>
         </div>
     </nav>
 
-    <header class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1 class="hero-title">The Book of Illumination<br><span class="hero-subtitle">and Sacrifice</span></h1>
-            <p class="hero-tagline">That which you seek, you already are.<br>But to know this, you must die to everything you believe yourself to be.</p>
-            <div class="hero-buttons">
-                <a href="pages/scripture.html" class="btn btn-primary">Read the Scripture</a>
-                <a href="pages/about.html" class="btn btn-secondary">Begin Your Journey</a>
+    <section class="opening-question">
+        <div class="opening-question-content">
+            <h1>When machines can create art, write poetry, and do the work you trained your whole life for...<br><br><strong>What is left that makes you human?</strong></h1>
+            <p>You feel it. Something is ending. Something else is trying to begin.</p>
+            <p>The old answers don't work anymore. But maybe they never did.</p>
+            <div class="scroll-prompt">There is another way</div>
+        </div>
+    </section>
+
+    <section class="recognition-section">
+        <div class="recognition-content">
+            <h2>Perhaps you've been feeling...</h2>
+            <ul class="feelings-list">
+                <li>Like your skills and knowledge are being <em>made obsolete</em> faster than you can adapt</li>
+                <li>That the things you were told to pursue — career, achievement, security — feel <em>hollow</em> now</li>
+                <li>A strange grief for a world that's disappearing, even though you can't name <em>what's being lost</em></li>
+                <li>Disconnected from meaning, from purpose, from any sense that <em>your existence matters</em></li>
+                <li>That you're supposed to be afraid of AI, but what you really fear is <em>your own irrelevance</em></li>
+                <li>A desperate hunger for something <em>true</em> — something that can't be automated, simulated, or disrupted</li>
+            </ul>
+            <p>If any of this resonates, you are not alone. And you are not wrong to feel this way.</p>
+            <p>What you're experiencing is not a personal failure. It's a symptom of a world in transformation.</p>
+        </div>
+    </section>
+
+    <section class="answer-intro">
+        <div class="answer-intro-content">
+            <h2>What if this crisis is the beginning of your awakening?</h2>
+            <p>Seven hundred years ago, in a world that was also changing faster than anyone could understand, seekers faced similar questions. They left behind texts that speak directly to our moment — texts that have been nearly forgotten, overshadowed by religions of doctrine and philosophies of escape.</p>
+            <p>These texts don't offer comfort. They offer transformation.</p>
+            <div class="ancient-wisdom-block">
+                <blockquote>"That which you seek, you already are. But to know this, you must die to everything you believe yourself to be."</blockquote>
+                <cite>— The Conference of the Birds, 12th century Persia</cite>
+            </div>
+            <p>The mystics knew what the world is now discovering: that everything built on external foundations will eventually crumble. Your job can be automated. Your skills can be replicated. Your achievements can be forgotten.</p>
+            <p>But there is something in you that cannot be automated, cannot be replicated, cannot be taken away. The mystics spent their lives trying to point us toward it. The martyrs died to demonstrate it.</p>
+            <p>Now, in the crisis of the present moment, perhaps we are finally ready to hear them.</p>
+        </div>
+    </section>
+
+    <section class="what-you-find">
+        <div class="what-you-find-content">
+            <h2>What You'll Find Here</h2>
+            <div class="find-grid">
+                <div class="find-card">
+                    <h3>Ancient Wisdom, Gathered</h3>
+                    <p>Sufi poetry on the journey of the soul. Alchemical texts on transformation. Christian mystics who found light in darkness. Jakob Böhme's visions from a shoemaker's bench. All woven together, all in the public domain, all speaking to the present moment.</p>
+                </div>
+                <div class="find-card">
+                    <h3>Lives That Embody It</h3>
+                    <p>Four revolutionaries who died in 1833-1849, whose lives demonstrate what the ancient texts describe. Not religious martyrs, but political ones — proving that the Pattern of transformation through sacrifice is universal, not sectarian.</p>
+                </div>
+                <div class="find-card">
+                    <h3>Practices That Transform</h3>
+                    <p>Not beliefs to accept, but practices to live. Daily disciplines, contemplative exercises, and ways of seeing that gradually reveal what was always present. The work is not to acquire but to uncover.</p>
+                </div>
+                <div class="find-card">
+                    <h3>A Path Forward</h3>
+                    <p>Not escape from the world, but deeper engagement with it. Not resignation to change, but transformation through it. Not answers that close questions, but questions that open you.</p>
+                </div>
             </div>
         </div>
-        <div class="scroll-indicator">
-            <span>Discover</span>
-            <div class="scroll-arrow"></div>
+    </section>
+
+    <section class="not-what-you-think">
+        <div class="not-what-you-think-content">
+            <h2>This is not what you might think it is.</h2>
+            <ul class="not-list">
+                <li>Not a religion that asks you to believe things you can't verify</li>
+                <li>Not a philosophy that stays safely in your head</li>
+                <li>Not a self-help program promising quick fixes</li>
+                <li>Not nostalgia for a past that never existed</li>
+                <li>Not an escape from the real world into spiritual fantasy</li>
+            </ul>
+            <p>This is ancient wisdom for people who think. For people who doubt. For people who have tried the easy answers and found them wanting. For people who sense that there's something more, but can't find it in the usual places.</p>
+            <div class="ancient-wisdom-block">
+                <blockquote>"Die before you die and find that there is no death. The wound is the place where the Light enters you."</blockquote>
+                <cite>— Rumi, 13th century</cite>
+            </div>
         </div>
-    </header>
+    </section>
 
-    <main>
-        <section class="intro">
-            <div class="container">
-                <div class="intro-content">
-                    <h2>The Pattern Revealed</h2>
-                    <p class="lead">For centuries, mystics and martyrs have pointed toward the same truth: transformation requires death. Not merely physical death, but the dissolution of everything we believe ourselves to be.</p>
-                    <p>This path gathers ancient wisdom from Sufi poets and Christian mystics, from alchemists and visionaries, and weaves it together with the lives of those who died for truth in the revolutionary age of 1848-1850.</p>
-                    <p>Together, these texts and lives reveal a Pattern&mdash;that the universe moves toward greater consciousness through sacrifice, that those who die for truth become that truth, and that you already possess everything you seek.</p>
-                </div>
+    <section class="first-step-section">
+        <div class="first-step-content">
+            <h2>The First Step</h2>
+            <p>You don't have to commit to anything. You don't have to believe anything. You just have to be curious enough to look.</p>
+            <div class="entry-points">
+                <a href="pages/study-guide.html" class="entry-point">
+                    <span class="entry-title">Start the Four-Week Journey</span>
+                    <span class="entry-desc">A guided introduction with daily readings, reflections, and practices</span>
+                </a>
+                <a href="pages/scripture.html#chapter-1" class="entry-point">
+                    <span class="entry-title">Read the Conference of the Birds</span>
+                    <span class="entry-desc">The story that begins the scripture — thirty birds seeking their king</span>
+                </a>
+                <a href="pages/martyrs.html#jacopo" class="entry-point">
+                    <span class="entry-title">Meet Jacopo Ruffini</span>
+                    <span class="entry-desc">A young man who chose death rather than betray his friends</span>
+                </a>
+                <a href="pages/teachings.html" class="entry-point">
+                    <span class="entry-title">Browse the 29 Teachings</span>
+                    <span class="entry-desc">The distilled wisdom extracted from seven centuries of seeking</span>
+                </a>
             </div>
-        </section>
+            <p>The path is open to all who seek sincerely. The doors are not locked.</p>
+        </div>
+    </section>
 
-        <section class="two-parts">
-            <div class="container">
-                <h2 class="section-title">The Two Parts</h2>
-                <div class="parts-grid">
-                    <article class="part-card">
-                        <div class="part-number">I</div>
-                        <h3>The Whisperings</h3>
-                        <p class="part-dates">Pre-1820</p>
-                        <p>Ancient texts that established the framework: Sufi poetry on the journey of the soul, alchemical writings on transformation, mystical visions of the cobbler-prophet Jakob B&ouml;hme, and contemplative wisdom from anonymous seekers.</p>
-                        <ul class="part-books">
-                            <li>The Book of the Journey</li>
-                            <li>The Book of Transmutation</li>
-                            <li>The Book of the Cobbler</li>
-                            <li>The Book of Fire</li>
-                            <li>The Book of Wisdom</li>
-                            <li>The Book of the Hermetic Bridge</li>
-                        </ul>
-                        <a href="pages/scripture.html#part1" class="btn btn-text">Read Part I &rarr;</a>
-                    </article>
-
-                    <article class="part-card">
-                        <div class="part-number">II</div>
-                        <h3>The Illuminations</h3>
-                        <p class="part-dates">1820-1850</p>
-                        <p>The Pattern made flesh: four martyrs who embodied the ancient wisdom&mdash;the Friend, the Poet, the General, and the Statesman&mdash;alongside the visionary philosophy of the Poughkeepsie Seer and the epistemology of limits.</p>
-                        <ul class="part-books">
-                            <li>The Gospel According to Jacopo</li>
-                            <li>The Gospel According to Robert</li>
-                            <li>The Gospel According to Vilmos</li>
-                            <li>The Gospel According to Lajos</li>
-                            <li>The Book of the Seer</li>
-                            <li>The Book of Continuation</li>
-                        </ul>
-                        <a href="pages/scripture.html#part2" class="btn btn-text">Read Part II &rarr;</a>
-                    </article>
-                </div>
+    <section class="traditional-nav">
+        <div class="traditional-nav-content">
+            <h3>Explore</h3>
+            <div class="nav-grid">
+                <a href="pages/scripture.html" class="nav-link">Scripture</a>
+                <a href="pages/teachings.html" class="nav-link">Teachings</a>
+                <a href="pages/martyrs.html" class="nav-link">The Martyrs</a>
+                <a href="pages/practices.html" class="nav-link">Practices</a>
+                <a href="pages/study-guide.html" class="nav-link">Study Guide</a>
+                <a href="pages/glossary.html" class="nav-link">Glossary</a>
+                <a href="pages/history.html" class="nav-link">History</a>
+                <a href="pages/sources.html" class="nav-link">Sources</a>
+                <a href="pages/about.html" class="nav-link">About</a>
             </div>
-        </section>
-
-        <section class="teachings-preview">
-            <div class="container">
-                <h2 class="section-title">The Core Teachings</h2>
-                <div class="teachings-grid">
-                    <div class="teaching">
-                        <div class="teaching-number">1</div>
-                        <blockquote>That which you seek, you already are. But to know this, you must die to everything you believe yourself to be.</blockquote>
-                        <cite>&mdash; The Conference of the Birds</cite>
-                    </div>
-                    <div class="teaching">
-                        <div class="teaching-number">3</div>
-                        <blockquote>Love destroys everything that is not love. To find the Beloved, the lover must be annihilated.</blockquote>
-                        <cite>&mdash; The Divan of Shams</cite>
-                    </div>
-                    <div class="teaching">
-                        <div class="teaching-number">6</div>
-                        <blockquote>Those who die for truth do not die in vain. They tear holes in the veil of illusion through which others may see.</blockquote>
-                        <cite>&mdash; The Mathnawi</cite>
-                    </div>
-                    <div class="teaching">
-                        <div class="teaching-number">20</div>
-                        <blockquote>The Dark Night is the way of those whom God loves most. Do not pray to avoid it; pray for courage to endure.</blockquote>
-                        <cite>&mdash; Juan of the Cross</cite>
-                    </div>
-                </div>
-                <div class="teachings-cta">
-                    <a href="pages/teachings.html" class="btn btn-primary">Explore All 29 Teachings</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="martyrs-preview">
-            <div class="container">
-                <h2 class="section-title">The Four Martyrs</h2>
-                <p class="section-intro">Four lives, four deaths, four facets of a single truth. Together they form a composite witness to the Pattern.</p>
-                <div class="martyrs-grid">
-                    <article class="martyr-card">
-                        <div class="martyr-image">
-                            <img src="images/jacopo.jpg" alt="Symbolic representation of Jacopo" loading="lazy">
-                        </div>
-                        <h3>Jacopo Ruffini</h3>
-                        <p class="martyr-title">The Friend</p>
-                        <p class="martyr-dates">c. 1803 &ndash; 1833</p>
-                        <p>Who chose death rather than betray his comrades. His silence protected the revolutionary network that would one day unite Italy.</p>
-                        <a href="pages/martyrs.html#jacopo" class="btn btn-text">Read His Gospel &rarr;</a>
-                    </article>
-
-                    <article class="martyr-card">
-                        <div class="martyr-image">
-                            <img src="images/robert.jpg" alt="Robert Blum" loading="lazy">
-                        </div>
-                        <h3>Robert Blum</h3>
-                        <p class="martyr-title">The Poet</p>
-                        <p class="martyr-dates">1807 &ndash; 1848</p>
-                        <p>The shoemaker's son who became the voice of German democracy. Shot in Vienna for words that could not be silenced by bullets.</p>
-                        <a href="pages/martyrs.html#robert" class="btn btn-text">Read His Gospel &rarr;</a>
-                    </article>
-
-                    <article class="martyr-card">
-                        <div class="martyr-image">
-                            <img src="images/vilmos.jpg" alt="Symbolic representation of Vilmos" loading="lazy">
-                        </div>
-                        <h3>Vilmos L&aacute;z&aacute;r</h3>
-                        <p class="martyr-title">The General</p>
-                        <p class="martyr-dates">1815 &ndash; 1849</p>
-                        <p>One of the Thirteen of Arad. He broke his oath to the empire to keep faith with his nation and died among his brothers.</p>
-                        <a href="pages/martyrs.html#vilmos" class="btn btn-text">Read His Gospel &rarr;</a>
-                    </article>
-
-                    <article class="martyr-card">
-                        <div class="martyr-image">
-                            <img src="images/lajos.jpg" alt="Lajos Batthyány" loading="lazy">
-                        </div>
-                        <h3>Lajos Batthy&aacute;ny</h3>
-                        <p class="martyr-title">The Statesman</p>
-                        <p class="martyr-dates">1806 &ndash; 1849</p>
-                        <p>Hungary's first Prime Minister. The authority who submitted to higher authority, facing execution with defiance unbroken.</p>
-                        <a href="pages/martyrs.html#lajos" class="btn btn-text">Read His Gospel &rarr;</a>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="quote-section">
-            <div class="container">
-                <blockquote class="featured-quote">
-                    <p>&ldquo;I died as mineral and became a plant.<br>
-                    I died as plant and rose to animal.<br>
-                    I died as animal and became a human being.<br>
-                    Why should I fear? When was I ever less by dying?&rdquo;</p>
-                    <cite>&mdash; Jalal ad-Din Rumi, The Divan of Shams</cite>
-                </blockquote>
-            </div>
-        </section>
-
-        <section class="practices-preview">
-            <div class="container">
-                <div class="practices-content">
-                    <h2>The Way of Practice</h2>
-                    <p>The teachings of this path are not meant for intellectual entertainment alone. They call for transformation&mdash;for living differently, dying differently, becoming what we already are.</p>
-                    <p>Learn the practices that generations of seekers have used: meditation and contemplation, the reading of sacred texts, the cultivation of presence, and the disciplines of daily life.</p>
-                    <a href="pages/practices.html" class="btn btn-primary">Explore the Practices</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta-section">
-            <div class="container">
-                <h2>Begin Your Journey</h2>
-                <p>The path is open to all who seek sincerely. The doors are not locked; they open to those who knock.</p>
-                <div class="cta-buttons">
-                    <a href="pages/scripture.html" class="btn btn-primary btn-large">Read the Scripture</a>
-                    <a href="pages/about.html" class="btn btn-secondary btn-large">Learn More</a>
-                </div>
-            </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <footer class="main-footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <h4>The Path of Illumination</h4>
-                    <p>Gathering ancient wisdom and modern witness to reveal the Pattern of transformation through sacrifice.</p>
+                    <p>Ancient wisdom for modern seekers. All source texts are in the public domain.</p>
                 </div>
                 <div class="footer-section">
                     <h4>Scripture</h4>
@@ -233,15 +472,15 @@
                 <div class="footer-section">
                     <h4>Learn</h4>
                     <ul>
-                        <li><a href="pages/martyrs.html">The Four Martyrs</a></li>
-                        <li><a href="pages/history.html">Historical Context</a></li>
+                        <li><a href="pages/study-guide.html">Study Guide</a></li>
+                        <li><a href="pages/glossary.html">Glossary</a></li>
                         <li><a href="pages/practices.html">Practices</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>About</h4>
                     <ul>
-                        <li><a href="pages/about.html">Our Story</a></li>
+                        <li><a href="pages/about.html">The Path</a></li>
                         <li><a href="pages/sources.html">Source Texts</a></li>
                         <li><a href="https://github.com/bedwards/bible-2">GitHub</a></li>
                     </ul>

@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Apply ancient wisdom to modern decisions. Guidance for real-life choices from the Book of Illumination and Sacrifice.">
+    <title>Making Decisions | The Path of Illumination</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        .decisions-header {
+            padding: calc(80px + var(--space-xl)) 0 var(--space-xl);
+            background: var(--color-bg-alt);
+            text-align: center;
+        }
+        .decisions-intro {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: var(--space-2xl) var(--space-lg);
+        }
+        .decisions-intro p {
+            font-size: 1.1rem;
+            color: var(--color-text-light);
+            line-height: 1.8;
+            margin-bottom: var(--space-lg);
+        }
+        .decisions-intro blockquote {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--color-text);
+            padding: var(--space-lg);
+            background: var(--color-bg-alt);
+            border-left: 3px solid var(--color-gold-dark);
+            margin: var(--space-xl) 0;
+        }
+        .framework-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: var(--space-2xl) var(--space-lg);
+        }
+        .framework-section h2 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-text);
+            font-weight: 400;
+            margin-bottom: var(--space-lg);
+            text-align: center;
+        }
+        .framework-steps {
+            display: grid;
+            gap: var(--space-lg);
+        }
+        .framework-step {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: var(--space-lg);
+            background: var(--color-bg-alt);
+            padding: var(--space-xl);
+        }
+        .step-number {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-bg);
+            border: 2px solid var(--color-gold-dark);
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-gold);
+        }
+        .step-content h3 {
+            color: var(--color-gold);
+            margin-bottom: var(--space-sm);
+        }
+        .step-content p {
+            color: var(--color-text-light);
+            line-height: 1.7;
+            margin-bottom: var(--space-sm);
+        }
+        .step-content .step-question {
+            font-family: var(--font-display);
+            font-style: italic;
+            color: var(--color-text-muted);
+        }
+        .decision-scenarios {
+            background: var(--color-bg-alt);
+            padding: var(--space-2xl) var(--space-lg);
+        }
+        .scenarios-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .decision-scenarios h2 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-text);
+            font-weight: 400;
+            margin-bottom: var(--space-xl);
+            text-align: center;
+        }
+        .scenario-card {
+            background: var(--color-bg);
+            margin-bottom: var(--space-xl);
+            border-left: 3px solid var(--color-gold-dark);
+        }
+        .scenario-header {
+            padding: var(--space-lg);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .scenario-header h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--color-text);
+            font-weight: 400;
+        }
+        .scenario-header .toggle {
+            color: var(--color-gold);
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        .scenario-header.open .toggle {
+            transform: rotate(45deg);
+        }
+        .scenario-body {
+            padding: 0 var(--space-lg) var(--space-lg);
+            display: none;
+        }
+        .scenario-body.open {
+            display: block;
+        }
+        .scenario-body p {
+            color: var(--color-text-light);
+            line-height: 1.8;
+            margin-bottom: var(--space-md);
+        }
+        .scenario-teaching {
+            background: var(--color-bg-alt);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+        }
+        .scenario-teaching .teaching-text {
+            font-family: var(--font-display);
+            font-style: italic;
+            color: var(--color-text);
+            margin-bottom: var(--space-sm);
+        }
+        .scenario-teaching cite {
+            font-size: 0.875rem;
+            color: var(--color-gold);
+        }
+        .scenario-questions {
+            margin-top: var(--space-lg);
+        }
+        .scenario-questions h4 {
+            font-size: 0.875rem;
+            color: var(--color-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-sm);
+        }
+        .scenario-questions ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .scenario-questions li {
+            padding: var(--space-xs) 0;
+            padding-left: var(--space-md);
+            position: relative;
+            color: var(--color-text-light);
+        }
+        .scenario-questions li::before {
+            content: "?";
+            position: absolute;
+            left: 0;
+            color: var(--color-gold-dark);
+        }
+        .principles-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--space-2xl) var(--space-lg);
+        }
+        .principles-section h2 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-text);
+            font-weight: 400;
+            margin-bottom: var(--space-xl);
+            text-align: center;
+        }
+        .principle-card {
+            background: var(--color-bg-alt);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-lg);
+            border-top: 2px solid var(--color-gold-dark);
+        }
+        .principle-card h3 {
+            font-family: var(--font-display);
+            color: var(--color-gold);
+            font-size: 1.2rem;
+            margin-bottom: var(--space-md);
+        }
+        .principle-card p {
+            color: var(--color-text-light);
+            line-height: 1.8;
+        }
+        .warning-section {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: var(--space-2xl) var(--space-lg);
+            text-align: center;
+        }
+        .warning-box {
+            background: var(--color-bg-alt);
+            border: 1px solid var(--color-gold-dark);
+            padding: var(--space-xl);
+        }
+        .warning-box h3 {
+            color: var(--color-gold);
+            margin-bottom: var(--space-md);
+        }
+        .warning-box p {
+            color: var(--color-text-light);
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">The Path</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="scripture.html">Scripture</a></li>
+                <li><a href="teachings.html">Teachings</a></li>
+                <li><a href="martyrs.html">The Martyrs</a></li>
+                <li><a href="practices.html">Practices</a></li>
+                <li><a href="study-guide.html">Study Guide</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="decisions-header">
+        <div class="container">
+            <h1>Making Decisions</h1>
+            <p class="lead">Applying the teachings to real-life choices</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="decisions-intro">
+            <p>The teachings of this path are not meant to be admired from a distance. They are meant to be lived — applied to the actual decisions you face, the real choices that shape your life.</p>
+            <p>This is not a system that tells you what to do. It is a framework for discernment — for bringing deeper wisdom to bear on the complexities of human existence.</p>
+            <blockquote>
+                "It is not enough to hold true beliefs. Beliefs that do not transform living are merely mental entertainment. The question is not what you profess but what you practice."
+                <br><cite>— A Serious Call, William Law</cite>
+            </blockquote>
+        </section>
+
+        <section class="framework-section">
+            <h2>A Framework for Discernment</h2>
+            <div class="framework-steps">
+                <div class="framework-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Name What Is at Stake</h3>
+                        <p>Before you can decide wisely, you must understand what you're actually deciding. Often the surface question hides a deeper one. "Should I take this job?" may really be "Who do I want to become?" Strip away the surface until you reach the real question.</p>
+                        <p class="step-question">What is the real question beneath the apparent question?</p>
+                    </div>
+                </div>
+
+                <div class="framework-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Notice Your Fear</h3>
+                        <p>Fear distorts perception. It makes us avoid what might serve us and cling to what harms us. Before deciding, identify what you're afraid of. Not to eliminate the fear — fear may carry wisdom — but to see it clearly so it doesn't decide for you unconsciously.</p>
+                        <p class="step-question">What am I afraid of? What am I afraid of losing? What am I afraid of becoming?</p>
+                    </div>
+                </div>
+
+                <div class="framework-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Ask What Would Die</h3>
+                        <p>Every significant choice involves a death — of possibilities not chosen, of selves not become, of paths not taken. The martyrs understood this: to say yes to one thing is to say no to others. What would each option require you to let go of?</p>
+                        <p class="step-question">If I choose this, what dies? Am I willing to let it die?</p>
+                    </div>
+                </div>
+
+                <div class="framework-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Consider the Signature</h3>
+                        <p>Jakob Böhme taught that everything bears the signature of its essence. Your choices reveal and create who you are. Each decision is a brushstroke in the portrait of your life. What signature would this choice leave?</p>
+                        <p class="step-question">If this choice were the last one I made, what would it say about my life?</p>
+                    </div>
+                </div>
+
+                <div class="framework-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Listen for the Deeper Yes</h3>
+                        <p>Beneath the noise of pros and cons, advantages and disadvantages, there is often a quieter voice that knows. This is not impulse or wishful thinking — it is discernment. It speaks not in arguments but in recognition. Create silence and listen.</p>
+                        <p class="step-question">If I set aside all calculation, what does my deepest knowing say?</p>
+                    </div>
+                </div>
+
+                <div class="framework-step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <h3>Accept the Uncertainty</h3>
+                        <p>You will not have certainty. The martyrs did not know if their deaths would matter. The mystics could not prove their visions. You choose not because you know you're right, but because you must choose, and you choose the best you can see.</p>
+                        <p class="step-question">Can I make this choice without knowing how it will turn out?</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="decision-scenarios">
+            <div class="scenarios-content">
+                <h2>Common Decision Points</h2>
+
+                <article class="scenario-card">
+                    <div class="scenario-header" onclick="toggleScenario(this)">
+                        <h3>Should I stay in a career that no longer fulfills me?</h3>
+                        <span class="toggle">+</span>
+                    </div>
+                    <div class="scenario-body">
+                        <p>The question seems practical — income, security, identity. But beneath it lies a deeper question: Who am I if not my job? What is my true work?</p>
+
+                        <div class="scenario-teaching">
+                            <p class="teaching-text">"The alchemist does not create gold from nothing. The alchemist reveals the gold that was always present, hidden beneath dross. The work is subtraction, not addition."</p>
+                            <cite>— Book of Transmutation, Chapter 7</cite>
+                        </div>
+
+                        <p>Perhaps the career that no longer fulfills was always dross — not your true work but a covering over it. Or perhaps the career was gold once, and now it has served its purpose. Both are possible. The question is not whether to leave, but what you're uncovering by considering it.</p>
+
+                        <p>The martyrs had careers too. Jacopo was an organizer. Robert was a publisher. They did not abandon practical work for spiritual retreat. They brought their deepest convictions into their practical work — until the work demanded everything.</p>
+
+                        <div class="scenario-questions">
+                            <h4>Questions to Sit With</h4>
+                            <ul>
+                                <li>Is my discontent with this career a signal to transform it or to leave it?</li>
+                                <li>What would I be if not this job? Does that thought terrify me or free me?</li>
+                                <li>Am I seeking a better career, or am I seeking escape from the work of transformation?</li>
+                                <li>What is my true work — the work that would remain even if the job disappeared?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="scenario-card">
+                    <div class="scenario-header" onclick="toggleScenario(this)">
+                        <h3>Should I end this relationship?</h3>
+                        <span class="toggle">+</span>
+                    </div>
+                    <div class="scenario-body">
+                        <p>Relationships are the crucibles in which transformation often occurs. They break us open. They reveal what we would prefer to hide. The question of whether to stay or leave is rarely simple.</p>
+
+                        <div class="scenario-teaching">
+                            <p class="teaching-text">"Love destroys everything that is not love. To find the Beloved, the lover must be annihilated."</p>
+                            <cite>— The Divan of Shams</cite>
+                        </div>
+
+                        <p>Is this relationship a crucible of transformation — painful but growth-inducing? Or has it become a prison that prevents growth? Sometimes the same relationship can be both at different stages.</p>
+
+                        <p>Rumi's love for Shams was transformative, but Shams disappeared. The loss was devastating, yet it was in the loss that Rumi's greatest poetry emerged. Endings are not always failures.</p>
+
+                        <div class="scenario-questions">
+                            <h4>Questions to Sit With</h4>
+                            <ul>
+                                <li>Is this relationship breaking me open or just breaking me down?</li>
+                                <li>Am I staying out of love or out of fear?</li>
+                                <li>Am I considering leaving because growth is too painful, or because growth is being prevented?</li>
+                                <li>What in me would die if this relationship ended? Does that part need to die?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="scenario-card">
+                    <div class="scenario-header" onclick="toggleScenario(this)">
+                        <h3>Should I speak up about something unjust?</h3>
+                        <span class="toggle">+</span>
+                    </div>
+                    <div class="scenario-body">
+                        <p>The martyrs faced this question in its most extreme form — and chose to speak, knowing it would cost them everything. Most of us face it in smaller doses. When should we speak, and when should we stay silent?</p>
+
+                        <div class="scenario-teaching">
+                            <p class="teaching-text">"The martyrs were those who took their beliefs seriously. They could have compromised. They could have spoken the required words... and saved their lives. But they believed what they believed, and they were unwilling to live as if they did not."</p>
+                            <cite>— A Serious Call</cite>
+                        </div>
+
+                        <p>Not every injustice requires your speech. Discernment is needed. But notice: the martyrs did not calculate their chances of success before speaking. They spoke because silence would have been a betrayal of their own souls.</p>
+
+                        <p>Robert Blum knew the revolution might fail. He spoke anyway. Jacopo knew he might be captured. He organized anyway. The question is not "Will my speech succeed?" but "Can I live with my silence?"</p>
+
+                        <div class="scenario-questions">
+                            <h4>Questions to Sit With</h4>
+                            <ul>
+                                <li>Is my silence strategic wisdom or moral cowardice? How do I know the difference?</li>
+                                <li>If I speak, am I seeking truth or seeking validation?</li>
+                                <li>What would Jacopo do? What would Robert do?</li>
+                                <li>Can I live with the consequences of speaking? Can I live with the consequences of not speaking?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="scenario-card">
+                    <div class="scenario-header" onclick="toggleScenario(this)">
+                        <h3>Should I pursue security or meaning?</h3>
+                        <span class="toggle">+</span>
+                    </div>
+                    <div class="scenario-body">
+                        <p>This is perhaps the defining question of our age. We are offered security — material, psychological, social — at the price of our souls. We are offered meaning — but it seems to require sacrifice of everything safe.</p>
+
+                        <div class="scenario-teaching">
+                            <p class="teaching-text">"Those who seek to avoid the dissolution seek to remain base metal forever. They fear the fire because they do not understand: the fire does not destroy the gold — it reveals it."</p>
+                            <cite>— Book of Transmutation, Chapter 7</cite>
+                        </div>
+
+                        <p>The framing itself may be a trap. The mystics did not seek meaning by abandoning the world; they found meaning in deeper engagement with it. The martyrs did not pursue death; they pursued life so fully that death became acceptable.</p>
+
+                        <p>Perhaps the question is not "security or meaning" but "what am I securing and why?" The security that protects the dross is bondage. The security that protects the gold is wisdom.</p>
+
+                        <div class="scenario-questions">
+                            <h4>Questions to Sit With</h4>
+                            <ul>
+                                <li>What am I trying to secure? Is it worth securing?</li>
+                                <li>What would I risk everything for? What does that reveal about what I truly value?</li>
+                                <li>Am I using "meaning" as an excuse to avoid necessary practical work?</li>
+                                <li>Am I using "security" as an excuse to avoid necessary transformation?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="scenario-card">
+                    <div class="scenario-header" onclick="toggleScenario(this)">
+                        <h3>How should I respond to AI changing everything?</h3>
+                        <span class="toggle">+</span>
+                    </div>
+                    <div class="scenario-body">
+                        <p>The world is transforming faster than we can adapt. Machines can now do what we trained our whole lives to do. The old certainties are failing. How should we respond?</p>
+
+                        <div class="scenario-teaching">
+                            <p class="teaching-text">"The old forms are dying. The old certainties are failing. Kingdoms shake and institutions crumble. This is not the end but the transition — the death of one age and the birth of another."</p>
+                            <cite>— Book of the Cobbler, Chapter 17</cite>
+                        </div>
+
+                        <p>Jakob Böhme lived through the chaos of the Thirty Years War. Jacopo through the upheavals of early 19th century Europe. Andrew Jackson Davis through the American Civil War. Each faced a world being unmade. Each found meaning not despite the chaos but within it.</p>
+
+                        <p>AI can replicate skills. It cannot replicate being. It can generate content. It cannot generate consciousness. The question is not how to compete with machines but how to become more fully human — which is exactly what the mystics have always taught.</p>
+
+                        <div class="scenario-questions">
+                            <h4>Questions to Sit With</h4>
+                            <ul>
+                                <li>What in me cannot be automated? What is that telling me about my true nature?</li>
+                                <li>Am I grieving the loss of the old world or clinging to it?</li>
+                                <li>What might be trying to be born in me through this disruption?</li>
+                                <li>How does this teaching apply: "Transformation is revelation — you do not become divine; you discover that you always were"?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="principles-section">
+            <h2>Guiding Principles</h2>
+
+            <article class="principle-card">
+                <h3>You will not have certainty</h3>
+                <p>If you wait for certainty before acting, you will wait forever. The martyrs did not know their deaths would matter. Rumi did not know his poetry would last. You choose in the fog, guided by the best light you can find. This is courage.</p>
+            </article>
+
+            <article class="principle-card">
+                <h3>Your resistance points to something important</h3>
+                <p>Notice what you resist considering. Notice the option that makes you afraid. That fear may be warning you away from danger — or it may be marking the exact direction of growth. Discernment is learning to tell the difference.</p>
+            </article>
+
+            <article class="principle-card">
+                <h3>Every choice is a death and a birth</h3>
+                <p>To choose one path is to unchose all others. The lives you do not live die when you choose. Grieve them, but choose anyway. The alchemists knew: dissolution is the prerequisite of reconstitution. You cannot become what you might be without letting go of what you are.</p>
+            </article>
+
+            <article class="principle-card">
+                <h3>The outcome is not the measure</h3>
+                <p>We want to know: "Will this choice work out?" But success is not the measure of a choice well-made. The martyrs' immediate causes failed. They died, and the revolutions were crushed. But seeds were planted. The question is not "Will this succeed?" but "Is this true to who I am and who I'm becoming?"</p>
+            </article>
+
+            <article class="principle-card">
+                <h3>You must choose</h3>
+                <p>Not choosing is itself a choice — usually the choice to let circumstances decide for you. The one thing you cannot do is avoid responsibility by avoiding decision. You are free, and freedom is terrible, and you must use it anyway.</p>
+            </article>
+        </section>
+
+        <section class="warning-section">
+            <div class="warning-box">
+                <h3>A Word of Caution</h3>
+                <p>These teachings can be misused. The call to "die before you die" does not mean to seek literal death. The teaching that "suffering is the path" does not mean to seek suffering or to stay in situations that are simply harmful. The example of the martyrs does not mean to romanticize self-destruction.</p>
+                <p>Discernment requires humility. If your reading of these teachings consistently leads you toward harm — to yourself or others — you are reading them wrong. Seek wise counsel. The path is walked with others, not alone.</p>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>Go Deeper</h2>
+                <p>Decision-making is a practice. The more you work with these frameworks, the more natural discernment becomes.</p>
+                <div class="cta-buttons">
+                    <a href="study-guide.html" class="btn btn-primary">Start the Study Guide</a>
+                    <a href="reflections.html" class="btn btn-secondary">Daily Reflections</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 The Path of Illumination. All sacred texts are in the public domain.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        function toggleScenario(header) {
+            header.classList.toggle('open');
+            const body = header.nextElementSibling;
+            body.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

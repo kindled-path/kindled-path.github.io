@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A guided journey through the Book of Illumination and Sacrifice. Study guides, reflection questions, and practices for seekers.">
+    <title>Study Guide | The Path of Illumination</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        .study-header {
+            padding: calc(80px + var(--space-xl)) 0 var(--space-xl);
+            background: var(--color-bg-alt);
+            text-align: center;
+        }
+        .study-intro {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--space-2xl) var(--space-lg);
+            text-align: center;
+        }
+        .study-intro p {
+            font-size: 1.1rem;
+            color: var(--color-text-light);
+            line-height: 1.8;
+        }
+        .study-paths {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg) var(--space-2xl);
+        }
+        .path-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-2xl);
+        }
+        .path-card {
+            background: var(--color-bg-alt);
+            padding: var(--space-xl);
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .path-card:hover, .path-card.active {
+            border-color: var(--color-gold-dark);
+        }
+        .path-card.active {
+            background: var(--color-bg);
+        }
+        .path-card h3 {
+            color: var(--color-gold);
+            margin-bottom: var(--space-sm);
+        }
+        .path-card .duration {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+            margin-bottom: var(--space-md);
+        }
+        .path-card p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+        }
+        .study-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: var(--space-2xl) var(--space-lg);
+        }
+        .week-section {
+            margin-bottom: var(--space-3xl);
+            border-left: 3px solid var(--color-gold-dark);
+            padding-left: var(--space-xl);
+        }
+        .week-header {
+            margin-bottom: var(--space-xl);
+        }
+        .week-header h2 {
+            color: var(--color-text);
+            margin-bottom: var(--space-xs);
+        }
+        .week-header .theme {
+            font-family: var(--font-display);
+            font-style: italic;
+            color: var(--color-gold);
+            font-size: 1.1rem;
+        }
+        .day-block {
+            background: var(--color-bg-alt);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-md);
+        }
+        .day-block h4 {
+            color: var(--color-gold);
+            margin-bottom: var(--space-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        .day-block h4 .day-label {
+            background: var(--color-gold-dark);
+            color: var(--color-bg);
+            padding: 2px 10px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .day-block .reading {
+            margin-bottom: var(--space-md);
+        }
+        .day-block .reading-title {
+            font-weight: 600;
+            color: var(--color-text);
+        }
+        .day-block .reading-ref {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+        }
+        .reflection-questions {
+            background: var(--color-bg);
+            padding: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        .reflection-questions h5 {
+            color: var(--color-gold);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-sm);
+        }
+        .reflection-questions ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .reflection-questions li {
+            color: var(--color-text-light);
+            padding: var(--space-xs) 0;
+            padding-left: var(--space-md);
+            position: relative;
+            font-style: italic;
+        }
+        .reflection-questions li::before {
+            content: "?";
+            position: absolute;
+            left: 0;
+            color: var(--color-gold-dark);
+        }
+        .practice-box {
+            background: linear-gradient(135deg, var(--color-bg-alt) 0%, var(--color-bg) 100%);
+            border: 1px solid var(--color-gold-dark);
+            padding: var(--space-lg);
+            margin-top: var(--space-lg);
+        }
+        .practice-box h5 {
+            color: var(--color-gold);
+            margin-bottom: var(--space-sm);
+        }
+        .practice-box p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+        }
+        .teaching-highlight {
+            background: var(--color-bg);
+            border-left: 3px solid var(--color-gold);
+            padding: var(--space-md) var(--space-lg);
+            margin: var(--space-lg) 0;
+        }
+        .teaching-highlight .teaching-num {
+            font-size: 0.75rem;
+            color: var(--color-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+        .teaching-highlight blockquote {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--color-text);
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-2xl);
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--color-bg-alt);
+        }
+        .nav-btn {
+            color: var(--color-gold);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        .nav-btn:hover {
+            color: var(--color-gold-light);
+        }
+        .progress-tracker {
+            background: var(--color-bg-alt);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-2xl);
+        }
+        .progress-tracker h4 {
+            color: var(--color-gold);
+            margin-bottom: var(--space-md);
+        }
+        .progress-bar {
+            height: 8px;
+            background: var(--color-bg);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: var(--space-sm);
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--color-gold-dark);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+        .progress-text {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+        }
+        .scripture-excerpt {
+            font-family: var(--font-display);
+            font-style: italic;
+            color: var(--color-text);
+            padding: var(--space-md);
+            background: var(--color-bg);
+            border-left: 2px solid var(--color-gold-dark);
+            margin: var(--space-md) 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">The Path</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="scripture.html">Scripture</a></li>
+                <li><a href="teachings.html">Teachings</a></li>
+                <li><a href="martyrs.html">The Martyrs</a></li>
+                <li><a href="practices.html">Practices</a></li>
+                <li><a href="history.html">History</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="study-header">
+        <div class="container">
+            <h1>Study Guide</h1>
+            <p class="lead">A guided journey through the scripture</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="study-intro">
+            <p>The Book of Illumination and Sacrifice is not meant to be read quickly. It is meant to be absorbed slowly, questioned deeply, and lived daily. This study guide offers structured paths through the scripture — readings, reflections, and practices designed to help the teachings take root in your life.</p>
+            <p>Choose a path that fits where you are. There is no wrong way to begin.</p>
+        </section>
+
+        <section class="study-paths">
+            <h2 class="section-title text-center mb-lg">Choose Your Path</h2>
+            <div class="path-selector">
+                <div class="path-card active" data-path="beginner">
+                    <h3>The First Steps</h3>
+                    <p class="duration">4 weeks</p>
+                    <p>For those new to the Path. An introduction to the core teachings through selected readings from Part I and the story of one martyr.</p>
+                </div>
+                <div class="path-card" data-path="foundation">
+                    <h3>The Foundation</h3>
+                    <p class="duration">12 weeks</p>
+                    <p>A complete journey through Part I: The Whisperings. Deep engagement with all 29 teachings and the ancient wisdom traditions.</p>
+                </div>
+                <div class="path-card" data-path="complete">
+                    <h3>The Full Journey</h3>
+                    <p class="duration">24 weeks</p>
+                    <p>Both parts of the scripture, all teachings, all martyrs. For those ready to commit to a sustained period of study and transformation.</p>
+                </div>
+                <div class="path-card" data-path="intensive">
+                    <h3>The Intensive</h3>
+                    <p class="duration">7 days</p>
+                    <p>A week of deep immersion. One chapter each morning, reflection throughout the day, practice each evening. For retreats or times of seeking.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="study-content" id="first-steps">
+            <div class="progress-tracker">
+                <h4>Your Progress: The First Steps</h4>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%"></div>
+                </div>
+                <p class="progress-text">Week 1 of 4 — Beginning the Journey</p>
+            </div>
+
+            <!-- WEEK 1 -->
+            <article class="week-section">
+                <div class="week-header">
+                    <h2>Week One: The Call</h2>
+                    <p class="theme">"That which you seek, you already are"</p>
+                </div>
+
+                <div class="day-block">
+                    <h4><span class="day-label">Day 1</span> The Conference of the Birds</h4>
+                    <div class="reading">
+                        <p class="reading-title">Read: Book of the Journey, Chapter 1</p>
+                        <p class="reading-ref"><a href="scripture.html#chapter-1">The Conference of the Birds — Farid ud-Din</a></p>
+                    </div>
+                    <p>The hoopoe calls the birds to journey. Ten thousand respond; only thirty will complete the path. Begin by simply reading the story. Let it settle into your imagination without trying to interpret it.</p>
+
+                    <div class="scripture-excerpt">
+                        "And when at last the thirty birds reached the court of the Simurgh, they found no king upon a throne. They found only a mirror. And in the mirror, they saw themselves — si murgh, thirty birds — and understood at last: the seeker and the sought were never separate."
+                    </div>
+
+                    <div class="reflection-questions">
+                        <h5>For Reflection</h5>
+                        <ul>
+                            <li>What are you seeking? Name it honestly.</li>
+                            <li>What would it mean if what you seek is already present?</li>
+                            <li>What "valleys" might lie between you and what you seek?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="day-block">
+                    <h4><span class="day-label">Day 2</span> The First Teaching</h4>
+                    <div class="reading">
+                        <p class="reading-title">Re-read Chapter 1, focusing on the teaching</p>
+                    </div>
+
+                    <div class="teaching-highlight">
+                        <p class="teaching-num">Teaching #1</p>
+                        <blockquote>That which you seek, you already are. But to know this, you must die to everything you believe yourself to be.</blockquote>
+                    </div>
+
+                    <p>Today, move from the story to the teaching embedded within it. The first teaching is paradoxical: you already possess what you're looking for, but you must undergo transformation to recognize it. Sit with this paradox. Don't try to resolve it intellectually.</p>
+
+                    <div class="reflection-questions">
+                        <h5>For Reflection</h5>
+                        <ul>
+                            <li>What do you believe yourself to be? Make a list.</li>
+                            <li>Which of these beliefs might need to "die" for something deeper to emerge?</li>
+                            <li>Have you ever experienced a small death that led to growth?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="day-block">
+                    <h4><span class="day-label">Day 3</span> The Journey and the Affliction</h4>
+                    <div class="reading">
+                        <p class="reading-title">Read: Book of the Journey, Chapter 2</p>
+                        <p class="reading-ref"><a href="scripture.html#chapter-2">The Journey and the Affliction — Sanai and Farid ud-Din</a></p>
+                    </div>
+
+                    <div class="scripture-excerpt">
+                        "I wandered through forty stages of grief before I understood: the affliction was the path. There was no path beyond it, around it, or despite it. The way forward was through."
+                    </div>
+
+                    <div class="teaching-highlight">
+                        <p class="teaching-num">Teaching #2</p>
+                        <blockquote>Suffering is not the obstacle to wisdom but its very substance. Flee from affliction and you flee from transformation itself.</blockquote>
+                    </div>
+
+                    <div class="reflection-questions">
+                        <h5>For Reflection</h5>
+                        <ul>
+                            <li>What suffering are you currently fleeing from?</li>
+                            <li>What might that suffering be trying to teach you?</li>
+                            <li>Is there a difference between seeking suffering and accepting it when it comes?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="day-block">
+                    <h4><span class="day-label">Day 4</span> The Divan of Shams</h4>
+                    <div class="reading">
+                        <p class="reading-title">Read: Book of the Journey, Chapter 3</p>
+                        <p class="reading-ref"><a href="scripture.html#chapter-3">The Divan of Shams — Jalal ad-Din</a></p>
+                    </div>
+
+                    <p>Rumi's transformation began when Shams threw his books into a fountain. The scholar had to die for the poet to be born. Notice the poetry in this chapter — let it speak to your heart before your mind analyzes it.</p>
+
+                    <div class="scripture-excerpt">
+                        "Die before you die and find that there is no death. The wound is the place where the Light enters you. Don't turn away. Keep your gaze on the bandaged place. That's where the light enters you."
+                    </div>
+
+                    <div class="teaching-highlight">
+                        <p class="teaching-num">Teaching #3</p>
+                        <blockquote>Love destroys everything that is not love. To find the Beloved, the lover must be annihilated.</blockquote>
+                    </div>
+
+                    <div class="reflection-questions">
+                        <h5>For Reflection</h5>
+                        <ul>
+                            <li>What in your life has been destroyed by love?</li>
+                            <li>What "wounds" in your life might be entry points for light?</li>
+                            <li>What would it mean to "die before you die"?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="day-block">
+                    <h4><span class="day-label">Day 5</span> The Practice of Presence</h4>
+                    <div class="reading">
+                        <p class="reading-title">Read: Book of Fire, Chapter 22</p>
+                        <p class="reading-ref"><a href="scripture.html#chapter-22">The Practice of the Presence — Brother Lawrence</a></p>
+                    </div>
+
+                    <p>Before reading more, pause to practice. Brother Lawrence found God while washing dishes. Today, you will practice presence — the simple, continuous awareness that something larger is here, now, in this very moment.</p>
+
+                    <div class="practice-box">
+                        <h5>Today's Practice</h5>
+                        <p>Choose one routine activity today — washing dishes, commuting, walking. During this activity, practice turning your attention to the present moment. Notice: you are here. This moment is sacred. There is no separation between the mundane and the holy. When your mind wanders (it will), gently return. This is the practice: not perfect attention, but the return.</p>
+                    </div>
+
+                    <div class="reflection-questions">
+                        <h5>Evening Reflection</h5>
+                        <ul>
+                            <li>How often did you remember to practice presence today?</li>
+                            <li>What did you notice when you were present?</li>
+                            <li>What kept pulling you away?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="day-block">
+                    <h4><span class="day-label">Day 6</span> Where the Beloved Waits</h4>
+                    <div class="reading">
+                        <p class="reading-title">Read: Book of the Journey, Chapter 4</p>
+                        <p class="reading-ref"><a href="scripture.html#chapter-4">Flashes of Light — Jami</a></p>
+                    </div>
+
+                    <div class="scripture-excerpt">
+                        "I sought the Beloved in mosque and temple, in Mecca and Jerusalem. I did not find the Beloved there. I sought the Beloved in books and arguments... I did not find the Beloved there. At last I looked within my own heart. And there — only there — the Beloved was waiting."
+                    </div>
+
+                    <div class="teaching-highlight">
+                        <p class="teaching-num">Teaching #4</p>
+                        <blockquote>The Divine is not found in any external form but only in the depths of the awakened heart.</blockquote>
+                    </div>
+
+                    <div class="reflection-questions">
+                        <h5>For Reflection</h5>
+                        <ul>
+                            <li>Where have you been seeking that has not satisfied?</li>
+                            <li>What does it mean to look "within your own heart"?</li>
+                            <li>What might be blocking access to your own depths?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="day-block">
+                    <h4><span class="day-label">Day 7</span> Rest and Review</h4>
+                    <p>The seventh day is for integration. Do not read new material. Instead:</p>
+
+                    <div class="practice-box">
+                        <h5>Week One Review</h5>
+                        <p><strong>Morning:</strong> Review your notes from the week. Which passage stayed with you? Which question troubled you? Which teaching felt true before you could explain why?</p>
+                        <p><strong>Afternoon:</strong> Take a walk. Bring no book, no phone. Let the week's readings settle. See what arises spontaneously.</p>
+                        <p><strong>Evening:</strong> Write for 15 minutes on this prompt: "What is beginning to shift in me?"</p>
+                    </div>
+
+                    <div class="reflection-questions">
+                        <h5>Week One Questions</h5>
+                        <ul>
+                            <li>Of the first four teachings, which speaks most directly to where you are now?</li>
+                            <li>What resistance arose this week? What does that resistance protect?</li>
+                            <li>What question do you carry into Week Two?</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+
+            <!-- WEEK 2 -->
+            <article class="week-section">
+                <div class="week-header">
+                    <h2>Week Two: The Fire</h2>
+                    <p class="theme">"Transformation requires death"</p>
+                </div>
+
+                <div class="day-block">
+                    <h4><span class="day-label">Day 8</span> The Hidden Treasure</h4>
+                    <div class="reading">
+                        <p class="reading-title">Read: Book of the Journey, Chapter 5</p>
+                        <p class="reading-ref"><a href="scripture.html#chapter-5">The Hidden Treasure — Al-Ghazali</a></p>
+                    </div>
+
+                    <div class="scripture-excerpt">
+                        "I was a hidden treasure and I loved to be known, so I created the world that I might be known."
+                    </div>
+
+                    <p>This is the secret at the heart of existence. The universe is not meaningless matter in motion — it is the Divine knowing Itself through every perspective, including yours. Every experience of your heart is the Divine experiencing Itself.</p>
+
+                    <div class="teaching-highlight">
+                        <p class="teaching-num">Teaching #5</p>
+                        <blockquote>You are not separate from the Divine. Your life is the Divine's life. Your death is the Divine's death. Live accordingly.</blockquote>
+                    </div>
+
+                    <div class="reflection-questions">
+                        <h5>For Reflection</h5>
+                        <ul>
+                            <li>If your life is the Divine's self-knowing, what is being known through you right now?</li>
+                            <li>How would you live differently if you truly believed this teaching?</li>
+                            <li>What does "live accordingly" mean for today?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="day-block">
+                    <h4><span class="day-label">Day 9</span> The Martyrs Wake</h4>
+                    <div class="reading">
+                        <p class="reading-title">Read: Book of the Journey, Chapter 6</p>
+                        <p class="reading-ref"><a href="scripture.html#chapter-6">The Mathnawi: Book of Inward Meanings — Jalal ad-Din</a></p>
+                    </div>
+
+                    <div class="scripture-excerpt">
+                        "The martyr does not die. The martyr wakes up. While others sleep in the dream of this world, the martyr opens eyes in the Real. What looks like death from within the dream is birth when seen from outside it."
+                    </div>
+
+                    <div class="teaching-highlight">
+                        <p class="teaching-num">Teaching #6</p>
+                        <blockquote>Those who die for truth do not die in vain. They tear holes in the veil of illusion through which others may see.</blockquote>
+                    </div>
+
+                    <div class="reflection-questions">
+                        <h5>For Reflection</h5>
+                        <ul>
+                            <li>What does it mean to be "asleep" in the dream of this world?</li>
+                            <li>Have you known anyone whose death "tore the veil" — who died in a way that changed how others saw?</li>
+                            <li>What would you be willing to die for?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="day-block">
+                    <h4><span class="day-label">Day 10</span> The Fire of Transformation</h4>
+                    <div class="reading">
+                        <p class="reading-title">Read: Book of Transmutation, Chapter 7</p>
+                        <p class="reading-ref"><a href="scripture.html#chapter-7">Aurora and the Heavens — Paracelsus</a></p>
+                    </div>
+
+                    <p>Today we enter the alchemical tradition. Paracelsus, the wandering physician, taught that all transformation follows one law: dissolution precedes reconstitution. The base metal must be reduced to prima materia before it can be raised to gold.</p>
+
+                    <div class="scripture-excerpt">
+                        "This is why God and Nature do nothing in vain. Every suffering serves. Every death prepares a birth. Those who seek to avoid the dissolution seek to remain base metal forever."
+                    </div>
+
+                    <div class="teaching-highlight">
+                        <p class="teaching-num">Teaching #7</p>
+                        <blockquote>You already possess everything you need. The work is not to acquire but to reveal.</blockquote>
+                    </div>
+
+                    <div class="reflection-questions">
+                        <h5>For Reflection</h5>
+                        <ul>
+                            <li>What "dross" in your life needs to be burned away?</li>
+                            <li>What are you seeking to acquire that might already be present within you?</li>
+                            <li>What would "revelation" rather than "acquisition" look like in your spiritual life?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="day-block">
+                    <h4><span class="day-label">Day 11</span> Lead to Gold</h4>
+                    <div class="reading">
+                        <p class="reading-title">Read: Book of Transmutation, Chapter 9</p>
+                        <p class="reading-ref"><a href="scripture.html#chapter-9">The Mineral World — Paracelsus</a></p>
+                    </div>
+
+                    <div class="scripture-excerpt">
+                        "The journey of the soul mirrors the journey of metal. We begin as lead — heavy, dark, bound to earth. Through the fire of experience, we are transformed stage by stage until we become gold... But hear this mystery: the gold was always present within the lead."
+                    </div>
+
+                    <div class="teaching-highlight">
+                        <p class="teaching-num">Teaching #9</p>
+                        <blockquote>Transformation is revelation. You do not become divine; you discover that you always were.</blockquote>
+                    </div>
+
+                    <div class="reflection-questions">
+                        <h5>For Reflection</h5>
+                        <ul>
+                            <li>Where in your life do you feel "leaden" — heavy, bound, dark?</li>
+                            <li>What fires have you passed through? What did they reveal?</li>
+                            <li>If the gold is already present, what prevents you from seeing it?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="day-block">
+                    <h4><span class="day-label">Day 12</span> The Great Work</h4>
+                    <div class="reading">
+                        <p class="reading-title">Read: Book of Transmutation, Chapter 10</p>
+                        <p class="reading-ref"><a href="scripture.html#chapter-10">The Treasury of Alchemy — Various</a></p>
+                    </div>
+
+                    <div class="scripture-excerpt">
+                        "I searched for thirty years before I understood: the laboratory was my own body. The furnace was my own heart. The mercury was my own mind. The sulphur was my own will. The work was performed upon myself, not upon metals."
+                    </div>
+
+                    <div class="teaching-highlight">
+                        <p class="teaching-num">Teaching #10</p>
+                        <blockquote>The Great Work is performed upon the self. All outer transformation mirrors inner transformation.</blockquote>
+                    </div>
+
+                    <div class="practice-box">
+                        <h5>Today's Practice</h5>
+                        <p>The Great Work is performed upon the self. Today, bring attention to one pattern in yourself that you would like to transform. Do not try to change it — simply observe it with the curiosity of an alchemist observing a reaction in the laboratory. Notice when it arises. Notice what triggers it. Notice how it feels in the body. This is the beginning of the Work.</p>
+                    </div>
+                </div>
+
+                <div class="day-block">
+                    <h4><span class="day-label">Day 13</span> The Chemical Wedding</h4>
+                    <div class="reading">
+                        <p class="reading-title">Read: Book of Transmutation, Chapter 11</p>
+                        <p class="reading-ref"><a href="scripture.html#chapter-11">The Chemical Wedding — Johann Valentin</a></p>
+                    </div>
+
+                    <div class="scripture-excerpt">
+                        "The King and Queen must die. They are beheaded. Their bodies are placed in a vessel. Fire is applied. They dissolve into formless liquid. And from this liquid, they are reconstituted — but transformed, united, reborn as something neither was before."
+                    </div>
+
+                    <div class="teaching-highlight">
+                        <p class="teaching-num">Teaching #11</p>
+                        <blockquote>True union requires the death of separation. Two must become one, and in becoming one, become more than either was.</blockquote>
+                    </div>
+
+                    <div class="reflection-questions">
+                        <h5>For Reflection</h5>
+                        <ul>
+                            <li>What opposites within yourself need to be wed?</li>
+                            <li>What relationships in your life might need to "dissolve" to become deeper?</li>
+                            <li>What are you clinging to that prevents union?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="day-block">
+                    <h4><span class="day-label">Day 14</span> Rest and Integration</h4>
+                    <p>Week Two closes. Again, no new reading — only integration.</p>
+
+                    <div class="practice-box">
+                        <h5>Week Two Review</h5>
+                        <p><strong>Morning:</strong> Review the week's teachings. You have now encountered eleven. Which ones are you beginning to understand? Which ones still trouble or confuse you?</p>
+                        <p><strong>Afternoon:</strong> The alchemists spoke of fire as the agent of transformation. Consider: what fires are currently at work in your life? What is being burned away? What might be emerging?</p>
+                        <p><strong>Evening:</strong> Write for 15 minutes on this prompt: "What in me is dying? What is being born?"</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- WEEK 3 -->
+            <article class="week-section">
+                <div class="week-header">
+                    <h2>Week Three: The Martyr</h2>
+                    <p class="theme">"Every death tears the fabric of the dream"</p>
+                </div>
+
+                <div class="day-block">
+                    <h4><span class="day-label">Day 15</span> Jacopo: The Birth</h4>
+                    <div class="reading">
+                        <p class="reading-title">Read: Gospel According to Jacopo, Chapters 1-2</p>
+                        <p class="reading-ref"><a href="scripture.html#gospel-jacopo">The Birth and Youth / The Awakening to Liberty</a></p>
+                    </div>
+
+                    <p>This week, we leave the ancient texts and enter history. Jacopo Ruffini was born in 1803 in Genoa, into a world of political oppression. His response to injustice — his awakening, his choices, his death — embodies the Pattern we have been studying.</p>
+
+                    <div class="scripture-excerpt">
+                        "I was born into bondage but not for bondage. Something in me knew, even before I could articulate it, that the natural state of humanity is freedom. Everything I did was preparation for the moment when I could act upon this knowledge."
+                    </div>
+
+                    <div class="reflection-questions">
+                        <h5>For Reflection</h5>
+                        <ul>
+                            <li>What injustices moved you when you were young?</li>
+                            <li>What did you know "before you could articulate it"?</li>
+                            <li>What are you preparing for, even now?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="day-block">
+                    <h4><span class="day-label">Day 16</span> Jacopo: Young Italy</h4>
+                    <div class="reading">
+                        <p class="reading-title">Read: Gospel According to Jacopo, Chapter 3</p>
+                        <p class="reading-ref"><a href="scripture.html#gospel-jacopo">The Young Italy</a></p>
+                    </div>
+
+                    <div class="scripture-excerpt">
+                        "We are the midwives of the future. The child struggles to be born. Our task is to assist the birth, knowing that we may not survive to see the child grow."
+                    </div>
+
+                    <p>Jacopo became director of the most important section of Young Italy. He was the practical one, the organizer who translated Giuseppe Mazzini's visions into reality. He knew the danger. He chose it anyway.</p>
+
+                    <div class="reflection-questions">
+                        <h5>For Reflection</h5>
+                        <ul>
+                            <li>What "future" are you midwifing, whether or not you'll see it?</li>
+                            <li>Who relies on you? What would they lose if you disappeared?</li>
+                            <li>What cause is worth accepting danger for?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="day-block">
+                    <h4><span class="day-label">Day 17</span> Jacopo: The Choice</h4>
+                    <div class="reading">
+                        <p class="reading-title">Read: Gospel According to Jacopo, Chapters 4-5</p>
+                        <p class="reading-ref"><a href="scripture.html#gospel-jacopo">The Imprisonment / The Sacrifice</a></p>
+                    </div>
+
+                    <div class="scripture-excerpt">
+                        "On June 19, 1833, five days after his arrest, Jacopo Ruffini made his final decision... He knew that as long as he lived, he was a pressure point the authorities could use against his family and friends. There was another way."
+                    </div>
+
+                    <p>Jacopo chose to die rather than risk betraying his comrades. This was not despair but calculation — and love. His silence protected others. His death ended the threat he posed to those he cared for.</p>
+
+                    <div class="reflection-questions">
+                        <h5>For Reflection</h5>
+                        <ul>
+                            <li>What would you never betray, regardless of pressure?</li>
+                            <li>How do you understand Jacopo's choice? Was it suicide? Sacrifice? Something else?</li>
+                            <li>What does it mean to love others more than you love your own survival?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="day-block">
+                    <h4><span class="day-label">Day 18</span> The Pattern in History</h4>
+                    <div class="reading">
+                        <p class="reading-title">Re-read: Book of the Journey, Chapter 6</p>
+                        <p class="reading-ref"><a href="scripture.html#chapter-6">The Mathnawi: Book of Inward Meanings</a></p>
+                    </div>
+
+                    <p>Today, return to Rumi's teaching on martyrdom — but now with Jacopo's story fresh in your mind. What the poet taught in metaphor, the revolutionary enacted in history.</p>
+
+                    <div class="scripture-excerpt">
+                        "The martyr's death is not wasted. Every such death tears the fabric of the dream. Every such death lets light through. The martyrs die not only for themselves but for all of us who remain sleeping, that we might have one more crack through which to glimpse the dawn."
+                    </div>
+
+                    <div class="reflection-questions">
+                        <h5>For Reflection</h5>
+                        <ul>
+                            <li>How did Jacopo's death "tear the fabric"? What light came through?</li>
+                            <li>Italy was eventually unified. What role did early martyrs like Jacopo play?</li>
+                            <li>What "dawn" are current martyrs helping us glimpse?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="day-block">
+                    <h4><span class="day-label">Day 19</span> Living the Pattern</h4>
+                    <div class="reading">
+                        <p class="reading-title">Read: Book of Fire, Chapter 23</p>
+                        <p class="reading-ref"><a href="scripture.html#chapter-23">A Serious Call — William Law</a></p>
+                    </div>
+
+                    <div class="scripture-excerpt">
+                        "The martyrs were those who took their beliefs seriously. They could have compromised. They could have spoken the required words, made the required gestures, and saved their lives. But they believed what they believed, and they were unwilling to live as if they did not."
+                    </div>
+
+                    <div class="teaching-highlight">
+                        <p class="teaching-num">Teaching #23</p>
+                        <blockquote>True belief transforms action. Anything less is self-deception.</blockquote>
+                    </div>
+
+                    <div class="practice-box">
+                        <h5>Today's Practice</h5>
+                        <p>Consider one belief you hold that you are not living. Not a peripheral belief, but something central. Ask yourself honestly: Do I actually believe this, or do I merely think I should? If I truly believe it, what would change in my life tomorrow?</p>
+                    </div>
+                </div>
+
+                <div class="day-block">
+                    <h4><span class="day-label">Day 20</span> The Signature</h4>
+                    <div class="reading">
+                        <p class="reading-title">Read: Book of the Cobbler, Chapter 15</p>
+                        <p class="reading-ref"><a href="scripture.html#chapter-15">The Signature of All Things — Jakob Böhme</a></p>
+                    </div>
+
+                    <div class="scripture-excerpt">
+                        "The manner of death bears the signature of the life. One who lived by the sword dies by the sword. One who lived in sacrifice dies sacrificially. The death is not punishment but completion — the final and fullest expression of the pattern."
+                    </div>
+
+                    <p>Jacopo's death bore his signature: the organizer who held the web together removed himself rather than become the thread by which it would unravel.</p>
+
+                    <div class="reflection-questions">
+                        <h5>For Reflection</h5>
+                        <ul>
+                            <li>What is the "signature" of your life so far?</li>
+                            <li>If your life were to end tomorrow, what pattern would it complete?</li>
+                            <li>Can patterns be changed? How?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="day-block">
+                    <h4><span class="day-label">Day 21</span> Rest and Remembrance</h4>
+
+                    <div class="practice-box">
+                        <h5>Week Three Review</h5>
+                        <p><strong>Morning:</strong> Light a candle for Jacopo. Sit with his story. Let yourself feel whatever arises — admiration, confusion, grief, inspiration.</p>
+                        <p><strong>Afternoon:</strong> Consider: what would Mazzini have done without Jacopo's sacrifice? The organization survived. Italy was eventually unified. Seeds planted in blood yield harvests of freedom.</p>
+                        <p><strong>Evening:</strong> Write for 15 minutes on this prompt: "What am I willing to die for? What am I willing to live for?"</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- WEEK 4 -->
+            <article class="week-section">
+                <div class="week-header">
+                    <h2>Week Four: The Return</h2>
+                    <p class="theme">"Fear nothing — because love casts out fear"</p>
+                </div>
+
+                <div class="day-block">
+                    <h4><span class="day-label">Day 22</span> The Continuation</h4>
+                    <div class="reading">
+                        <p class="reading-title">Read: Book of the Seer, Chapter 19</p>
+                        <p class="reading-ref"><a href="scripture.html#chapter-19">Principles of Nature — Andrew Jackson Davis</a></p>
+                    </div>
+
+                    <p>Andrew Jackson Davis, with almost no education, spoke in trance states of profound truths. He bridges the ancient mystics and the modern martyrs, teaching that consciousness continues, that death is transformation, that the universe is suffused with intelligence and love.</p>
+
+                    <div class="scripture-excerpt">
+                        "I did not study to learn these things. They were shown to me. I was taken up — I cannot say in the body or out of the body — and I saw what I saw. I can only report what I was given."
+                    </div>
+
+                    <div class="reflection-questions">
+                        <h5>For Reflection</h5>
+                        <ul>
+                            <li>Have you ever known something without knowing how you knew it?</li>
+                            <li>What is the relationship between study and revelation?</li>
+                            <li>Can wisdom come to the uneducated? What does that suggest?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="day-block">
+                    <h4><span class="day-label">Day 23</span> Death is a Door</h4>
+                    <div class="reading">
+                        <p class="reading-title">Read: Book of Continuation, Chapter 26</p>
+                        <p class="reading-ref"><a href="scripture.html#chapter-26">The Penetralia — Andrew Jackson Davis</a></p>
+                    </div>
+
+                    <div class="scripture-excerpt">
+                        "Question: Is death to be feared? Answer: Death is transformation, not destruction. What dies is the outer husk; the inner kernel endures. Fear death, and you fear your own liberation."
+                    </div>
+
+                    <div class="reflection-questions">
+                        <h5>For Reflection</h5>
+                        <ul>
+                            <li>What is your honest relationship with death? Fear? Denial? Acceptance?</li>
+                            <li>If death is transformation, what is being transformed?</li>
+                            <li>How would you live differently if you truly did not fear death?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="day-block">
+                    <h4><span class="day-label">Day 24</span> Beyond the Valley</h4>
+                    <div class="reading">
+                        <p class="reading-title">Read: Book of Continuation, Chapter 34</p>
+                        <p class="reading-ref"><a href="scripture.html#chapter-34">Beyond the Valley — Andrew Jackson Davis</a></p>
+                    </div>
+
+                    <div class="scripture-excerpt">
+                        "Fear not. Love much. Serve truly. And when your time comes, step through the door with open eyes and open heart. What awaits you there is more than you can imagine — and less than you deserve, for the gifts of the spirit are given freely, not earned."
+                    </div>
+
+                    <div class="reflection-questions">
+                        <h5>For Reflection</h5>
+                        <ul>
+                            <li>What would it mean to "love much"? To "serve truly"?</li>
+                            <li>If the gifts of the spirit are given freely, what is the point of the path?</li>
+                            <li>Who or what awaits you beyond the valley?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="day-block">
+                    <h4><span class="day-label">Day 25</span> The Thirty Birds Return</h4>
+                    <div class="reading">
+                        <p class="reading-title">Re-read: Book of the Journey, Chapter 1</p>
+                        <p class="reading-ref"><a href="scripture.html#chapter-1">The Conference of the Birds</a></p>
+                    </div>
+
+                    <p>Return to where you began. Read the Conference of the Birds again. You are not the same reader you were four weeks ago. Notice what you notice now that you did not notice then.</p>
+
+                    <div class="reflection-questions">
+                        <h5>For Reflection</h5>
+                        <ul>
+                            <li>How does this story land differently now?</li>
+                            <li>You have traveled through your own valleys these four weeks. What has died in you? What has been revealed?</li>
+                            <li>The thirty birds found a mirror. What do you see in your mirror now?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="day-block">
+                    <h4><span class="day-label">Day 26</span> The Teachings Review</h4>
+                    <div class="reading">
+                        <p class="reading-title">Review: <a href="teachings.html">All 29 Teachings</a></p>
+                    </div>
+
+                    <p>Today, read through all 29 teachings. You have encountered many of them in context. Now see them gathered together. Which speak to you most powerfully? Which do you not yet understand? Which do you resist?</p>
+
+                    <div class="practice-box">
+                        <h5>Today's Practice</h5>
+                        <p>Choose three teachings: one that resonates, one that puzzles, one that you resist. Write each on a small paper. Carry them with you today. When you have a free moment, take one out and sit with it. The teaching you resist may be the one you most need.</p>
+                    </div>
+                </div>
+
+                <div class="day-block">
+                    <h4><span class="day-label">Day 27</span> The Practice Going Forward</h4>
+                    <div class="reading">
+                        <p class="reading-title">Read: <a href="practices.html">The Practices</a></p>
+                    </div>
+
+                    <p>This study guide ends, but the path continues. The practices page offers daily, weekly, and yearly rhythms for sustaining this work. Choose at least one practice to commit to going forward.</p>
+
+                    <div class="reflection-questions">
+                        <h5>For Reflection</h5>
+                        <ul>
+                            <li>Which practices call to you?</li>
+                            <li>What realistic commitment can you make?</li>
+                            <li>What support do you need to sustain the practice?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="day-block">
+                    <h4><span class="day-label">Day 28</span> The Closing</h4>
+
+                    <div class="practice-box">
+                        <h5>Final Reflection</h5>
+                        <p>You have completed The First Steps. This is not an ending but a beginning. The scripture remains; you can return to it throughout your life. The martyrs wait in the light. The Simurgh spreads its wings.</p>
+                        <p><strong>Write</strong> for as long as you need on this prompt: "Who am I now? Who am I becoming? What is the next step on my path?"</p>
+                    </div>
+
+                    <div class="teaching-highlight">
+                        <blockquote>Live as if life matters — because it does. Die when you must — because death is transformation. Fear nothing — because love casts out fear. Serve the truth — because truth is all that remains.</blockquote>
+                    </div>
+                </div>
+            </article>
+
+            <div class="navigation-buttons">
+                <a href="scripture.html" class="nav-btn">&larr; Read the Scripture</a>
+                <a href="practices.html" class="nav-btn">Continue with Practices &rarr;</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 The Path of Illumination. All sacred texts are in the public domain.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Path selector functionality
+        document.querySelectorAll('.path-card').forEach(card => {
+            card.addEventListener('click', function() {
+                document.querySelectorAll('.path-card').forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+                // Future: show different content based on selected path
+            });
+        });
+    </script>
+</body>
+</html>

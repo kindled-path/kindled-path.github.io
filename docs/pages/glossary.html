@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Glossary of key terms, concepts, and symbols in the Book of Illumination and Sacrifice.">
+    <title>Glossary | The Path of Illumination</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        .glossary-header {
+            padding: calc(80px + var(--space-xl)) 0 var(--space-xl);
+            background: var(--color-bg-alt);
+            text-align: center;
+        }
+        .glossary-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: var(--space-2xl) var(--space-lg);
+        }
+        .glossary-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+            justify-content: center;
+            margin-bottom: var(--space-2xl);
+            padding: var(--space-lg);
+            background: var(--color-bg-alt);
+            border-radius: 4px;
+        }
+        .glossary-nav a {
+            display: inline-block;
+            width: 2.5rem;
+            height: 2.5rem;
+            line-height: 2.5rem;
+            text-align: center;
+            background: var(--color-bg);
+            color: var(--color-gold);
+            border: 1px solid var(--color-gold-dark);
+            border-radius: 4px;
+            font-family: var(--font-display);
+            transition: all 0.2s ease;
+        }
+        .glossary-nav a:hover {
+            background: var(--color-gold-dark);
+            color: var(--color-bg);
+        }
+        .glossary-section {
+            margin-bottom: var(--space-2xl);
+            scroll-margin-top: 100px;
+        }
+        .glossary-section h2 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            color: var(--color-gold);
+            margin-bottom: var(--space-lg);
+            padding-bottom: var(--space-sm);
+            border-bottom: 2px solid var(--color-gold-dark);
+        }
+        .glossary-entry {
+            margin-bottom: var(--space-xl);
+            padding-left: var(--space-lg);
+            border-left: 2px solid var(--color-gold-dark);
+        }
+        .glossary-entry h3 {
+            color: var(--color-text);
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            margin-bottom: var(--space-xs);
+        }
+        .glossary-entry .origin {
+            font-size: 0.875rem;
+            color: var(--color-gold);
+            font-style: italic;
+            margin-bottom: var(--space-sm);
+        }
+        .glossary-entry p {
+            color: var(--color-text-light);
+            line-height: 1.8;
+            margin-bottom: var(--space-sm);
+        }
+        .glossary-entry .scripture-ref {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+        }
+        .glossary-entry .scripture-ref a {
+            color: var(--color-gold);
+        }
+        .category-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            background: var(--color-bg-alt);
+            color: var(--color-gold);
+            border-radius: 3px;
+            margin-left: var(--space-sm);
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">The Path</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="scripture.html">Scripture</a></li>
+                <li><a href="teachings.html">Teachings</a></li>
+                <li><a href="martyrs.html">The Martyrs</a></li>
+                <li><a href="practices.html">Practices</a></li>
+                <li><a href="history.html">History</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="glossary-header">
+        <div class="container">
+            <h1>Glossary of Terms</h1>
+            <p class="lead">Key concepts, symbols, and terminology</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="glossary-content">
+            <nav class="glossary-nav" aria-label="Alphabetical navigation">
+                <a href="#A">A</a>
+                <a href="#B">B</a>
+                <a href="#C">C</a>
+                <a href="#D">D</a>
+                <a href="#E">E</a>
+                <a href="#F">F</a>
+                <a href="#G">G</a>
+                <a href="#H">H</a>
+                <a href="#I">I</a>
+                <a href="#L">L</a>
+                <a href="#M">M</a>
+                <a href="#N">N</a>
+                <a href="#P">P</a>
+                <a href="#R">R</a>
+                <a href="#S">S</a>
+                <a href="#T">T</a>
+                <a href="#U">U</a>
+                <a href="#V">V</a>
+                <a href="#W">W</a>
+            </nav>
+
+            <section class="glossary-section" id="A">
+                <h2>A</h2>
+
+                <article class="glossary-entry">
+                    <h3>Albedo <span class="category-tag">Alchemy</span></h3>
+                    <p class="origin">Latin: "whitening"</p>
+                    <p>The second major stage of the alchemical Great Work, following the nigredo (blackening). In the albedo, the purification begins — the dross has been burned away, and what remains is clean, though not yet perfect. Spiritually, this represents the first emergence from the dark night of the soul, when glimmers of light appear after the dissolution of the ego.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-transmutation">Book of Transmutation, Chapter 12</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Annihilation <span class="category-tag">Sufi</span></h3>
+                    <p class="origin">Arabic: fana (فناء)</p>
+                    <p>The dissolution of the ego-self in the Divine. In Sufi terminology, fana is the passing away of the false self, the death of separation. It is not destruction but transformation — the wave realizing it was always ocean. The martyrs embody a form of annihilation: the individual life dissolved for the sake of something greater.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-journey">Book of the Journey, Chapter 4</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Arad</h3>
+                    <p class="origin">City in present-day Romania</p>
+                    <p>The fortress city where the Thirteen Martyrs of the Hungarian Revolution were executed on October 6, 1849. It has become a sacred site in Hungarian memory and in the Pattern — a place where blood was spilled for liberty and where the transformation from individual to collective sacrifice was demonstrated.</p>
+                    <p class="scripture-ref">See: <a href="martyrs.html#vilmos">The Gospel According to Vilmos</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Aurora <span class="category-tag">Mystical</span></h3>
+                    <p class="origin">Latin: "dawn"</p>
+                    <p>The morning light that follows the dark night. In Jakob Böhme's writings, Aurora refers to the rising of wisdom in the soul that has passed through unknowing. The title of his first major work, "Aurora, or Morning Redness Rising," describes the illumination that comes after the death of the ordinary self.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-cobbler">Book of the Cobbler, Chapter 13</a></p>
+                </article>
+            </section>
+
+            <section class="glossary-section" id="B">
+                <h2>B</h2>
+
+                <article class="glossary-entry">
+                    <h3>Beloved, The <span class="category-tag">Sufi</span></h3>
+                    <p class="origin">Persian: Yar (یار), Dust (دوست)</p>
+                    <p>The Divine addressed as a lover addresses the beloved. In Sufi poetry, the relationship between the soul and God is cast as the most intimate of loves. The Beloved is sought everywhere — in mosque and temple, in books and nature — but is found only within the awakened heart. The longing for the Beloved is the engine of transformation.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-journey">Book of the Journey, Chapters 3-4</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Böhme, Jakob (1575-1624)</h3>
+                    <p class="origin">German mystic and theologian</p>
+                    <p>The "Görlitz cobbler" who received profound visions while working at his bench. With no formal education, he produced writings of extraordinary depth about the nature of God, evil, and transformation. His concept of the Ungrund (the Abyss) and his teaching on opposites deeply influenced Western mysticism and philosophy.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-cobbler">Book of the Cobbler, Chapters 13-18</a></p>
+                </article>
+            </section>
+
+            <section class="glossary-section" id="C">
+                <h2>C</h2>
+
+                <article class="glossary-entry">
+                    <h3>Carbonari</h3>
+                    <p class="origin">Italian: "charcoal-burners"</p>
+                    <p>Secret societies that worked for constitutional government and national liberation in Italy during the early 19th century. Giuseppe Mazzini and Jacopo Ruffini were initiated into the Carbonari before founding Young Italy. The name derives from their use of charcoal-burning terminology as code.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#gospel-jacopo">Gospel According to Jacopo, Chapter 2</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Cauda Pavonis <span class="category-tag">Alchemy</span></h3>
+                    <p class="origin">Latin: "peacock's tail"</p>
+                    <p>A stage in the alchemical process when many colors appear in the vessel, indicating that transformation is progressing. It follows the nigredo and precedes the albedo. Spiritually, it represents the moment when the darkness of dissolution begins to yield to new possibilities.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-transmutation">Book of Transmutation, Chapter 12</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Chemical Wedding <span class="category-tag">Alchemy</span></h3>
+                    <p class="origin">From the Rosicrucian allegory (1616)</p>
+                    <p>The mystical marriage of opposites — masculine and feminine, sulphur and mercury, sun and moon — through death and resurrection. In the allegory, the King and Queen must both die and dissolve before they can be reconstituted as a unified being. The Chemical Wedding represents the union that comes only through complete transformation.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-transmutation">Book of Transmutation, Chapter 11</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Cloud of Unknowing <span class="category-tag">Christian</span></h3>
+                    <p class="origin">14th-century mystical text</p>
+                    <p>An anonymous work teaching that God is found not through knowledge but through unknowing. The "cloud" represents the necessary darkness through which the contemplative must pass — setting aside all concepts and images to encounter the Divine directly. The way through the cloud is love, not thought.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-fire">Book of Fire, Chapter 19</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Common Sense <span class="category-tag">Philosophical</span></h3>
+                    <p class="origin">French: sens commun</p>
+                    <p>In Théodore Jouffroy's philosophy, the collective wisdom that emerges when many perspectives combine. No individual possesses absolute truth; we each see only part of reality. Common sense is the shared understanding that compensates for individual limitations. Applied to the martyrs: no single death reveals the full Pattern, but many deaths together begin to illuminate it.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-limits">Book of Limits, Chapter 23</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Conference of the Birds <span class="category-tag">Sufi</span></h3>
+                    <p class="origin">Persian: Mantiq al-Tayr (منطق الطیر)</p>
+                    <p>The masterwork of Farid ud-Din Attar (c. 1177), in which thirty birds journey through seven valleys to find their king, the Simurgh. Arriving, they find only a mirror — and see themselves: si murgh (thirty birds). The story encapsulates the central teaching: the seeker and the sought are one.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-journey">Book of the Journey, Chapter 1</a></p>
+                </article>
+            </section>
+
+            <section class="glossary-section" id="D">
+                <h2>D</h2>
+
+                <article class="glossary-entry">
+                    <h3>Dark Night of the Soul <span class="category-tag">Christian</span></h3>
+                    <p class="origin">Spanish: Noche Oscura del Alma</p>
+                    <p>A term from St. John of the Cross describing the stage of spiritual development when all supports fail, all consolations vanish, and the soul hangs suspended in apparent abandonment. The Dark Night is not punishment but purification — the stripping away of everything that is not essential, until only the soul and the Divine remain.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-fire">Book of Fire, Chapter 20</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Davis, Andrew Jackson (1826-1910)</h3>
+                    <p class="origin">American mystic and philosopher</p>
+                    <p>The "Poughkeepsie Seer" who, despite minimal education, produced extensive philosophical works while in trance states. His writings on the continuity of consciousness, spiritual healing, and cosmic evolution laid groundwork for the Spiritualist movement. He serves as a bridge between the mystical traditions and the revolutionary martyrs.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-seer">Book of the Seer, Chapters 19-22</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Dissolution <span class="category-tag">Alchemical</span></h3>
+                    <p class="origin">Latin: dissolutio</p>
+                    <p>The breaking down of form that precedes reconstitution. In alchemy, substances must be reduced to their prima materia before they can be transformed. In spiritual work, the ego must dissolve before the true self can emerge. The martyrs underwent literal dissolution — the body destroyed — while demonstrating spiritual reconstitution beyond death.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-transmutation">Book of Transmutation, Chapters 7-11</a></p>
+                </article>
+            </section>
+
+            <section class="glossary-section" id="E">
+                <h2>E</h2>
+
+                <article class="glossary-entry">
+                    <h3>Emerald Tablet <span class="category-tag">Hermetic</span></h3>
+                    <p class="origin">Arabic: Lawh al-zumurrud</p>
+                    <p>A foundational text of Hermetic philosophy, attributed to Hermes Trismegistus. Its most famous teaching: "That which is above is like that which is below, and that which is below is like that which is above." This principle of correspondence — the microcosm mirroring the macrocosm — underlies alchemical and mystical practice.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-transmutation">Book of Transmutation, Chapter 10</a></p>
+                </article>
+            </section>
+
+            <section class="glossary-section" id="F">
+                <h2>F</h2>
+
+                <article class="glossary-entry">
+                    <h3>Fana <span class="category-tag">Sufi</span></h3>
+                    <p class="origin">Arabic: فناء "passing away, annihilation"</p>
+                    <p>The Sufi term for the dissolution of the ego-self in union with the Divine. Fana is not destruction but transformation — the false self passes away so the true self can be revealed. Followed by baqa (subsistence), the state of continuing existence in and through the Divine after the ego has dissolved.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-journey">Book of the Journey, Chapter 4</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Forty Stations <span class="category-tag">Sufi</span></h3>
+                    <p class="origin">Persian: chihil maqam</p>
+                    <p>In Sufi tradition, the stages the soul must traverse on its journey to union. Each station involves a particular trial or transformation. The number forty recurs across traditions: forty days of wilderness, forty years of wandering, forty stages of grief. It represents the complete cycle of transformation.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-journey">Book of the Journey, Chapter 2</a></p>
+                </article>
+            </section>
+
+            <section class="glossary-section" id="G">
+                <h2>G</h2>
+
+                <article class="glossary-entry">
+                    <h3>Giovine Italia (Young Italy)</h3>
+                    <p class="origin">Italian revolutionary movement (1831)</p>
+                    <p>The organization founded by Giuseppe Mazzini to work for Italian unification and republican government. Its motto was "God and the People." Jacopo Ruffini served as director of its Genoese section. The movement represented a new approach to revolution: mass mobilization rather than elite conspiracy.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#gospel-jacopo">Gospel According to Jacopo, Chapter 3</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Gold <span class="category-tag">Alchemy</span></h3>
+                    <p class="origin">Alchemical symbol</p>
+                    <p>In alchemy, gold represents perfection — the incorruptible, the radiant, the eternal. The transformation of lead into gold is the outer symbol of inner transformation: the heavy, dark, earthbound soul becoming luminous and free. Gold is associated with the Sun and with the heart center. The key teaching: the gold was always present within the lead; transformation reveals what was hidden.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-transmutation">Book of Transmutation, Chapter 9</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Great Harmonia <span class="category-tag">Spiritualist</span></h3>
+                    <p class="origin">Title of Andrew Jackson Davis's major work</p>
+                    <p>A six-volume series exploring different aspects of existence: healing, education, vision, reform, thought, and the soul. The title reflects Davis's core teaching: that the universe is fundamentally harmonious, and healing (whether of body, mind, or society) involves restoring this harmony.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-seer">Book of the Seer, Chapter 20</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Great Work <span class="category-tag">Alchemy</span></h3>
+                    <p class="origin">Latin: Magnum Opus</p>
+                    <p>The alchemical process of transformation, traditionally described as the creation of the Philosopher's Stone. In the mystical interpretation, the Great Work is performed upon the self — the transformation of the base consciousness into the golden consciousness. The key teaching: the laboratory is one's own body; the mercury is one's own mind; the work is performed upon oneself.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-transmutation">Book of Transmutation, Chapter 10</a></p>
+                </article>
+            </section>
+
+            <section class="glossary-section" id="H">
+                <h2>H</h2>
+
+                <article class="glossary-entry">
+                    <h3>Hermes Trismegistus <span class="category-tag">Hermetic</span></h3>
+                    <p class="origin">Greek: "Thrice-Great Hermes"</p>
+                    <p>The legendary author of the Hermetic texts, a fusion of the Greek god Hermes and the Egyptian god Thoth. Whether a historical figure or a composite, the writings attributed to him influenced alchemy, magic, and mysticism for centuries. His teachings emphasize correspondence (as above, so below) and the divine nature of humanity.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-wisdom">Book of Wisdom, Chapter 24</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Hidden Treasure <span class="category-tag">Sufi</span></h3>
+                    <p class="origin">Arabic hadith qudsi</p>
+                    <p>"I was a hidden treasure and I loved to be known, so I created the world." This sacred saying encapsulates the reason for existence: the Divine desired to know Itself, and creation is that self-knowing. Every human consciousness is the Divine experiencing Itself from a particular perspective.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-journey">Book of the Journey, Chapter 5</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Hoopoe <span class="category-tag">Sufi</span></h3>
+                    <p class="origin">Persian: Hudhud (هدهد)</p>
+                    <p>In the Conference of the Birds, the hoopoe serves as the guide who leads the other birds on their journey to the Simurgh. Crowned with wisdom, the hoopoe represents the spiritual teacher who knows the path and warns of its difficulties. The hoopoe had served King Solomon and thus knew the ways of the divine court.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-journey">Book of the Journey, Chapter 1</a></p>
+                </article>
+            </section>
+
+            <section class="glossary-section" id="I">
+                <h2>I</h2>
+
+                <article class="glossary-entry">
+                    <h3>Illumination <span class="category-tag">Mystical</span></h3>
+                    <p class="origin">Latin: illuminatio</p>
+                    <p>The breakthrough of spiritual light after the darkness of unknowing. Illumination is not merely intellectual understanding but a transformation of being — seeing reality as it truly is, rather than as the ego constructs it. Part II of the scripture is titled "The Illuminations" because the martyrs embodied this breakthrough in historical action.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html">Part II: The Illuminations</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Interior Castle <span class="category-tag">Christian</span></h3>
+                    <p class="origin">Spanish: El Castillo Interior</p>
+                    <p>St. Teresa of Ávila's metaphor for the soul: a castle with seven dwelling places, each representing a stage of spiritual development. The journey moves from the outer rooms (distraction, attachment) through successive stages of prayer and purification to the seventh dwelling (spiritual marriage with the Divine).</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-fire">Book of Fire, Chapter 21</a></p>
+                </article>
+            </section>
+
+            <section class="glossary-section" id="L">
+                <h2>L</h2>
+
+                <article class="glossary-entry">
+                    <h3>Lead <span class="category-tag">Alchemy</span></h3>
+                    <p class="origin">Alchemical symbol</p>
+                    <p>In alchemy, lead represents the base, the heavy, the earthbound — the starting condition before transformation. Associated with Saturn and with limitation. The journey of the soul mirrors the journey of metal: beginning as lead (bound, mortal, unconscious) and through fire becoming gold (free, eternal, awakened). The gold was always present within the lead.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-transmutation">Book of Transmutation, Chapter 9</a></p>
+                </article>
+            </section>
+
+            <section class="glossary-section" id="M">
+                <h2>M</h2>
+
+                <article class="glossary-entry">
+                    <h3>Martyrdom</h3>
+                    <p class="origin">Greek: martyria (witness)</p>
+                    <p>Death in testimony to truth. The word originally meant "witness" — the martyr witnesses to what they believe by dying for it. In the Pattern, martyrdom is not merely a political or religious act but a form of spiritual transformation: the individual dissolved for the sake of the collective, the seed falling into the ground that new life might spring forth.</p>
+                    <p class="scripture-ref">See: <a href="martyrs.html">The Four Martyrs</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Mathnawi <span class="category-tag">Sufi</span></h3>
+                    <p class="origin">Persian: مثنوی</p>
+                    <p>Rumi's masterwork, six volumes of spiritual poetry sometimes called "the Quran in Persian." The Mathnawi weaves together teaching stories, mystical doctrine, and ecstatic verse. Its central themes — the burning away of the ego through love, the chickpea boiling in the pot, the martyrs who wake rather than die — pervade the Book of Illumination and Sacrifice.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-journey">Book of the Journey, Chapter 6</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Mercury <span class="category-tag">Alchemy</span></h3>
+                    <p class="origin">Alchemical principle</p>
+                    <p>One of the three fundamental principles of alchemy (with sulphur and salt). Mercury represents the volatile, the mental, the transformative. It is quicksilver — fluid, mutable, essential to the Work. In spiritual terms, mercury is the mind that must be stabilized and purified for transformation to occur.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-transmutation">Book of Transmutation, Chapters 8-9</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Microcosm <span class="category-tag">Hermetic</span></h3>
+                    <p class="origin">Greek: mikros kosmos (small world)</p>
+                    <p>The human being as a miniature reflection of the universe (macrocosm). "As above, so below" — everything that exists in the cosmos exists also within us. The stars, the metals, heaven and hell — all are present internally. The key teaching: do not seek outside for what can only be found inside.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-cobbler">Book of the Cobbler, Chapter 18</a></p>
+                </article>
+            </section>
+
+            <section class="glossary-section" id="N">
+                <h2>N</h2>
+
+                <article class="glossary-entry">
+                    <h3>Natural Law <span class="category-tag">Philosophical</span></h3>
+                    <p class="origin">Latin: lex naturalis</p>
+                    <p>In Jouffroy's philosophy, the moral law underlying all positive (enacted) laws. Natural law is not human invention but discovery — we recognize it as binding rather than choose it. The martyrs appealed to natural law against the states that condemned them: "You may have the power, but you do not have the right."</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-limits">Book of Limits, Chapter 24</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Nigredo <span class="category-tag">Alchemy</span></h3>
+                    <p class="origin">Latin: "blackening"</p>
+                    <p>The first stage of the alchemical Great Work — the death stage. In the nigredo, the substance is reduced to black, formless matter. All structure dissolves. It appears as destruction, as ending. Spiritually, the nigredo corresponds to the dark night of the soul, the dissolution of the ego before reconstruction can begin.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-transmutation">Book of Transmutation, Chapter 12</a></p>
+                </article>
+            </section>
+
+            <section class="glossary-section" id="P">
+                <h2>P</h2>
+
+                <article class="glossary-entry">
+                    <h3>Paracelsus (1493-1541)</h3>
+                    <p class="origin">Swiss physician and alchemist</p>
+                    <p>Born Theophrastus von Hohenheim, Paracelsus revolutionized medicine by combining observation with alchemical principles. A wanderer who learned from miners and midwives as much as from universities, he taught that healing removes obstacles rather than adding substances — and that the transformation of metals mirrors the transformation of souls.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-transmutation">Book of Transmutation, Chapters 7-9</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Pattern, The</h3>
+                    <p class="origin">Central concept of the scripture</p>
+                    <p>The recurring structure of transformation through death and rebirth that appears across traditions and histories. The Pattern is not a formula but a recognition: that dissolution precedes reconstitution, that the seed must die for the plant to grow, that martyrdom tears holes in the veil through which light enters. The Pattern connects the ancient mystics to the modern martyrs.</p>
+                    <p class="scripture-ref">See: <a href="teachings.html">The 29 Teachings</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Philosopher's Stone <span class="category-tag">Alchemy</span></h3>
+                    <p class="origin">Latin: lapis philosophorum</p>
+                    <p>The goal of the alchemical Great Work — a substance capable of transmuting base metals into gold and granting immortality. In the mystical interpretation, the Stone is not a physical substance but a state of being: the transformed human consciousness. One who completes the Work becomes the Stone.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-transmutation">Book of Transmutation, Chapter 10</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Practice of the Presence <span class="category-tag">Christian</span></h3>
+                    <p class="origin">From Brother Lawrence (1614-1691)</p>
+                    <p>The simple, continuous turning of attention to God's presence in every moment. Brother Lawrence taught that no special acts of devotion are needed — only the constant awareness that the Divine is here, now. The practice transforms mundane activities into sacred acts; washing dishes becomes prayer.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-fire">Book of Fire, Chapter 22</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Prima Materia <span class="category-tag">Alchemy</span></h3>
+                    <p class="origin">Latin: "first matter"</p>
+                    <p>The formless, undifferentiated substance from which all things arise and to which they must return before transformation. To be reduced to prima materia is to be stripped of all form, all identity, all structure. Only from this ground-zero can the new be built.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-transmutation">Book of Transmutation, Chapter 7</a></p>
+                </article>
+            </section>
+
+            <section class="glossary-section" id="R">
+                <h2>R</h2>
+
+                <article class="glossary-entry">
+                    <h3>Rubedo <span class="category-tag">Alchemy</span></h3>
+                    <p class="origin">Latin: "reddening"</p>
+                    <p>The final stage of the alchemical Great Work, following nigredo (blackening) and albedo (whitening). In the rubedo, the Stone is completed, the gold is revealed, the Work is done. Red like sunrise, like blood, like the fire that both destroys and illuminates. Spiritually, the rubedo is full enlightenment — though each completion begins a new cycle at a higher turn.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-transmutation">Book of Transmutation, Chapter 12</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Rumi, Jalal ad-Din (1207-1273)</h3>
+                    <p class="origin">Persian poet and mystic</p>
+                    <p>The author of the Mathnawi and the Divan of Shams, Rumi was transformed from a respected scholar into an ecstatic poet after meeting the wandering dervish Shams of Tabriz. His poetry of divine love, of death before death, of the wound through which light enters, pervades the scripture.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-journey">Book of the Journey, Chapters 3 and 6</a></p>
+                </article>
+            </section>
+
+            <section class="glossary-section" id="S">
+                <h2>S</h2>
+
+                <article class="glossary-entry">
+                    <h3>Seven Valleys <span class="category-tag">Sufi</span></h3>
+                    <p class="origin">From the Conference of the Birds</p>
+                    <p>The stages of the spiritual journey as described by Attar: Quest, Love, Knowledge, Detachment, Unity, Bewilderment, and Poverty and Annihilation. In each valley, some seekers perish; only thirty of the original ten thousand complete the journey. The valleys represent not sequential stages but aspects of one continuous transformation.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-journey">Book of the Journey, Chapter 1</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Signature <span class="category-tag">Mystical</span></h3>
+                    <p class="origin">From Jakob Böhme's doctrine</p>
+                    <p>The outward form that reveals inward essence. Everything bears the mark of its origin — the walnut resembles the brain it nourishes; the manner of death reveals the pattern of the life. The martyrs' deaths bore their signatures: Jacopo the organizer removed himself rather than become the thread by which the web would unravel; Robert the poet died for dangerous words.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-cobbler">Book of the Cobbler, Chapter 15</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Simurgh <span class="category-tag">Sufi</span></h3>
+                    <p class="origin">Persian: سیمرغ</p>
+                    <p>The mythical King of Birds sought by the thirty birds in Attar's Conference. When they arrive at the court, they find only a mirror — and see themselves: si murgh means "thirty birds" in Persian. The Simurgh is both the destination and the seekers themselves; the beloved and the lover are one.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-journey">Book of the Journey, Chapter 1</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Six Qualities <span class="category-tag">Mystical</span></h3>
+                    <p class="origin">From Jakob Böhme</p>
+                    <p>The six qualities through which all manifestation proceeds: Astringency, Attraction, Anguish (the dark principle); Light, Love, Sound (the light principle). The spiritual journey transforms the first three into the last three — darkness becomes light, desire becomes love, anguish becomes creative expression.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-cobbler">Book of the Cobbler, Chapter 16</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Sublime, The <span class="category-tag">Philosophical</span></h3>
+                    <p class="origin">Aesthetic category</p>
+                    <p>In Jouffroy's aesthetics, that which overwhelms rather than pleases, which shatters our sense of order rather than satisfying it. The sublime evokes terror mingled with exaltation. Mountains, storms, and martyrdoms are sublime — they reveal that ordinary limits can be transcended.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-limits">Book of Limits, Chapter 25</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Superior Condition <span class="category-tag">Spiritualist</span></h3>
+                    <p class="origin">Andrew Jackson Davis's term</p>
+                    <p>The state of expanded consciousness in which Davis received his revelations. In the Superior Condition, ordinary categories of space, time, and causality do not apply; all knowledge is accessible. Davis taught that this capacity is latent in all human beings — not a special gift but a birthright waiting to be claimed.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-seer">Book of the Seer, Chapter 19</a></p>
+                </article>
+            </section>
+
+            <section class="glossary-section" id="T">
+                <h2>T</h2>
+
+                <article class="glossary-entry">
+                    <h3>Thirteen Martyrs of Arad</h3>
+                    <p class="origin">Hungarian: Az aradi vértanúk</p>
+                    <p>The thirteen Hungarian generals executed on October 6, 1849, for their roles in the War of Independence. They represent the collective aspect of martyrdom: not one death but many, not one path but many paths converging on a single truth. Their names are remembered together because they died together.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-witnesses">Book of Witnesses, Chapters 30-31</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Three Principles <span class="category-tag">Mystical</span></h3>
+                    <p class="origin">From Jakob Böhme</p>
+                    <p>Darkness (contraction, form), Light (expansion, expression), and their Union (the dynamic balance where existence occurs). The human being mirrors this: body is the dark principle, spirit is the light principle, soul is their meeting place. Wholeness requires integrating all three, not suppressing any.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-cobbler">Book of the Cobbler, Chapter 14</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Tincture <span class="category-tag">Alchemy</span></h3>
+                    <p class="origin">Latin: tinctura</p>
+                    <p>In alchemical medicine, the essence or quintessence that heals by restoring harmony. The tincture does not force healing from outside but awakens the healing power dormant within. The greatest obstacle to healing is the illusion of separation; remove this, and all diseases resolve.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-transmutation">Book of Transmutation, Chapter 8</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Transformation</h3>
+                    <p class="origin">Central concept</p>
+                    <p>The process by which what is base becomes noble, what is mortal becomes immortal, what is bound becomes free. All the traditions gathered in the scripture teach this: transformation requires death — the dissolution of the old before the new can emerge. The martyrs embody transformation literally.</p>
+                    <p class="scripture-ref">See: <a href="teachings.html">The 29 Teachings</a></p>
+                </article>
+            </section>
+
+            <section class="glossary-section" id="U">
+                <h2>U</h2>
+
+                <article class="glossary-entry">
+                    <h3>Ungrund <span class="category-tag">Mystical</span></h3>
+                    <p class="origin">German: "without ground, abyss"</p>
+                    <p>Jakob Böhme's term for the eternal Mystery from which all emerges — the Nothing that is Everything, infinite potentiality without form. Before God, before creation, before differentiation, there was only this. The Ungrund cannot be grasped by the mind; it can only be acknowledged: we come from Mystery and return to Mystery.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-cobbler">Book of the Cobbler, Chapters 13 and 18</a></p>
+                </article>
+            </section>
+
+            <section class="glossary-section" id="V">
+                <h2>V</h2>
+
+                <article class="glossary-entry">
+                    <h3>Via Negativa <span class="category-tag">Mystical</span></h3>
+                    <p class="origin">Latin: "negative way"</p>
+                    <p>The approach to the Divine through negation — saying what God is not rather than what God is. The Cloud of Unknowing teaches this path: forget what you know, set aside all concepts and images, enter the darkness where the Divine waits. The via negativa is not skepticism but the recognition that reality exceeds all description.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-fire">Book of Fire, Chapter 19</a></p>
+                </article>
+            </section>
+
+            <section class="glossary-section" id="W">
+                <h2>W</h2>
+
+                <article class="glossary-entry">
+                    <h3>Whisperings</h3>
+                    <p class="origin">Title of Part I of the scripture</p>
+                    <p>The ancient wisdom traditions that spoke quietly across centuries, preparing the way for the Illuminations. "Before the seeds were planted, the harvest was foretold. Before the martyrs drew breath, the pattern was written in fire and shadow." The Whisperings are the theory of which the martyrs' lives are the practice.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html">Part I: The Whisperings</a></p>
+                </article>
+
+                <article class="glossary-entry">
+                    <h3>Wound, The</h3>
+                    <p class="origin">From Rumi</p>
+                    <p>"The wound is the place where the Light enters you." Suffering is not the obstacle to wisdom but its entry point. Rather than turning away from pain, the seeker must keep their gaze on the bandaged place — for there the transformation occurs. The martyrs demonstrated this: their wounds, literal and fatal, became the openings through which light entered the world.</p>
+                    <p class="scripture-ref">See: <a href="scripture.html#book-journey">Book of the Journey, Chapter 3</a></p>
+                </article>
+            </section>
+
+            <p class="text-muted mt-lg">This glossary is continually expanding. Terms are drawn from the scripture and the traditions it synthesizes.</p>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 The Path of Illumination. All sacred texts are in the public domain.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

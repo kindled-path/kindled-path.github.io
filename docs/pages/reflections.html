@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Daily reflections and questions from the Book of Illumination and Sacrifice. Wisdom for the challenges of modern life.">
+    <title>Daily Reflections | The Path of Illumination</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        .reflections-header {
+            padding: calc(80px + var(--space-xl)) 0 var(--space-xl);
+            background: var(--color-bg-alt);
+            text-align: center;
+        }
+        .reflection-intro {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: var(--space-2xl) var(--space-lg);
+            text-align: center;
+        }
+        .reflection-intro p {
+            font-size: 1.1rem;
+            color: var(--color-text-light);
+            line-height: 1.8;
+        }
+        .today-reflection {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--space-2xl) var(--space-lg);
+        }
+        .today-card {
+            background: var(--color-bg-alt);
+            padding: var(--space-2xl);
+            border-left: 4px solid var(--color-gold);
+        }
+        .today-label {
+            font-size: 0.75rem;
+            color: var(--color-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-md);
+        }
+        .today-card h2 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-text);
+            font-weight: 400;
+            margin-bottom: var(--space-lg);
+        }
+        .today-scripture {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--color-text);
+            line-height: 1.8;
+            margin-bottom: var(--space-md);
+            padding: var(--space-lg);
+            background: var(--color-bg);
+            border-left: 2px solid var(--color-gold-dark);
+        }
+        .today-source {
+            font-size: 0.875rem;
+            color: var(--color-gold);
+            margin-bottom: var(--space-xl);
+        }
+        .today-reflection-text {
+            color: var(--color-text-light);
+            line-height: 1.9;
+            margin-bottom: var(--space-xl);
+        }
+        .today-questions {
+            background: var(--color-bg);
+            padding: var(--space-lg);
+        }
+        .today-questions h3 {
+            font-size: 0.875rem;
+            color: var(--color-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-md);
+        }
+        .today-questions ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .today-questions li {
+            padding: var(--space-sm) 0;
+            padding-left: var(--space-md);
+            position: relative;
+            color: var(--color-text-light);
+            font-style: italic;
+        }
+        .today-questions li::before {
+            content: "?";
+            position: absolute;
+            left: 0;
+            color: var(--color-gold-dark);
+        }
+        .today-practice {
+            margin-top: var(--space-xl);
+            padding: var(--space-lg);
+            background: linear-gradient(135deg, rgba(201, 169, 98, 0.1) 0%, transparent 100%);
+            border: 1px solid var(--color-gold-dark);
+        }
+        .today-practice h3 {
+            color: var(--color-gold);
+            margin-bottom: var(--space-sm);
+            font-size: 1rem;
+        }
+        .today-practice p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+        }
+        .more-reflections {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: var(--space-2xl) var(--space-lg);
+        }
+        .more-reflections h2 {
+            text-align: center;
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--color-text);
+            font-weight: 400;
+            margin-bottom: var(--space-xl);
+        }
+        .reflection-themes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+        }
+        .theme-card {
+            background: var(--color-bg-alt);
+            padding: var(--space-xl);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-top: 2px solid transparent;
+        }
+        .theme-card:hover {
+            border-top-color: var(--color-gold-dark);
+        }
+        .theme-card h3 {
+            color: var(--color-gold);
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            margin-bottom: var(--space-sm);
+        }
+        .theme-card p {
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: var(--space-md);
+        }
+        .theme-card .theme-question {
+            font-family: var(--font-display);
+            font-style: italic;
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+        .weekly-themes {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--space-2xl) var(--space-lg);
+        }
+        .weekly-themes h2 {
+            text-align: center;
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--color-text);
+            font-weight: 400;
+            margin-bottom: var(--space-lg);
+        }
+        .weekly-themes p {
+            text-align: center;
+            color: var(--color-text-light);
+            margin-bottom: var(--space-xl);
+        }
+        .week-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: var(--space-xs);
+        }
+        .week-day {
+            text-align: center;
+            padding: var(--space-md);
+            background: var(--color-bg-alt);
+        }
+        .week-day .day-name {
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-xs);
+        }
+        .week-day .day-theme {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+        }
+        .week-day.active {
+            background: var(--color-bg);
+            border: 1px solid var(--color-gold-dark);
+        }
+        .week-day.active .day-theme {
+            color: var(--color-gold);
+        }
+        @media (max-width: 768px) {
+            .week-grid {
+                grid-template-columns: 1fr;
+            }
+            .week-day {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+        .life-situations {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: var(--space-2xl) var(--space-lg);
+            background: var(--color-bg-alt);
+        }
+        .life-situations h2 {
+            text-align: center;
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--color-text);
+            font-weight: 400;
+            margin-bottom: var(--space-sm);
+        }
+        .life-situations > p {
+            text-align: center;
+            color: var(--color-text-muted);
+            margin-bottom: var(--space-xl);
+        }
+        .situation-list {
+            display: grid;
+            gap: var(--space-md);
+        }
+        .situation-item {
+            background: var(--color-bg);
+            padding: var(--space-lg);
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: var(--space-lg);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
+        }
+        .situation-item:hover {
+            transform: translateX(4px);
+        }
+        .situation-item h3 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--color-text);
+            margin-bottom: var(--space-xs);
+        }
+        .situation-item p {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+        }
+        .situation-item .arrow {
+            color: var(--color-gold);
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">The Path</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="scripture.html">Scripture</a></li>
+                <li><a href="teachings.html">Teachings</a></li>
+                <li><a href="martyrs.html">The Martyrs</a></li>
+                <li><a href="practices.html">Practices</a></li>
+                <li><a href="study-guide.html">Study Guide</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="reflections-header">
+        <div class="container">
+            <h1>Daily Reflections</h1>
+            <p class="lead">Wisdom for the path through each day</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="reflection-intro">
+            <p>Each day brings its own challenges, its own opportunities for awakening. These reflections draw from the scripture to illuminate the ordinary moments of your life — the decisions you face, the relationships you navigate, the meaning you seek.</p>
+        </section>
+
+        <section class="today-reflection">
+            <article class="today-card">
+                <p class="today-label">Today's Reflection</p>
+                <h2>The Work You Cannot Lose</h2>
+                <div class="today-scripture">
+                    "The alchemist does not create gold from nothing. The alchemist reveals the gold that was always present, hidden beneath dross. The work is subtraction, not addition."
+                </div>
+                <p class="today-source">— Book of Transmutation, Chapter 7</p>
+
+                <div class="today-reflection-text">
+                    <p>In an age when machines can produce, create, and problem-solve, we anxiously ask: what work is left for us? The answer may be found not in acquiring new skills to stay ahead of automation, but in uncovering what was always there.</p>
+                    <p>The gold the alchemists sought was not something to be manufactured but something to be revealed. The dross — the heavy, obscuring layers — must be burned away. What remains is incorruptible.</p>
+                    <p>Your deepest work is not the job that can be automated. It is the uncovering of what you truly are beneath the layers of conditioning, fear, and false identity. This work cannot be delegated to machines because machines cannot do the work of self-revelation. Only you can burn away your own dross.</p>
+                </div>
+
+                <div class="today-questions">
+                    <h3>Questions for Reflection</h3>
+                    <ul>
+                        <li>What layers of "dross" might be covering what is essential in you?</li>
+                        <li>When you strip away job title, achievements, and roles — what remains?</li>
+                        <li>What would "subtraction" rather than "addition" look like in your life today?</li>
+                        <li>Have you been trying to acquire what you already possess?</li>
+                    </ul>
+                </div>
+
+                <div class="today-practice">
+                    <h3>Today's Practice</h3>
+                    <p>Choose one thing to subtract today rather than add. Skip one meeting, one task, one obligation that doesn't serve your deepest work. In the space that opens, simply be present. Notice what emerges when you stop adding and start revealing.</p>
+                </div>
+            </article>
+        </section>
+
+        <section class="weekly-themes">
+            <h2>The Weekly Rhythm</h2>
+            <p>Each day of the week carries its own quality. Let the rhythm guide your reflection.</p>
+            <div class="week-grid">
+                <div class="week-day">
+                    <div class="day-name">Sunday</div>
+                    <div class="day-theme">Rest & Vision</div>
+                </div>
+                <div class="week-day">
+                    <div class="day-name">Monday</div>
+                    <div class="day-theme">Beginning</div>
+                </div>
+                <div class="week-day">
+                    <div class="day-name">Tuesday</div>
+                    <div class="day-theme">Transformation</div>
+                </div>
+                <div class="week-day">
+                    <div class="day-name">Wednesday</div>
+                    <div class="day-theme">Wisdom</div>
+                </div>
+                <div class="week-day">
+                    <div class="day-name">Thursday</div>
+                    <div class="day-theme">Expansion</div>
+                </div>
+                <div class="week-day">
+                    <div class="day-name">Friday</div>
+                    <div class="day-theme">Love</div>
+                </div>
+                <div class="week-day">
+                    <div class="day-name">Saturday</div>
+                    <div class="day-theme">Integration</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="life-situations">
+            <h2>When Life Brings These Challenges</h2>
+            <p>Select what you're facing today for relevant wisdom</p>
+            <div class="situation-list">
+                <a href="#facing-change" class="situation-item">
+                    <div>
+                        <h3>I'm facing major change I didn't choose</h3>
+                        <p>Job loss, relationship ending, health crisis, world upheaval</p>
+                    </div>
+                    <span class="arrow">&rarr;</span>
+                </a>
+                <a href="#feeling-meaningless" class="situation-item">
+                    <div>
+                        <h3>Everything feels meaningless</h3>
+                        <p>Loss of purpose, existential doubt, "what's the point?"</p>
+                    </div>
+                    <span class="arrow">&rarr;</span>
+                </a>
+                <a href="#difficult-decision" class="situation-item">
+                    <div>
+                        <h3>I'm facing a difficult decision</h3>
+                        <p>Competing values, unclear path, fear of wrong choice</p>
+                    </div>
+                    <span class="arrow">&rarr;</span>
+                </a>
+                <a href="#relationship-conflict" class="situation-item">
+                    <div>
+                        <h3>I'm in conflict with someone I care about</h3>
+                        <p>Broken trust, different values, painful distance</p>
+                    </div>
+                    <span class="arrow">&rarr;</span>
+                </a>
+                <a href="#fear-future" class="situation-item">
+                    <div>
+                        <h3>I'm afraid of the future</h3>
+                        <p>AI anxiety, economic uncertainty, climate grief, aging</p>
+                    </div>
+                    <span class="arrow">&rarr;</span>
+                </a>
+                <a href="#grief-loss" class="situation-item">
+                    <div>
+                        <h3>I'm grieving a loss</h3>
+                        <p>Death of loved one, end of era, lost possibilities</p>
+                    </div>
+                    <span class="arrow">&rarr;</span>
+                </a>
+                <a href="#feeling-stuck" class="situation-item">
+                    <div>
+                        <h3>I feel stuck and can't move forward</h3>
+                        <p>Paralysis, procrastination, fear of action</p>
+                    </div>
+                    <span class="arrow">&rarr;</span>
+                </a>
+                <a href="#questioning-beliefs" class="situation-item">
+                    <div>
+                        <h3>My old beliefs aren't working anymore</h3>
+                        <p>Religious doubt, philosophical crisis, worldview collapse</p>
+                    </div>
+                    <span class="arrow">&rarr;</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="more-reflections">
+            <h2>Reflections by Theme</h2>
+            <div class="reflection-themes">
+                <article class="theme-card">
+                    <h3>On Death and Transformation</h3>
+                    <p>The central teaching of the path: that transformation requires death, that what seems like ending is often beginning.</p>
+                    <p class="theme-question">"What in me needs to die for something new to be born?"</p>
+                </article>
+
+                <article class="theme-card">
+                    <h3>On Finding What You Seek</h3>
+                    <p>The paradox that runs through all the teachings: you already are what you're looking for.</p>
+                    <p class="theme-question">"What if I stopped seeking and started recognizing?"</p>
+                </article>
+
+                <article class="theme-card">
+                    <h3>On Suffering and Its Meaning</h3>
+                    <p>The difficult teaching that suffering is not obstacle but path, not punishment but purification.</p>
+                    <p class="theme-question">"What is this suffering trying to teach me?"</p>
+                </article>
+
+                <article class="theme-card">
+                    <h3>On Love That Destroys</h3>
+                    <p>Love that burns away everything that is not love. The annihilation of the lover in the Beloved.</p>
+                    <p class="theme-question">"What would love destroy in me if I let it?"</p>
+                </article>
+
+                <article class="theme-card">
+                    <h3>On Work and Purpose</h3>
+                    <p>What is the work that cannot be automated, the purpose that cannot be made obsolete?</p>
+                    <p class="theme-question">"What is my true work — not my job, but my work?"</p>
+                </article>
+
+                <article class="theme-card">
+                    <h3>On Darkness and Light</h3>
+                    <p>The Dark Night that precedes dawn. The wound where light enters. The value of what we flee.</p>
+                    <p class="theme-question">"What am I fleeing that might be my teacher?"</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Detailed Situation Pages (expandable sections) -->
+        <section id="facing-change" class="today-reflection" style="display:none;">
+            <article class="today-card">
+                <h2>When Facing Change You Didn't Choose</h2>
+                <div class="today-scripture">
+                    "The old forms are dying. The old certainties are failing. Kingdoms shake and institutions crumble. This is not the end but the transition — the death of one age and the birth of another."
+                </div>
+                <p class="today-source">— Book of the Cobbler, Chapter 17</p>
+
+                <div class="today-reflection-text">
+                    <p>You did not choose this change. It was imposed upon you by circumstances beyond your control — job eliminated, relationship ended, health shattered, world transformed.</p>
+                    <p>The teachings do not deny your pain. They do not minimize your loss. But they offer a reframe: what if this dissolution is not merely destruction but the necessary precondition for something new?</p>
+                    <p>The alchemists called it the nigredo — the blackening, the reduction to formless matter. It feels like death because it is a kind of death. The old form must dissolve before the new can emerge.</p>
+                    <p>You are in the dark stage of the work. The task is not to escape it but to trust it. Not to pretend it isn't dark, but to remember that every dawn is preceded by night.</p>
+                </div>
+
+                <div class="today-questions">
+                    <h3>Questions for Reflection</h3>
+                    <ul>
+                        <li>What is being dissolved in this change? What was I clinging to?</li>
+                        <li>Is there something in the old structure that needed to end?</li>
+                        <li>What might be trying to emerge that couldn't emerge while the old structure stood?</li>
+                        <li>How can I be present to this darkness without fleeing it or being consumed by it?</li>
+                    </ul>
+                </div>
+
+                <div class="today-practice">
+                    <h3>Today's Practice</h3>
+                    <p>Write a letter to the thing that has ended — the job, the relationship, the health, the world as it was. Thank it for what it gave you. Acknowledge what you lost. Then, without forcing optimism, ask: what might be trying to be born?</p>
+                </div>
+            </article>
+        </section>
+
+        <section id="feeling-meaningless" class="today-reflection" style="display:none;">
+            <article class="today-card">
+                <h2>When Everything Feels Meaningless</h2>
+                <div class="today-scripture">
+                    "The human being is the mirror in which the Divine sees Itself most clearly. This is our purpose and our burden... Every experience of the human heart is the Divine experiencing Itself."
+                </div>
+                <p class="today-source">— Book of the Journey, Chapter 5</p>
+
+                <div class="today-reflection-text">
+                    <p>The feeling of meaninglessness is not a sign that you have failed. It may be a sign that you have outgrown the meanings you were given — that the container has become too small for what you're becoming.</p>
+                    <p>When the old meanings collapse, there is a void. The temptation is to fill it quickly with any meaning that offers itself — a new ideology, a new distraction, a new project. But the void has its own teaching.</p>
+                    <p>The mystics called this the via negativa — the negative way. When all the positive content is stripped away, something remains that cannot be stripped away. When all the constructed meanings dissolve, the ground of meaning is revealed.</p>
+                    <p>You are not separate from the meaning you seek. Your very consciousness is the universe becoming aware of itself. Your experience — even this experience of meaninglessness — is the Divine experiencing itself through you.</p>
+                </div>
+
+                <div class="today-questions">
+                    <h3>Questions for Reflection</h3>
+                    <ul>
+                        <li>What meanings have collapsed? Were they ever truly yours, or were they inherited?</li>
+                        <li>What remains when all constructed meanings are removed?</li>
+                        <li>Is the void you're experiencing empty, or is it full of something you haven't learned to perceive?</li>
+                        <li>What if meaning is not found but recognized? What if it was never absent?</li>
+                    </ul>
+                </div>
+
+                <div class="today-practice">
+                    <h3>Today's Practice</h3>
+                    <p>Sit for ten minutes without trying to find meaning. Don't read, don't plan, don't problem-solve. Simply be present to whatever arises. Notice: even in the void, there is awareness. Even in meaninglessness, there is something experiencing the meaninglessness. What is that something?</p>
+                </div>
+            </article>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>Continue Your Journey</h2>
+                <p>These reflections are drawn from the scripture. Go deeper with the full texts and the guided study.</p>
+                <div class="cta-buttons">
+                    <a href="study-guide.html" class="btn btn-primary">Start the Study Guide</a>
+                    <a href="scripture.html" class="btn btn-secondary">Read the Scripture</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 The Path of Illumination. All sacred texts are in the public domain.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Handle situation links - show relevant section
+        document.querySelectorAll('.situation-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    // Hide all situation sections
+                    document.querySelectorAll('.today-reflection[id]').forEach(s => {
+                        s.style.display = 'none';
+                    });
+                    // Show the selected one
+                    targetSection.style.display = 'block';
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Set today's day as active in weekly rhythm
+        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const today = days[new Date().getDay()];
+        document.querySelectorAll('.week-day').forEach(day => {
+            if (day.querySelector('.day-name').textContent === today) {
+                day.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
