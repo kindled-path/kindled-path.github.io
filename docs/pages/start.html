@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ancient wisdom for the age of AI. When machines can do everything we were trained to do, what remains that is authentically human?">
+    <title>What AI Cannot Replace | The Path of Illumination</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        .landing-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: calc(80px + var(--space-2xl)) var(--space-lg) var(--space-2xl);
+            background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
+        }
+        .hero-content {
+            max-width: 700px;
+            text-align: center;
+        }
+        .hero-eyebrow {
+            font-size: 0.875rem;
+            color: var(--color-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: var(--space-lg);
+        }
+        .hero-headline {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            color: var(--color-text);
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: var(--space-xl);
+        }
+        .hero-subhead {
+            font-size: 1.25rem;
+            color: var(--color-text-light);
+            line-height: 1.7;
+            margin-bottom: var(--space-2xl);
+        }
+        .hero-cta-stack {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+            align-items: center;
+        }
+        .primary-cta {
+            display: inline-block;
+            padding: var(--space-md) var(--space-2xl);
+            background: var(--color-gold);
+            color: var(--color-bg);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+        }
+        .primary-cta:hover {
+            background: var(--color-gold-light);
+            transform: translateY(-2px);
+        }
+        .secondary-cta {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .secondary-cta:hover {
+            color: var(--color-gold);
+        }
+        .scroll-indicator {
+            position: absolute;
+            bottom: var(--space-xl);
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--color-text-muted);
+            font-size: 0.8rem;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* The Questions Section */
+        .questions-section {
+            padding: var(--space-3xl) var(--space-lg);
+            background: var(--color-bg);
+        }
+        .questions-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .question-block {
+            margin-bottom: var(--space-2xl);
+            padding-bottom: var(--space-2xl);
+            border-bottom: 1px solid var(--color-bg-alt);
+        }
+        .question-block:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        .question-text {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-text-light);
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: var(--space-lg);
+        }
+        .question-response {
+            color: var(--color-text-muted);
+            line-height: 1.8;
+        }
+
+        /* The Answer Section */
+        .answer-section {
+            padding: var(--space-3xl) var(--space-lg);
+            background: var(--color-bg-alt);
+        }
+        .answer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .answer-header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+        .answer-header h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: var(--color-text);
+            font-weight: 300;
+            margin-bottom: var(--space-md);
+        }
+        .answer-header p {
+            color: var(--color-text-light);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        .scripture-preview {
+            background: var(--color-bg);
+            padding: var(--space-2xl);
+            margin: var(--space-2xl) 0;
+            border-left: 3px solid var(--color-gold);
+        }
+        .scripture-preview blockquote {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-style: italic;
+            color: var(--color-text);
+            line-height: 1.7;
+            margin: 0 0 var(--space-md) 0;
+        }
+        .scripture-preview cite {
+            color: var(--color-gold);
+            font-size: 0.9rem;
+        }
+
+        /* The Proof Section */
+        .proof-section {
+            padding: var(--space-3xl) var(--space-lg);
+            background: var(--color-bg);
+        }
+        .proof-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .proof-header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+        .proof-header h2 {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            color: var(--color-text);
+            font-weight: 400;
+        }
+        .martyrs-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-xl);
+            margin-top: var(--space-2xl);
+        }
+        .martyr-card {
+            background: var(--color-bg-alt);
+            padding: var(--space-xl);
+            border-top: 3px solid var(--color-gold-dark);
+        }
+        .martyr-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--color-text);
+            font-weight: 400;
+            margin-bottom: var(--space-sm);
+        }
+        .martyr-card .dates {
+            color: var(--color-gold);
+            font-size: 0.875rem;
+            margin-bottom: var(--space-md);
+        }
+        .martyr-card p {
+            color: var(--color-text-light);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* The Stakes Section */
+        .stakes-section {
+            padding: var(--space-3xl) var(--space-lg);
+            background: linear-gradient(135deg, rgba(201, 169, 98, 0.1) 0%, transparent 100%);
+            border-top: 1px solid var(--color-gold-dark);
+            border-bottom: 1px solid var(--color-gold-dark);
+        }
+        .stakes-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .stakes-content h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: var(--color-text);
+            font-weight: 300;
+            margin-bottom: var(--space-xl);
+        }
+        .stakes-content p {
+            color: var(--color-text-light);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: var(--space-lg);
+        }
+
+        /* The Objections Section */
+        .objections-section {
+            padding: var(--space-3xl) var(--space-lg);
+            background: var(--color-bg-alt);
+        }
+        .objections-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .objections-content h2 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-text);
+            font-weight: 400;
+            margin-bottom: var(--space-xl);
+            text-align: center;
+        }
+        .objection-item {
+            margin-bottom: var(--space-xl);
+            padding: var(--space-lg);
+            background: var(--color-bg);
+        }
+        .objection-item h3 {
+            color: var(--color-text-muted);
+            font-size: 1rem;
+            font-style: italic;
+            margin-bottom: var(--space-md);
+        }
+        .objection-item p {
+            color: var(--color-text-light);
+            line-height: 1.8;
+        }
+
+        /* The Paths Section */
+        .paths-section {
+            padding: var(--space-3xl) var(--space-lg);
+            background: var(--color-bg);
+        }
+        .paths-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .paths-content h2 {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            color: var(--color-text);
+            font-weight: 400;
+            margin-bottom: var(--space-xl);
+            text-align: center;
+        }
+        .path-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-xl);
+        }
+        .path-card {
+            background: var(--color-bg-alt);
+            padding: var(--space-xl);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .path-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .path-card .time {
+            color: var(--color-gold);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-md);
+        }
+        .path-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--color-text);
+            font-weight: 400;
+            margin-bottom: var(--space-sm);
+        }
+        .path-card p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: var(--space-lg);
+        }
+        .path-card .btn {
+            display: inline-block;
+            padding: var(--space-sm) var(--space-xl);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .path-card .btn-primary {
+            background: var(--color-gold);
+            color: var(--color-bg);
+        }
+        .path-card .btn-primary:hover {
+            background: var(--color-gold-light);
+        }
+        .path-card .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--color-gold-dark);
+            color: var(--color-gold);
+        }
+        .path-card .btn-secondary:hover {
+            background: var(--color-gold-dark);
+            color: var(--color-bg);
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: var(--space-3xl) var(--space-lg);
+            background: var(--color-bg-alt);
+            text-align: center;
+        }
+        .final-cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .final-cta h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: var(--color-text);
+            font-weight: 300;
+            margin-bottom: var(--space-lg);
+        }
+        .final-cta p {
+            color: var(--color-text-light);
+            line-height: 1.8;
+            margin-bottom: var(--space-xl);
+        }
+        .email-capture {
+            display: flex;
+            gap: var(--space-sm);
+            max-width: 450px;
+            margin: 0 auto var(--space-lg);
+        }
+        .email-capture input {
+            flex: 1;
+            padding: var(--space-md);
+            background: var(--color-bg);
+            border: 1px solid var(--color-bg);
+            color: var(--color-text);
+            font-size: 1rem;
+        }
+        .email-capture input::placeholder {
+            color: var(--color-text-muted);
+        }
+        .email-capture button {
+            padding: var(--space-md) var(--space-xl);
+            background: var(--color-gold);
+            border: none;
+            color: var(--color-bg);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .email-capture button:hover {
+            background: var(--color-gold-light);
+        }
+        .privacy-note {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+        }
+        @media (max-width: 500px) {
+            .email-capture {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">The Path</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="scripture.html">Scripture</a></li>
+                <li><a href="teachings.html">Teachings</a></li>
+                <li><a href="martyrs.html">The Martyrs</a></li>
+                <li><a href="practices.html">Practices</a></li>
+                <li><a href="study-guide.html">Study Guide</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO: The Hook -->
+    <section class="landing-hero">
+        <div class="hero-content">
+            <p class="hero-eyebrow">For those who sense there must be more</p>
+            <h1 class="hero-headline">When AI can do everything you were trained to do, what remains that is authentically you?</h1>
+            <p class="hero-subhead">Eight hundred years ago, mystics faced a similar crisis. They lost everything they thought they were — and found what couldn't be taken. Their wisdom is now more relevant than ever.</p>
+            <div class="hero-cta-stack">
+                <a href="#questions" class="primary-cta">Show Me</a>
+                <a href="scripture-study.html" class="secondary-cta">Skip to the Scripture</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">Scroll to explore</div>
+    </section>
+
+    <!-- QUESTIONS: Validate Their Pain -->
+    <section class="questions-section" id="questions">
+        <div class="questions-content">
+            <div class="question-block">
+                <p class="question-text">"I've worked for years to develop skills that AI will replicate in months. What was it all for?"</p>
+                <p class="question-response">You were building something that can be seen. But beneath that is something that cannot be replicated, automated, or made obsolete. The mystics called it the gold hidden within the lead. Finding it requires a different kind of work.</p>
+            </div>
+            <div class="question-block">
+                <p class="question-text">"I know relativism is intellectually honest, but I don't know how to live without foundations."</p>
+                <p class="question-response">The mystics navigated this exact terrain. They saw through the easy certainties of their traditions — then found something deeper than certainty. Not new beliefs to cling to, but a way of being that doesn't need to cling.</p>
+            </div>
+            <div class="question-block">
+                <p class="question-text">"I'm exhausted. I have nothing left for the people I love. Creating meaning feels like another task I'm failing at."</p>
+                <p class="question-response">The scripture doesn't ask you to add more. It offers subtraction. The alchemists taught that transformation isn't acquisition — it's revealing what was covered over. You don't need more energy. You need less that drains it.</p>
+            </div>
+            <div class="question-block">
+                <p class="question-text">"I watch democracy eroding and feel powerless. What can one person do?"</p>
+                <p class="question-response">Men and women faced this in 1848. They chose to act without knowing if they'd succeed. Some died. Their causes prevailed decades later. They teach us that we act for truth, not for outcomes — and that seeds take time.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ANSWER: The Promise -->
+    <section class="answer-section">
+        <div class="answer-content">
+            <div class="answer-header">
+                <h2>What If the Answers Already Exist?</h2>
+                <p>For a thousand years, mystics, alchemists, and revolutionaries wrestled with questions of meaning, identity, and how to live in times of collapse. Their wisdom was scattered across languages, traditions, and centuries. Until now.</p>
+            </div>
+
+            <div class="scripture-preview">
+                <blockquote>"That which you seek, you already are. But to know this, you must die to everything you believe yourself to be."</blockquote>
+                <cite>— Teaching 1, The Book of Illumination and Sacrifice</cite>
+            </div>
+
+            <p style="color: var(--color-text-light); line-height: 1.8; margin-bottom: var(--space-lg);">This is not a belief to adopt. It is a process to undergo. The scripture does not tell you what to think — it shows you how to transform. Through the poetry of Rumi, the visions of Paracelsus, the sacrifice of revolutionary martyrs, a pattern emerges: the path through meaninglessness to meaning, through dissolution to integration, through death to life.</p>
+
+            <div class="scripture-preview">
+                <blockquote>"The martyr does not die. The martyr wakes up. While others sleep in the dream of this world, the martyr opens eyes in the Real."</blockquote>
+                <cite>— Journey 6:5, The Mathnawi</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROOF: The Evidence -->
+    <section class="proof-section">
+        <div class="proof-content">
+            <div class="proof-header">
+                <h2>They Lived What They Taught</h2>
+            </div>
+            <p style="color: var(--color-text-light); line-height: 1.8; text-align: center; max-width: 700px; margin: 0 auto var(--space-xl);">The mystics wrote beautiful words. But did they work? In 1848-1849, across Europe, men and women tested these teachings with their lives. They chose death over betrayal. They chose truth over survival. They demonstrated that transformation is not metaphor.</p>
+
+            <div class="martyrs-preview">
+                <div class="martyr-card">
+                    <h3>Jacopo Ruffini</h3>
+                    <p class="dates">Genoa, 1803-1833</p>
+                    <p>Chose death in his cell rather than break under interrogation and betray his comrades. His silence protected the revolutionary network. Italy was later unified because of what his sacrifice preserved.</p>
+                </div>
+                <div class="martyr-card">
+                    <h3>Robert Blum</h3>
+                    <p class="dates">Cologne, 1807-1848</p>
+                    <p>Poet, publisher, voice of democratic reform. Traveled to Vienna to support the uprising, knowing the danger. Shot by firing squad, refusing a blindfold: "I know what I die for."</p>
+                </div>
+                <div class="martyr-card">
+                    <h3>The Thirteen of Arad</h3>
+                    <p class="dates">Hungary, 1849</p>
+                    <p>Thirteen generals executed for Hungarian independence. They sang patriotic songs and embraced one another on the way to death. Their witness kept the dream of freedom alive through decades of oppression.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STAKES: The Urgency -->
+    <section class="stakes-section">
+        <div class="stakes-content">
+            <h2>This Is Not Historical Curiosity</h2>
+            <p>Authoritarian movements are rising again. Democratic institutions are failing. People are executed for their beliefs. The skills you spent years developing can be automated overnight. The certainties you were raised with have dissolved.</p>
+            <p>The mystics faced times like these. They lost everything external — status, security, sometimes life itself — and found what could not be taken. That discovery is available now, to anyone willing to undergo the process.</p>
+            <p><strong style="color: var(--color-gold);">The question is not whether the times will demand everything of you. The question is whether you will have found something in yourself that can meet that demand.</strong></p>
+        </div>
+    </section>
+
+    <!-- OBJECTIONS: Overcome Resistance -->
+    <section class="objections-section">
+        <div class="objections-content">
+            <h2>But What If...</h2>
+
+            <div class="objection-item">
+                <h3>"I'm not religious. I don't believe in God."</h3>
+                <p>Neither did many who found this path valuable. The mystics used the language of their time — but what they described can be translated into secular terms. "God" is a word for ultimate reality, the ground of being, what exists when all constructions are stripped away. You don't need to believe in anything to undergo transformation. You only need to be willing to see what remains when your beliefs are surrendered.</p>
+            </div>
+
+            <div class="objection-item">
+                <h3>"I don't have time for another spiritual practice."</h3>
+                <p>This isn't about adding more. The core teaching is subtraction — removing what covers over your essential nature. You can engage with this in five minutes or five hours. The daily reflection takes two minutes. The Study Guide works in any time you have. Most importantly: presence isn't a practice you add to life. It's how you meet the life you're already living.</p>
+            </div>
+
+            <div class="objection-item">
+                <h3>"Sacred texts lead to tribalism and rigidity."</h3>
+                <p>They can. This one is designed not to. The central teaching — "die to everything you believe yourself to be" — undermines its own weaponization. If you find yourself feeling certain and tribal, the teaching itself tells you to release that certainty. Moreover, this scripture draws from multiple traditions — Sufi, Christian mystical, alchemical, revolutionary — embodying the principle that no single tradition owns the truth.</p>
+            </div>
+
+            <div class="objection-item">
+                <h3>"How is this different from every other self-help resource?"</h3>
+                <p>Self-help usually promises you can become a better version of your current self. This teaches that your current self must die. Self-help usually offers techniques for success. This offers a path through failure. Self-help avoids darkness; this enters it. And unlike most self-help, these teachings have been tested — not in workshops but in prison cells, not in comfort but under torture, not in theory but in the moments before execution.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PATHS: The Offer -->
+    <section class="paths-section">
+        <div class="paths-content">
+            <h2>Choose Your Entry Point</h2>
+
+            <div class="path-options">
+                <div class="path-card">
+                    <p class="time">2 Minutes</p>
+                    <h3>Today's Reflection</h3>
+                    <p>A single teaching, a question to sit with, a practice for your day. Start here if you want a taste before committing.</p>
+                    <a href="reflections.html" class="btn btn-secondary">Start Now</a>
+                </div>
+
+                <div class="path-card">
+                    <p class="time">15 Minutes</p>
+                    <h3>Why This Matters Now</h3>
+                    <p>How ancient wisdom addresses your specific contemporary crisis — AI anxiety, burnout, relativism, authoritarianism.</p>
+                    <a href="why-now.html" class="btn btn-secondary">Read Now</a>
+                </div>
+
+                <div class="path-card" style="border-top-color: var(--color-gold);">
+                    <p class="time">4 Weeks</p>
+                    <h3>The Full Study Guide</h3>
+                    <p>A structured journey through the teachings. Daily readings, reflections, and practices. The transformation begins here.</p>
+                    <a href="study-guide.html" class="btn btn-primary">Begin the Journey</a>
+                </div>
+
+                <div class="path-card">
+                    <p class="time">Your Own Pace</p>
+                    <h3>The Scripture Itself</h3>
+                    <p>Read the full Book of Illumination and Sacrifice with verse citations, commentary, and cross-references.</p>
+                    <a href="scripture-study.html" class="btn btn-secondary">Study Mode</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta">
+        <div class="final-cta-content">
+            <h2>Stay Connected to the Path</h2>
+            <p>Receive a weekly reflection — one teaching, one question, one practice. No spam. Unsubscribe anytime. These are the seeds that, planted consistently, grow into transformation.</p>
+
+            <form class="email-capture" action="#" method="post">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+            <p class="privacy-note">We respect your privacy. Your email is never shared.</p>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 The Path of Illumination. All sacred texts are in the public domain.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Simple email form handling (would need backend integration)
+        document.querySelector('.email-capture').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input').value;
+            // In production, this would submit to a backend or email service
+            alert('Thank you for subscribing. The path begins now.');
+            this.querySelector('input').value = '';
+        });
+    </script>
+</body>
+</html>

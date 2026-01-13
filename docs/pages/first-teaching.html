@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The First Teaching: That which you seek, you already are. An interactive exploration of the foundational wisdom.">
+    <title>The First Teaching | The Path of Illumination</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        .teaching-hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: calc(80px + var(--space-2xl)) var(--space-lg) var(--space-2xl);
+            background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-alt) 50%, var(--color-bg) 100%);
+            text-align: center;
+        }
+        .teaching-content {
+            max-width: 700px;
+        }
+        .teaching-number {
+            font-size: 0.875rem;
+            color: var(--color-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: var(--space-xl);
+        }
+        .teaching-text {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 5vw, 2.5rem);
+            color: var(--color-text);
+            font-weight: 300;
+            line-height: 1.4;
+            font-style: italic;
+            margin-bottom: var(--space-xl);
+        }
+        .teaching-source {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Exploration Sections */
+        .exploration {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--space-3xl) var(--space-lg);
+        }
+        .exploration-section {
+            margin-bottom: var(--space-3xl);
+        }
+        .exploration-section h2 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-gold);
+            font-weight: 400;
+            margin-bottom: var(--space-lg);
+        }
+        .exploration-section p {
+            color: var(--color-text-light);
+            line-height: 1.9;
+            margin-bottom: var(--space-lg);
+        }
+        .expansion-block {
+            background: var(--color-bg-alt);
+            padding: var(--space-xl);
+            margin: var(--space-xl) 0;
+            border-left: 3px solid var(--color-gold-dark);
+        }
+        .expansion-block h3 {
+            color: var(--color-text);
+            font-size: 1rem;
+            margin-bottom: var(--space-md);
+        }
+        .expansion-block p {
+            color: var(--color-text-light);
+            margin-bottom: 0;
+        }
+
+        /* Interactive Reflection */
+        .reflection-prompt {
+            background: var(--color-bg-alt);
+            padding: var(--space-2xl);
+            margin: var(--space-xl) 0;
+            text-align: center;
+        }
+        .reflection-prompt h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--color-text);
+            font-weight: 400;
+            margin-bottom: var(--space-md);
+        }
+        .reflection-prompt p {
+            color: var(--color-text-light);
+            font-style: italic;
+            margin-bottom: var(--space-lg);
+        }
+        .reflection-prompt textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: var(--space-md);
+            background: var(--color-bg);
+            border: 1px solid var(--color-bg);
+            color: var(--color-text);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            line-height: 1.7;
+            resize: vertical;
+        }
+        .reflection-prompt textarea::placeholder {
+            color: var(--color-text-muted);
+        }
+        .reflection-note {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            margin-top: var(--space-sm);
+        }
+
+        /* Story Section */
+        .story-section {
+            background: var(--color-bg-alt);
+            padding: var(--space-3xl) var(--space-lg);
+        }
+        .story-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .story-content h2 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-text);
+            font-weight: 400;
+            margin-bottom: var(--space-xl);
+            text-align: center;
+        }
+        .story-text {
+            color: var(--color-text-light);
+            line-height: 1.9;
+        }
+        .story-text p {
+            margin-bottom: var(--space-lg);
+        }
+        .scripture-inline {
+            font-family: var(--font-display);
+            font-style: italic;
+            color: var(--color-text);
+            display: block;
+            padding: var(--space-lg);
+            background: var(--color-bg);
+            margin: var(--space-lg) 0;
+            border-left: 3px solid var(--color-gold);
+        }
+
+        /* Application Section */
+        .application-section {
+            padding: var(--space-3xl) var(--space-lg);
+        }
+        .application-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .application-content h2 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-gold);
+            font-weight: 400;
+            margin-bottom: var(--space-xl);
+        }
+        .application-cards {
+            display: grid;
+            gap: var(--space-lg);
+        }
+        .application-card {
+            background: var(--color-bg-alt);
+            padding: var(--space-xl);
+        }
+        .application-card h3 {
+            color: var(--color-text);
+            font-size: 1.1rem;
+            margin-bottom: var(--space-md);
+        }
+        .application-card p {
+            color: var(--color-text-light);
+            line-height: 1.8;
+            margin-bottom: var(--space-md);
+        }
+        .application-card .practice {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--color-bg);
+        }
+        .application-card .practice strong {
+            color: var(--color-gold);
+        }
+
+        /* Progress Tracker */
+        .progress-section {
+            background: linear-gradient(135deg, rgba(201, 169, 98, 0.1) 0%, transparent 100%);
+            padding: var(--space-2xl) var(--space-lg);
+            border-top: 1px solid var(--color-gold-dark);
+            border-bottom: 1px solid var(--color-gold-dark);
+        }
+        .progress-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .progress-content h2 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--color-text);
+            font-weight: 400;
+            margin-bottom: var(--space-md);
+        }
+        .progress-content p {
+            color: var(--color-text-light);
+            margin-bottom: var(--space-lg);
+        }
+        .progress-bar {
+            background: var(--color-bg);
+            height: 8px;
+            border-radius: 4px;
+            margin-bottom: var(--space-md);
+            overflow: hidden;
+        }
+        .progress-fill {
+            background: var(--color-gold);
+            height: 100%;
+            width: 4%; /* 1 of 28 teachings */
+            transition: width 0.5s ease;
+        }
+        .progress-text {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+        }
+        .mark-complete {
+            display: inline-block;
+            padding: var(--space-sm) var(--space-xl);
+            background: var(--color-gold-dark);
+            color: var(--color-bg);
+            border: none;
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin-top: var(--space-lg);
+            transition: all 0.3s ease;
+        }
+        .mark-complete:hover {
+            background: var(--color-gold);
+        }
+        .mark-complete.completed {
+            background: transparent;
+            border: 1px solid var(--color-gold);
+            color: var(--color-gold);
+        }
+
+        /* Navigation */
+        .teaching-nav {
+            padding: var(--space-2xl) var(--space-lg);
+        }
+        .teaching-nav-content {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-link {
+            color: var(--color-gold);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        .nav-link:hover {
+            color: var(--color-gold-light);
+        }
+        .nav-link.next {
+            flex-direction: row-reverse;
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">The Path</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="scripture.html">Scripture</a></li>
+                <li><a href="teachings.html">Teachings</a></li>
+                <li><a href="martyrs.html">The Martyrs</a></li>
+                <li><a href="practices.html">Practices</a></li>
+                <li><a href="study-guide.html">Study Guide</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="teaching-hero">
+        <div class="teaching-content">
+            <p class="teaching-number">The First Teaching</p>
+            <p class="teaching-text">"That which you seek, you already are. But to know this, you must die to everything you believe yourself to be."</p>
+            <p class="teaching-source">— The Conference of the Birds, Journey 1:10</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="exploration">
+
+            <section class="exploration-section">
+                <h2>What Does This Mean?</h2>
+                <p>This teaching contains two claims that seem contradictory:</p>
+
+                <div class="expansion-block">
+                    <h3>First: You already are what you seek.</h3>
+                    <p>Whatever you're looking for — meaning, peace, connection, wholeness, the divine — is not somewhere else. It's not in the future. It's not the result of acquiring something new. It is already present within you, now.</p>
+                </div>
+
+                <div class="expansion-block">
+                    <h3>Second: To know this, you must die.</h3>
+                    <p>Not physical death, but the dissolution of your current identity — the self you've constructed, the person you believe yourself to be. This constructed self stands between you and the recognition of what you already are.</p>
+                </div>
+
+                <p>The paradox is this: you cannot find what you seek by seeking it, because the seeker itself is the obstacle. The seeking implies you don't already have it; this implication is the veil. To see what's already here, you must stop looking for it elsewhere.</p>
+            </section>
+
+            <section class="exploration-section">
+                <h2>The Thirty Birds</h2>
+                <p>This teaching comes from Attar's 12th-century poem. Ten thousand birds set out to find the Simurgh, the legendary King of Birds. They cross seven valleys, each demanding a different kind of death: of certainty, of reason, of knowledge, of desire, of separation, of understanding, and finally of self.</p>
+                <p>Only thirty birds complete the journey. When they reach the court of the Simurgh, they find no king on a throne. They find only a mirror. And in the mirror, they see themselves — <em>si murgh</em> in Persian: "thirty birds."</p>
+                <p>The pun unlocks the meaning: they sought the Simurgh; they found <em>si murgh</em>. The seeker and the sought were never separate. The destination they traveled so far to find was what they had been all along.</p>
+            </section>
+
+            <div class="reflection-prompt">
+                <h3>Pause and Reflect</h3>
+                <p>What are you seeking? What would change if you discovered you already had it?</p>
+                <textarea placeholder="Write your reflection here. This is saved only in your browser..." id="reflection1"></textarea>
+                <p class="reflection-note">Your reflections are stored locally and never sent anywhere.</p>
+            </div>
+
+        </div>
+
+        <section class="story-section">
+            <div class="story-content">
+                <h2>What "Death" Looks Like</h2>
+                <div class="story-text">
+                    <p>When Rumi met Shams of Tabriz, he was a respected scholar with books, students, and reputation. Shams threw his books in a fountain.</p>
+                    <p>Rumi cried out in grief. Shams reached into the water and drew them out, perfectly dry.</p>
+                    <span class="scripture-inline">"This is what you do not understand," Shams said.</span>
+                    <p>In that moment, Rumi's old self died. He who had been a scholar became a poet of the infinite. He wrote: "I died as mineral and became a plant. I died as plant and rose to animal. I died as animal and became a human being. Why should I fear? When was I ever less by dying?"</p>
+                    <p>The death is not of the body but of the constructed identity — the person you have built from your achievements, your knowledge, your reputation. This self must dissolve because it is precisely what stands between you and the recognition of what you already are.</p>
+                    <p>Rumi did not become something new. He uncovered what he had always been, hidden beneath the weight of everything he had accumulated.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="application-section">
+            <div class="application-content">
+                <h2>Applying This Today</h2>
+
+                <div class="application-cards">
+                    <div class="application-card">
+                        <h3>When facing obsolescence</h3>
+                        <p>AI can replicate your skills. Automation can replace your role. But it cannot replicate what you are beneath your skills and roles. The fear of obsolescence is actually an invitation: what remains when everything that can be taken has been taken? That remainder is your gold.</p>
+                        <p class="practice"><strong>Practice:</strong> For one day, notice each moment you define yourself by what you do or know. Ask: "What am I if I subtract this?"</p>
+                    </div>
+
+                    <div class="application-card">
+                        <h3>When exhausted</h3>
+                        <p>The constructed self requires constant maintenance. Keeping up appearances takes energy. Protecting identity is exhausting. The teaching points to a different possibility: what if you stopped maintaining the construction? What would still be here?</p>
+                        <p class="practice"><strong>Practice:</strong> When exhausted, instead of seeking more energy, try releasing one thing you're holding. One performance. One pretense. One should. Feel what remains.</p>
+                    </div>
+
+                    <div class="application-card">
+                        <h3>When seeking meaning</h3>
+                        <p>The search for meaning often assumes meaning must be found, created, or achieved. The teaching suggests it already exists — covered over by the very search. The seeking creates the illusion of absence; the absence drives more seeking; the cycle exhausts.</p>
+                        <p class="practice"><strong>Practice:</strong> Spend five minutes not seeking. Not improving. Not working toward anything. What is present when striving stops?</p>
+                    </div>
+
+                    <div class="application-card">
+                        <h3>When facing death (literal or metaphorical)</h3>
+                        <p>The fear of death is often the fear of losing what we've accumulated: identity, relationships, achievements. The teaching invites us to die before we die — to let go voluntarily what will eventually be taken anyway. What survives this voluntary release?</p>
+                        <p class="practice"><strong>Practice:</strong> Contemplate: if I lost everything external — possessions, reputation, even memory — what would still be here? That which cannot be lost is what you seek.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="progress-section">
+            <div class="progress-content">
+                <h2>Your Progress</h2>
+                <p>The First Teaching is the foundation. Twenty-seven more await, each building on this insight.</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <p class="progress-text"><span id="progressCount">1</span> of 28 teachings explored</p>
+                <button class="mark-complete" id="markComplete">Mark as Completed</button>
+            </div>
+        </section>
+
+        <nav class="teaching-nav">
+            <div class="teaching-nav-content">
+                <a href="study-guide.html" class="nav-link prev">&larr; Study Guide</a>
+                <a href="second-teaching.html" class="nav-link next">Second Teaching &rarr;</a>
+            </div>
+        </nav>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 The Path of Illumination. All sacred texts are in the public domain.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Save reflections to localStorage
+        const reflection1 = document.getElementById('reflection1');
+        const savedReflection = localStorage.getItem('reflection-teaching-1');
+        if (savedReflection) {
+            reflection1.value = savedReflection;
+        }
+        reflection1.addEventListener('input', function() {
+            localStorage.setItem('reflection-teaching-1', this.value);
+        });
+
+        // Progress tracking
+        const markComplete = document.getElementById('markComplete');
+        const progressFill = document.getElementById('progressFill');
+        const progressCount = document.getElementById('progressCount');
+
+        function updateProgress() {
+            const completed = JSON.parse(localStorage.getItem('completedTeachings') || '[]');
+            const count = completed.length;
+            progressCount.textContent = Math.max(1, count);
+            progressFill.style.width = ((count / 28) * 100) + '%';
+
+            if (completed.includes(1)) {
+                markComplete.textContent = 'Completed';
+                markComplete.classList.add('completed');
+            }
+        }
+
+        markComplete.addEventListener('click', function() {
+            let completed = JSON.parse(localStorage.getItem('completedTeachings') || '[]');
+            if (!completed.includes(1)) {
+                completed.push(1);
+                localStorage.setItem('completedTeachings', JSON.stringify(completed));
+                this.textContent = 'Completed';
+                this.classList.add('completed');
+                updateProgress();
+            }
+        });
+
+        updateProgress();
+    </script>
+</body>
+</html>
