@@ -3,94 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Read the complete Book of Illumination and Sacrifice - sacred texts from ancient mystics to modern martyrs.">
-    <title>Scripture | The Path of Illumination</title>
+    <meta name="description" content="The Book of Illumination and Sacrifice - Complete scripture with all source texts from Sufi mystics, alchemists, Christian contemplatives, and the martyrs of 1848.">
+    <title>Scripture | The Illumination</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        .scripture-layout {
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            min-height: 100vh;
+        .scripture-hero {
+            padding: calc(80px + var(--space-2xl)) var(--space-lg) var(--space-xl);
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
+            text-align: center;
         }
-        .scripture-sidebar {
-            background: var(--color-bg-alt);
-            border-right: 1px solid rgba(201, 169, 98, 0.1);
-            padding-top: 80px;
-        }
-        .scripture-nav {
-            position: sticky;
-            top: 80px;
-            max-height: calc(100vh - 100px);
-            overflow-y: auto;
-            padding: var(--space-lg);
-        }
-        .scripture-nav h4 {
-            font-size: 0.75rem;
-            color: var(--color-gold);
-            margin: var(--space-lg) 0 var(--space-sm);
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-        }
-        .scripture-nav h4:first-child {
-            margin-top: 0;
-        }
-        .scripture-nav ul {
-            list-style: none;
+        .scripture-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 300;
+            letter-spacing: 0.05em;
             margin-bottom: var(--space-md);
         }
-        .scripture-nav li {
-            margin-bottom: 2px;
+        .scripture-hero .subtitle {
+            font-size: 1.1rem;
+            color: var(--color-gold);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: var(--space-lg);
         }
-        .scripture-nav a {
+        .scripture-hero .lead {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--color-text-light);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        .scripture-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: var(--space-2xl) var(--space-lg);
+        }
+        .part-section {
+            margin-bottom: var(--space-3xl);
+        }
+        .part-header {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+            padding-bottom: var(--space-lg);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        .part-header h2 {
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--color-text);
+            margin-bottom: var(--space-sm);
+        }
+        .part-header .dates {
+            font-size: 0.9rem;
+            color: var(--color-gold);
+            letter-spacing: 0.1em;
+        }
+        .part-header .epigraph {
+            font-style: italic;
+            color: var(--color-text-muted);
+            margin-top: var(--space-md);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .book-section {
+            margin-bottom: var(--space-xl);
+        }
+        .book-title {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--color-gold);
+            margin-bottom: var(--space-md);
+            padding-left: var(--space-md);
+            border-left: 3px solid var(--color-gold-dark);
+        }
+        .chapter-list {
+            list-style: none;
+        }
+        .chapter-item {
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        .chapter-item:last-child {
+            border-bottom: none;
+        }
+        .chapter-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-md) var(--space-lg);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .chapter-link:hover {
+            background: rgba(212, 175, 55, 0.05);
+        }
+        .chapter-info {
+            flex: 1;
+        }
+        .chapter-title {
+            font-size: 1.1rem;
+            color: var(--color-text);
+            margin-bottom: var(--space-xs);
+        }
+        .chapter-author {
             font-size: 0.85rem;
             color: var(--color-text-muted);
-            display: block;
-            padding: var(--space-xs) var(--space-sm);
-            border-radius: 2px;
-            transition: all var(--transition-fast);
         }
-        .scripture-nav a:hover {
+        .chapter-arrow {
+            color: var(--color-gold-dark);
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        .chapter-link:hover .chapter-arrow {
+            transform: translateX(5px);
             color: var(--color-gold);
-            background: rgba(201, 169, 98, 0.1);
         }
-        .scripture-nav a.active {
-            color: var(--color-gold);
-            background: rgba(201, 169, 98, 0.15);
+        .read-full-btn {
+            display: inline-block;
+            margin-top: var(--space-xl);
+            padding: var(--space-md) var(--space-xl);
+            background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-dark) 100%);
+            color: var(--color-bg);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
         }
-        .scripture-main {
-            padding-top: 80px;
+        .read-full-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.3);
+            color: var(--color-bg);
         }
-        .reading-progress {
-            position: fixed;
-            top: 60px;
-            left: 280px;
-            right: 0;
-            height: 2px;
-            background: var(--color-gold);
-            width: 0;
-            z-index: 100;
-            transition: width 0.1s;
+        .scripture-cta {
+            text-align: center;
+            padding: var(--space-2xl) var(--space-lg);
+            background: var(--color-bg-alt);
         }
-        @media (max-width: 1024px) {
-            .scripture-layout {
-                grid-template-columns: 1fr;
-            }
-            .scripture-sidebar {
-                display: none;
-            }
-            .reading-progress {
-                left: 0;
-            }
+        .scripture-cta p {
+            color: var(--color-text-muted);
+            margin-bottom: var(--space-lg);
         }
     </style>
 </head>
 <body>
     <nav class="main-nav">
         <div class="nav-container">
-            <a href="../index.html" class="nav-logo">The Path</a>
+            <a href="../index.html" class="nav-logo">The Illumination</a>
             <button class="nav-toggle" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
@@ -99,406 +162,618 @@
             <ul class="nav-links">
                 <li><a href="scripture.html" class="active">Scripture</a></li>
                 <li><a href="teachings.html">Teachings</a></li>
+                <li><a href="deep-studies.html">Deep Studies</a></li>
                 <li><a href="martyrs.html">The Martyrs</a></li>
                 <li><a href="practices.html">Practices</a></li>
-                <li><a href="history.html">History</a></li>
-                <li><a href="about.html">About</a></li>
             </ul>
         </div>
     </nav>
 
-    <div class="reading-progress"></div>
+    <header class="scripture-hero">
+        <h1>The Book of Illumination and Sacrifice</h1>
+        <p class="subtitle">The Sacred Text</p>
+        <p class="lead">Seven centuries of wisdom gathered from Sufi mystics, alchemists, Christian contemplatives, and the martyrs who gave their lives for freedom. Each chapter below links to the complete text.</p>
+    </header>
 
-    <div class="scripture-layout">
-        <aside class="scripture-sidebar">
-            <nav class="scripture-nav">
-                <h4>Part I: The Whisperings</h4>
-                <ul>
-                    <li><a href="#journey">The Book of the Journey</a></li>
-                    <li><a href="#transmutation">The Book of Transmutation</a></li>
-                    <li><a href="#cobbler">The Book of the Cobbler</a></li>
-                    <li><a href="#fire">The Book of Fire</a></li>
-                    <li><a href="#wisdom">The Book of Wisdom</a></li>
-                    <li><a href="#bridge">The Hermetic Bridge</a></li>
+    <main class="scripture-content">
+
+        <!-- PART I -->
+        <section class="part-section">
+            <div class="part-header">
+                <h2>Part I: The Whisperings</h2>
+                <p class="dates">Texts from the Ancient World to 1820</p>
+                <p class="epigraph">"Before the seeds were planted, the harvest was foretold. Before the martyrs drew breath, the pattern was written in fire and shadow."</p>
+            </div>
+
+            <!-- The Book of the Journey -->
+            <div class="book-section">
+                <h3 class="book-title">The Book of the Journey</h3>
+                <ul class="chapter-list">
+                    <li class="chapter-item">
+                        <a href="scripture/chapter-01.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 1: The Conference of the Birds</div>
+                                <div class="chapter-author">Farid ud-Din Attar</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/chapter-02.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 2: The Journey and the Affliction</div>
+                                <div class="chapter-author">Sanai and Farid ud-Din</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/chapter-03.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 3: The Divan of Shams</div>
+                                <div class="chapter-author">Jalal ad-Din Rumi</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/chapter-04.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 4: Flashes of Light</div>
+                                <div class="chapter-author">Jami</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/chapter-05.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 5: The Hidden Treasure</div>
+                                <div class="chapter-author">Al-Ghazali</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/chapter-06.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 6: The Mathnawi — Book of Inward Meanings</div>
+                                <div class="chapter-author">Jalal ad-Din Rumi</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
                 </ul>
+            </div>
 
-                <h4>Part II: The Illuminations</h4>
-                <ul>
-                    <li><a href="#jacopo">Gospel of Jacopo</a></li>
-                    <li><a href="#robert">Gospel of Robert</a></li>
-                    <li><a href="#vilmos">Gospel of Vilmos</a></li>
-                    <li><a href="#lajos">Gospel of Lajos</a></li>
-                    <li><a href="#seer">The Book of the Seer</a></li>
-                    <li><a href="#limits">The Book of Limits</a></li>
-                    <li><a href="#continuation">The Book of Continuation</a></li>
-                    <li><a href="#witnesses">The Book of Witnesses</a></li>
+            <!-- The Book of Transmutation -->
+            <div class="book-section">
+                <h3 class="book-title">The Book of Transmutation</h3>
+                <ul class="chapter-list">
+                    <li class="chapter-item">
+                        <a href="scripture/chapter-07.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 7: Aurora and the Heavens</div>
+                                <div class="chapter-author">Paracelsus</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/chapter-08.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 8: The Tincture and the Spirits</div>
+                                <div class="chapter-author">Paracelsus</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/chapter-09.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 9: The Mineral World</div>
+                                <div class="chapter-author">Paracelsus</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/chapter-10.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 10: The Treasury of Alchemy</div>
+                                <div class="chapter-author">Various Authors</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/chapter-11.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 11: The Chemical Wedding</div>
+                                <div class="chapter-author">Johann Valentin Andreae</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/chapter-12.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 12: The Book of Lambspring</div>
+                                <div class="chapter-author">Anonymous</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
                 </ul>
-            </nav>
-        </aside>
-
-        <main class="scripture-main">
-            <header class="scripture-header">
-                <div class="container">
-                    <h1>The Book of Illumination and Sacrifice</h1>
-                    <p class="lead">The Sacred Text of the Path of Transformation</p>
-                </div>
-            </header>
-
-            <article class="scripture-content">
-                <!-- PART I -->
-                <section id="part1">
-                    <h2>Part I: The Whisperings</h2>
-                    <p class="chapter-intro"><em>Texts from the Ancient World to 1820</em></p>
-                    <blockquote>
-                        "Before the seeds were planted, the harvest was foretold. Before the martyrs drew breath, the pattern was written in fire and shadow."
-                    </blockquote>
-                </section>
-
-                <!-- THE BOOK OF THE JOURNEY -->
-                <section id="journey" class="chapter">
-                    <h2>The Book of the Journey</h2>
-
-                    <h3>Chapter 1: The Conference of the Birds</h3>
-                    <h4>Farid ud-Din Attar</h4>
-
-                    <p>In the time before time was counted as men count it now, the birds of the world gathered in great assembly. The Hoopoe, crowned with wisdom, spoke unto them:</p>
-
-                    <p>"Beyond the seven valleys lies the Simurgh, the King of Birds. Who among you will make the journey?"</p>
-
-                    <p>Ten thousand birds rose in answer. But the Hoopoe warned them:</p>
-
-                    <p>"The first valley is the Valley of the Quest, where you must abandon all you believe you know. The second is the Valley of Love, where reason burns away like morning mist. The third is the Valley of Knowledge, where every certainty dissolves. The fourth is the Valley of Detachment, where desire itself must die. The fifth is the Valley of Unity, where the many become one. The sixth is the Valley of Bewilderment, where wisdom and foolishness are the same. The seventh is the Valley of Poverty and Annihilation, where the self is extinguished utterly."</p>
-
-                    <p>Hearing this, many birds fell away. The nightingale spoke of her love for the rose and would not leave. The hawk spoke of his throne with the king and would not descend. The owl spoke of his treasure of gold and would not abandon it.</p>
-
-                    <p>But thirty birds remained. Thirty birds crossed the valleys. In each valley, some perished. Through fire and flood and the death of all they knew, they pressed forward.</p>
-
-                    <p>And when at last the thirty birds reached the court of the Simurgh, they found no king upon a throne.</p>
-
-                    <p>They found only a mirror.</p>
-
-                    <p>And in the mirror, they saw themselves — <em>si murgh</em>, thirty birds — and understood at last: the seeker and the sought were never separate. The journey was not toward something external but toward the recognition of what always was.</p>
-
-                    <div class="teaching-box">
-                        <p><strong>Teaching 1:</strong> That which you seek, you already are. But to know this, you must die to everything you believe yourself to be.</p>
-                    </div>
-
-                    <h3>Chapter 2: The Journey and the Affliction</h3>
-                    <h4>Sanai and Farid ud-Din</h4>
-
-                    <p>Sanai, the poet of Ghazna, wrote of the soul's ascent through the celestial spheres:</p>
-
-                    <p>"The servant journeys toward the Place of Return, climbing through sphere upon sphere. At each station, a death is required. The coarse self must die for the subtle self to emerge. The subtle self must die for the spirit to be revealed. The spirit itself must dissolve into the Ocean of Being."</p>
-
-                    <p>And Farid ud-Din, in his Book of Affliction, spoke further:</p>
-
-                    <p>"Forty stations the seeker must traverse. At each station, suffering awaits. Not punishment, but purification. Not cruelty, but the stripping away of that which is not essential.</p>
-
-                    <p>"The moth does not avoid the flame but seeks it. The lover does not flee from the pain of love but embraces it. For what is pain but the evidence of transformation?</p>
-
-                    <p>"I wandered through forty stages of grief before I understood: the affliction <em>was</em> the path. There was no path beyond it, around it, or despite it. The way forward was through.</p>
-
-                    <p>"And when I had been burned to ash, when nothing remained of what I had called myself, then and only then did the Ocean receive me."</p>
-
-                    <div class="teaching-box">
-                        <p><strong>Teaching 2:</strong> Suffering is not the obstacle to wisdom but its very substance. Flee from affliction and you flee from transformation itself.</p>
-                    </div>
-
-                    <h3>Chapter 3: The Divan of Shams</h3>
-                    <h4>Jalal ad-Din Rumi</h4>
-
-                    <p>When Jalal ad-Din met the wandering dervish Shams of Tabriz, he was a respected scholar, a man of books and reputation. Shams looked upon his books and asked: "What is all this?"</p>
-
-                    <p>Jalal ad-Din replied: "This is what you do not understand."</p>
-
-                    <p>And Shams threw the books into a fountain.</p>
-
-                    <p>Jalal ad-Din cried out in grief, but Shams reached into the water and drew them out, perfectly dry.</p>
-
-                    <p>"This," said Shams, "is what <em>you</em> do not understand."</p>
-
-                    <p>In that moment, Jalal ad-Din's old self died. He who had been a scholar became a poet of the Infinite. He wrote:</p>
-
-                    <blockquote>
-                        "I died as mineral and became a plant.<br>
-                        I died as plant and rose to animal.<br>
-                        I died as animal and became a human being.<br>
-                        Why should I fear? When was I ever less by dying?<br><br>
-                        Yet once more I shall die as human being,<br>
-                        To soar with angels blessed above.<br>
-                        And when I sacrifice my angel soul,<br>
-                        I shall become what no mind ever conceived."
-                    </blockquote>
-
-                    <p>And again:</p>
-
-                    <blockquote>
-                        "Die before you die and find that there is no death.<br>
-                        The wound is the place where the Light enters you.<br>
-                        Don't turn away. Keep your gaze on the bandaged place.<br>
-                        That's where the light enters you."
-                    </blockquote>
-
-                    <div class="teaching-box">
-                        <p><strong>Teaching 3:</strong> Love destroys everything that is not love. To find the Beloved, the lover must be annihilated.</p>
-                    </div>
-                </section>
-
-                <!-- THE BOOK OF TRANSMUTATION -->
-                <section id="transmutation" class="chapter">
-                    <h2>The Book of Transmutation</h2>
-
-                    <h3>Chapter 7: Aurora and the Heavens</h3>
-                    <h4>Paracelsus</h4>
-
-                    <p>Paracelsus, the wandering physician who healed with fire and mercury, who was driven from city to city for speaking truths the learned could not bear, wrote:</p>
-
-                    <p>"The Aurora — the dawn — rises in the philosopher who has died to the common world. As the sun rises after the darkness of night, so wisdom rises in the soul that has passed through the darkness of unknowing.</p>
-
-                    <p>"All transformation follows one law: dissolution precedes reconstitution. The base metal must be reduced to prima materia before it can be raised to gold. The caterpillar must become formless soup within the chrysalis before it can emerge as butterfly. The human soul must be shattered before it can be remade.</p>
-
-                    <p>"This is why God and Nature do nothing in vain. Every suffering serves. Every death prepares a birth. Those who seek to avoid the dissolution seek to remain base metal forever. They fear the fire because they do not understand: the fire does not destroy the gold — it reveals it."</p>
-
-                    <div class="teaching-box">
-                        <p><strong>Teaching 7:</strong> You already possess everything you need. The work is not to acquire but to reveal.</p>
-                    </div>
-
-                    <h3>Chapter 9: The Mineral World</h3>
-                    <h4>Paracelsus</h4>
-
-                    <p>"I learned more from the miners of Tyrol than from all the universities of Europe. Deep in the earth, they understand what professors in their libraries cannot: matter is alive. Stone is not dead. Metal is not inert. Everything pulses with the same vital force that animates human flesh.</p>
-
-                    <p>"There are seven metals, corresponding to the seven planets:</p>
-                    <ul>
-                        <li>Gold is of the Sun: incorruptible, radiant, the essence of perfection.</li>
-                        <li>Silver is of the Moon: reflective, mutable, the essence of receptivity.</li>
-                        <li>Mercury is of Mercury: fluid, quicksilver, the essence of transformation.</li>
-                        <li>Copper is of Venus: warm, conductive, the essence of connection.</li>
-                        <li>Iron is of Mars: hard, magnetic, the essence of will.</li>
-                        <li>Tin is of Jupiter: expansive, resonant, the essence of abundance.</li>
-                        <li>Lead is of Saturn: heavy, dark, the essence of limitation.</li>
-                    </ul>
-
-                    <p>"The journey of the soul mirrors the journey of metal. We begin as lead — heavy, dark, bound to earth. Through the fire of experience, we are transformed stage by stage until we become gold — incorruptible, radiant, eternal.</p>
-
-                    <p>"But hear this mystery: the gold was always present within the lead. The transformation is not the creation of something new but the revelation of what was always there."</p>
-
-                    <div class="teaching-box">
-                        <p><strong>Teaching 9:</strong> Transformation is revelation. You do not become divine; you discover that you always were.</p>
-                    </div>
-                </section>
-
-                <!-- THE BOOK OF THE COBBLER -->
-                <section id="cobbler" class="chapter">
-                    <h2>The Book of the Cobbler</h2>
-
-                    <h3>Chapter 13: Aurora Rising</h3>
-                    <h4>Jakob of G&ouml;rlitz</h4>
-
-                    <p>In the year 1600, in the town of G&ouml;rlitz in Silesia, a simple shoemaker sat at his bench. His name was Jakob B&ouml;hme. He had no formal education beyond what was needed for his trade. He read the Bible but no philosophy, no theology of the schools.</p>
-
-                    <p>One day, sunlight struck a pewter dish on his workbench. The reflection triggered something — a crack in the ordinary world through which Jakob glimpsed the extraordinary.</p>
-
-                    <p>"I saw and knew more in that quarter hour," he later wrote, "than if I had been many years at a university. I knew the being of beings, the abyss and the eternal birth, the descent and ascent, the nature of all things."</p>
-
-                    <p>He kept silent for twelve years, working at his bench, contemplating what he had seen. Then he could contain it no longer. He began to write <em>Aurora</em>, or Morning Redness Rising.</p>
-
-                    <blockquote>
-                        "In Yes and No all things consist. Without opposition, nothing can be made manifest. Light requires darkness to be seen. Good requires evil to be recognized. Life requires death to know itself."
-                    </blockquote>
-
-                    <div class="teaching-box">
-                        <p><strong>Teaching 13:</strong> The humblest person may receive the highest wisdom. Truth speaks to those who listen, regardless of station or learning.</p>
-                    </div>
-
-                    <h3>Chapter 15: The Signature of All Things</h3>
-                    <h4>Jakob of G&ouml;rlitz</h4>
-
-                    <p>"Everything bears the mark of its origin. The outward form reveals the inward essence. This is the doctrine of signatures.</p>
-
-                    <p>"The walnut resembles the brain and nourishes the brain. The red rose resembles the heart and supports the heart. These are not coincidences but correspondences — the visible expressing the invisible.</p>
-
-                    <p>"So too with human beings. The face, the hands, the posture, the voice — all bear the signature of the inner state. A person who has lived in joy shows it. A person who has lived in bitterness shows it. We cannot hide what we are; we carry our essence openly.</p>
-
-                    <p>"And further: the manner of death bears the signature of the life. One who lived by the sword dies by the sword. One who lived in sacrifice dies sacrificially. The death is not punishment but completion — the final and fullest expression of the pattern."</p>
-
-                    <div class="teaching-box">
-                        <p><strong>Teaching 15:</strong> Everything reveals its inner nature through outward signs. Learn to read the signatures.</p>
-                    </div>
-                </section>
-
-                <!-- THE BOOK OF FIRE -->
-                <section id="fire" class="chapter">
-                    <h2>The Book of Fire</h2>
-
-                    <h3>Chapter 20: The Dark Night of the Soul</h3>
-                    <h4>Juan de la Cruz</h4>
-
-                    <p>Juan de la Cruz, imprisoned in a tiny cell by his own brothers in religion, wrote by the light that entered through a small slit:</p>
-
-                    <p>"The Dark Night is the way of those whom God loves most. It is not punishment but preparation, not abandonment but embrace. For the light of God is so intense that it appears to us as darkness — our eyes, accustomed to lesser lights, cannot perceive it.</p>
-
-                    <p>"In the Dark Night, all supports fail. The practices that once brought comfort bring nothing. The beliefs that once sustained fail to convince. The presence once felt is utterly absent. The soul hangs suspended in void, with nothing to grasp.</p>
-
-                    <p>"This is necessary. For as long as the soul grasps, it cannot receive. As long as it relies on supports, it cannot rely on God alone. The Dark Night strips away every crutch until nothing remains but the soul and its Beloved — and in that nakedness, union occurs.</p>
-
-                    <p>"I endured my own dark night in that cell. Nine months of darkness, of cold, of hunger, of despair. My brothers, believing they served God, tortured me. And in that torture, I found what I had sought all my life.</p>
-
-                    <p>"For when everything else was taken, only the Essential remained. When every support failed, I fell into arms I had not known were there. The darkness was the brightest light. The absence was the fullest presence. The death was the truest life."</p>
-
-                    <div class="teaching-box">
-                        <p><strong>Teaching 20:</strong> The darkest hour precedes the brightest dawn. Do not flee the darkness.</p>
-                    </div>
-                </section>
-
-                <!-- PART II -->
-                <section id="part2">
-                    <h2>Part II: The Illuminations</h2>
-                    <p class="chapter-intro"><em>Texts from 1820-1850</em></p>
-                    <blockquote>
-                        "The seeds have been planted. Now comes the harvest."
-                    </blockquote>
-                </section>
-
-                <!-- GOSPEL ACCORDING TO JACOPO -->
-                <section id="jacopo" class="chapter">
-                    <h2>The Gospel According to Jacopo</h2>
-
-                    <h3>Chapter 1: The Birth and Youth</h3>
-
-                    <p>In Genoa, in the year 1803, a child was born to a family of modest means. His name was Jacopo Ruffini. His father was a republican who remembered the brief Italian republics before Napoleon's fall; his mother was a woman of deep but undogmatic faith.</p>
-
-                    <p>The boy grew in a city that chafed under foreign domination. First the French ruled, then the Austrians, then the restored Piedmontese monarchy imposed its weight upon the old republic. The Genoese remembered when their merchant fleet had rivaled Venice, when their city was free. Now they were subjects.</p>
-
-                    <p>Jacopo was sensitive to injustice from his earliest years. He wept when he saw beggars. He raged when he saw police brutality. He dreamed, even as a child, of a world where no one would suffer oppression.</p>
-
-                    <p><em>Of his early years, Jacopo later wrote: "I was born into bondage but not for bondage. Something in me knew, even before I could articulate it, that the natural state of humanity is freedom. Everything I did was preparation for the moment when I could act upon this knowledge."</em></p>
-
-                    <h3>Chapter 5: The Sacrifice</h3>
-
-                    <p>On June 19, 1833, five days after his arrest, Jacopo Ruffini made his final decision.</p>
-
-                    <p>He knew he was weakening. The interrogations were wearing him down. He feared that eventually, despite his best intentions, he might say something that would betray his comrades. He also knew that as long as he lived, he was a pressure point the authorities could use against his family.</p>
-
-                    <p>There was another way.</p>
-
-                    <p>In his cell, in the darkness before dawn, Jacopo Ruffini took his own life. He was approximately thirty years old.</p>
-
-                    <p>When Giuseppe Mazzini learned of his friend's death, he was shattered. For the rest of his life — and he lived another forty years — he carried Jacopo's memory. "I owe him everything," he wrote. "His death purchased the lives of dozens of our brothers. His silence protected the organization that would eventually succeed."</p>
-
-                    <p><em>In the tradition of the Whisperings, such a death fulfills the Pattern: the dissolution of the individual for the sake of the collective, the seed falling into the ground that new life might spring forth.</em></p>
-                </section>
-
-                <!-- GOSPEL ACCORDING TO ROBERT -->
-                <section id="robert" class="chapter">
-                    <h2>The Gospel According to Robert</h2>
-
-                    <h3>Chapter 6: The Shoemaker's Son</h3>
-
-                    <p>In Cologne, in 1807, a child was born to poverty. His father was a minor craftsman; his mother worked as a domestic servant. They named him Robert Blum.</p>
-
-                    <p>The family was Catholic, but loosely so. What Robert learned from his parents was not doctrine but ethics: the dignity of labor, the duty to the poor, the wickedness of cruelty. His earliest memories were of hunger and of his parents' efforts to feed their children despite having little themselves.</p>
-
-                    <p>He had no formal education beyond what the parish school could provide. But he was intelligent and curious, and he found his education elsewhere: in books borrowed and stolen, in conversations with tradesmen and travelers.</p>
-
-                    <p>He also read the old texts. In a friend's attic, he found volumes of Paracelsus, of Boehme, of forgotten alchemists. He did not understand them fully, but he sensed that they spoke of transformation — and transformation was what he craved.</p>
-
-                    <h3>Chapter 10: The Execution at Dawn</h3>
-
-                    <p>On the morning of November 9, 1848, Robert Blum was led to the Brigittenau, a meadow outside Vienna, to be shot.</p>
-
-                    <p>He had spent his final night writing letters — to Jenny, to his children, to his comrades in the cause. He wrote:</p>
-
-                    <blockquote>
-                        "I die for the German liberty that I have fought for my whole life. Do not mourn me too long. I have lived according to my convictions, and I die according to them. This is more than most people can say."
-                    </blockquote>
-
-                    <p>At the execution ground, he refused a blindfold. He wanted to face death with open eyes, as he had faced life. According to witnesses, he was calm, even serene.</p>
-
-                    <p>He said to the soldiers: "I am not afraid. I know what I die for. May you come to know what you live for."</p>
-
-                    <p>The order was given. The shots were fired. Robert Blum, forty-one years old, poet, publisher, reformer, husband, father, died in the meadow outside Vienna.</p>
-
-                    <p><em>His signature was the word. He lived by words and died for words — the dangerous words that spoke of human dignity and popular sovereignty. When the authorities silenced his voice, they amplified it beyond anything they could have imagined.</em></p>
-                </section>
-
-                <!-- More sections would continue... -->
-                <section id="vilmos" class="chapter">
-                    <h2>The Gospel According to Vilmos</h2>
-                    <p><em>Content continues in full scripture...</em></p>
-                    <a href="../texts/part2-vilmos.html" class="btn btn-text">Read the complete Gospel &rarr;</a>
-                </section>
-
-                <section id="lajos" class="chapter">
-                    <h2>The Gospel According to Lajos</h2>
-                    <p><em>Content continues in full scripture...</em></p>
-                    <a href="../texts/part2-lajos.html" class="btn btn-text">Read the complete Gospel &rarr;</a>
-                </section>
-
-                <section id="seer" class="chapter">
-                    <h2>The Book of the Seer</h2>
-                    <p><em>Content continues in full scripture...</em></p>
-                    <a href="../texts/part2-seer.html" class="btn btn-text">Read the complete Book &rarr;</a>
-                </section>
-
-                <section id="limits" class="chapter">
-                    <h2>The Book of Limits</h2>
-                    <p><em>Content continues in full scripture...</em></p>
-                    <a href="../texts/part2-limits.html" class="btn btn-text">Read the complete Book &rarr;</a>
-                </section>
-
-                <section id="continuation" class="chapter">
-                    <h2>The Book of Continuation</h2>
-                    <p><em>Content continues in full scripture...</em></p>
-                    <a href="../texts/part2-continuation.html" class="btn btn-text">Read the complete Book &rarr;</a>
-                </section>
-
-                <section id="witnesses" class="chapter">
-                    <h2>The Book of Witnesses</h2>
-                    <p><em>Content continues in full scripture...</em></p>
-                    <a href="../texts/part2-witnesses.html" class="btn btn-text">Read the complete Book &rarr;</a>
-                </section>
-
-                <!-- AFTERWORD -->
-                <section id="afterword" class="chapter">
-                    <h2>Afterword: The Pattern and the Path</h2>
-
-                    <p>What has been gathered here are fragments of a truth too large for any single text to contain.</p>
-
-                    <p>Part I gathered the Whisperings: the ancient wisdom traditions that spoke of transformation through death, of ego-dissolution as the path to enlightenment, of the seeker becoming what was sought through the surrender of seeking.</p>
-
-                    <p>Part II gathered the Illuminations: the lives of those who embodied this wisdom in the arena of history, who died for liberty and justice and truth, and the philosophers who reflected on what their deaths meant.</p>
-
-                    <p>Together, they reveal a Pattern:</p>
-
-                    <ul>
-                        <li>That the universe is moving toward greater consciousness, greater love, greater freedom.</li>
-                        <li>That this movement requires sacrifice — the death of the old to make way for the new.</li>
-                        <li>That individual deaths participate in this cosmic transformation.</li>
-                        <li>That the martyrs are not victims but volunteers in the greatest work there is.</li>
-                        <li>That we too are called to this work, each in our own way.</li>
-                    </ul>
-
-                    <p>This is the message of the Book of Illumination and Sacrifice:</p>
-
-                    <blockquote>
-                        Live as if life matters — because it does.<br>
-                        Die when you must — because death is transformation.<br>
-                        Fear nothing — because love casts out fear.<br>
-                        Serve the truth — because truth is all that remains.
-                    </blockquote>
-
-                    <p><em>The Pattern continues. The work goes on. The martyrs wait in the light, and the Simurgh spreads its wings to welcome all who complete the journey.</em></p>
-                </section>
-
-            </article>
-        </main>
-    </div>
+            </div>
+
+            <!-- The Book of the Cobbler -->
+            <div class="book-section">
+                <h3 class="book-title">The Book of the Cobbler</h3>
+                <ul class="chapter-list">
+                    <li class="chapter-item">
+                        <a href="scripture/chapter-13.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 13: Aurora Rising</div>
+                                <div class="chapter-author">Jakob Böhme</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/chapter-14.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 14: The Threefold Life and Forty Questions</div>
+                                <div class="chapter-author">Jakob Böhme</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/chapter-15.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 15: The Signature of All Things</div>
+                                <div class="chapter-author">Jakob Böhme</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/chapter-16.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 16: The Six Points</div>
+                                <div class="chapter-author">Jakob Böhme</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/chapter-17.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 17: The Great Mystery and the Last Times</div>
+                                <div class="chapter-author">Jakob Böhme</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/chapter-18.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 18: The Key</div>
+                                <div class="chapter-author">Jakob Böhme</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- The Book of Fire -->
+            <div class="book-section">
+                <h3 class="book-title">The Book of Fire</h3>
+                <ul class="chapter-list">
+                    <li class="chapter-item">
+                        <a href="scripture/chapter-19.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 19: The Cloud of Unknowing</div>
+                                <div class="chapter-author">Anonymous (14th Century)</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/chapter-20.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 20: The Dark Night of the Soul</div>
+                                <div class="chapter-author">Juan de la Cruz</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/chapter-21.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 21: The Interior Castle</div>
+                                <div class="chapter-author">Teresa of Ávila</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/chapter-22.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 22: The Practice of the Presence</div>
+                                <div class="chapter-author">Brother Lawrence</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/chapter-23.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 23: A Serious Call</div>
+                                <div class="chapter-author">William Law</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- The Book of Wisdom -->
+            <div class="book-section">
+                <h3 class="book-title">The Book of Wisdom</h3>
+                <ul class="chapter-list">
+                    <li class="chapter-item">
+                        <a href="scripture/chapter-24.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 24: The Divine Pymander</div>
+                                <div class="chapter-author">Hermes Trismegistus</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/chapter-25.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 25: The Chymical Marriage</div>
+                                <div class="chapter-author">Johann Valentin Andreae</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/chapter-26.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 26: The Amphitheatre of Eternal Wisdom</div>
+                                <div class="chapter-author">Heinrich Khunrath</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/chapter-27.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 27: The Silesian Angelus</div>
+                                <div class="chapter-author">Johannes Scheffler (Angelus Silesius)</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/chapter-28.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 28: The Spiritual Guide</div>
+                                <div class="chapter-author">Miguel de Molinos</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/chapter-29.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 29: Suggestive Inquiry into the Hermetic Mystery</div>
+                                <div class="chapter-author">Mary Anne Atwood</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- PART II -->
+        <section class="part-section">
+            <div class="part-header">
+                <h2>Part II: The Illuminations</h2>
+                <p class="dates">Texts from 1820–1850</p>
+                <p class="epigraph">"The seeds have been planted. Now comes the harvest."</p>
+            </div>
+
+            <!-- The Gospel According to Jacopo -->
+            <div class="book-section">
+                <h3 class="book-title">The Gospel According to Jacopo</h3>
+                <ul class="chapter-list">
+                    <li class="chapter-item">
+                        <a href="scripture/jacopo-01.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 1: The Birth and Youth</div>
+                                <div class="chapter-author">The Life of Jacopo Ruffini (1805–1833)</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/jacopo-02.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 2: The Awakening to Liberty</div>
+                                <div class="chapter-author">The Life of Jacopo Ruffini</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/jacopo-03.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 3: The Young Italy</div>
+                                <div class="chapter-author">The Life of Jacopo Ruffini</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/jacopo-04.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 4: The Imprisonment</div>
+                                <div class="chapter-author">The Life of Jacopo Ruffini</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/jacopo-05.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 5: The Sacrifice</div>
+                                <div class="chapter-author">The Life of Jacopo Ruffini</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- The Gospel According to Robert -->
+            <div class="book-section">
+                <h3 class="book-title">The Gospel According to Robert</h3>
+                <ul class="chapter-list">
+                    <li class="chapter-item">
+                        <a href="scripture/robert-06.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 6: The Shoemaker's Son</div>
+                                <div class="chapter-author">The Life of Robert Blum (1807–1848)</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/robert-07.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 7: The Voice in Leipzig</div>
+                                <div class="chapter-author">The Life of Robert Blum</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/robert-08.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 8: The Parliament in Frankfurt</div>
+                                <div class="chapter-author">The Life of Robert Blum</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/robert-09.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 9: The Journey to Vienna</div>
+                                <div class="chapter-author">The Life of Robert Blum</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/robert-10.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 10: The Execution at Dawn</div>
+                                <div class="chapter-author">The Life of Robert Blum</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- The Gospel According to Vilmos -->
+            <div class="book-section">
+                <h3 class="book-title">The Gospel According to Vilmos</h3>
+                <ul class="chapter-list">
+                    <li class="chapter-item">
+                        <a href="scripture/vilmos-11.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 11: The Young Officer</div>
+                                <div class="chapter-author">The Life of Vilmos Lázár (1817–1849)</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/vilmos-12.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 12: The Call to Arms</div>
+                                <div class="chapter-author">The Life of Vilmos Lázár</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/vilmos-13.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 13: The War for Independence</div>
+                                <div class="chapter-author">The Life of Vilmos Lázár</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/vilmos-14.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 14: The Thirteen of Arad</div>
+                                <div class="chapter-author">The Life of Vilmos Lázár</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- The Gospel According to Lajos -->
+            <div class="book-section">
+                <h3 class="book-title">The Gospel According to Lajos</h3>
+                <ul class="chapter-list">
+                    <li class="chapter-item">
+                        <a href="scripture/lajos-15.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 15: The Count's Vision</div>
+                                <div class="chapter-author">The Life of Lajos Batthyány (1807–1849)</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/lajos-16.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 16: The First Ministry</div>
+                                <div class="chapter-author">The Life of Lajos Batthyány</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/lajos-17.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 17: The Arrest</div>
+                                <div class="chapter-author">The Life of Lajos Batthyány</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/lajos-18.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 18: The Dagger and the Bullet</div>
+                                <div class="chapter-author">The Life of Lajos Batthyány</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- The Book of the Seer -->
+            <div class="book-section">
+                <h3 class="book-title">The Book of the Seer</h3>
+                <ul class="chapter-list">
+                    <li class="chapter-item">
+                        <a href="scripture/seer-19.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 19: Principles of Nature — Divine Revelations</div>
+                                <div class="chapter-author">Andrew Jackson Davis</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/seer-20.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 20: The Great Harmonia</div>
+                                <div class="chapter-author">Andrew Jackson Davis</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                    <li class="chapter-item">
+                        <a href="scripture/seer-21.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Chapter 21: The Philosophy of Spiritual Intercourse</div>
+                                <div class="chapter-author">Andrew Jackson Davis</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- The Book of Limits -->
+            <div class="book-section">
+                <h3 class="book-title">The Book of Limits</h3>
+                <ul class="chapter-list">
+                    <li class="chapter-item">
+                        <a href="scripture/limits.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">The Epistemology of Limits</div>
+                                <div class="chapter-author">Théodore Jouffroy</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- The Book of Continuation -->
+            <div class="book-section">
+                <h3 class="book-title">The Book of Continuation</h3>
+                <ul class="chapter-list">
+                    <li class="chapter-item">
+                        <a href="scripture/continuation.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">The Continuation of the Pattern</div>
+                                <div class="chapter-author">The Ongoing Work</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- The Book of Witnesses -->
+            <div class="book-section">
+                <h3 class="book-title">The Book of Witnesses</h3>
+                <ul class="chapter-list">
+                    <li class="chapter-item">
+                        <a href="scripture/witnesses.html" class="chapter-link">
+                            <div class="chapter-info">
+                                <div class="chapter-title">Those Who Saw and Testified</div>
+                                <div class="chapter-author">The Testimonies</div>
+                            </div>
+                            <span class="chapter-arrow">→</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <section class="scripture-cta">
+        <p>The complete scripture is also available as a single continuous text.</p>
+        <a href="scripture/complete.html" class="read-full-btn">Read Complete Scripture</a>
+    </section>
 
     <footer class="main-footer">
         <div class="container">
             <div class="footer-bottom">
-                <p>&copy; 2026 The Path of Illumination. All sacred texts are in the public domain.</p>
+                <p>&copy; 2026 The Illumination. All sacred texts are in the public domain.</p>
             </div>
         </div>
     </footer>
