@@ -142,7 +142,7 @@ Historical figures whose deaths embody the Pattern:
 - Semantic HTML for accessibility
 - CSS custom properties for theming consistency
 - Vanilla JS (no framework needed)
-- Static site deployable to GitHub Pages
+- Static site deployed to Cloudflare Pages
 
 ### Study Guides Should
 - Guide readers through scripture systematically
@@ -158,9 +158,21 @@ Historical figures whose deaths embody the Pattern:
 
 ## Deployment
 
-GitHub Pages from `/docs` folder on `main` branch.
+**Production:** Cloudflare Pages at https://kindled-path.pages.dev/
 
-Live site: https://bedwards.github.io/bible-2/
+Deployed automatically via GitHub Actions (`.github/workflows/deploy.yml`) on push to `main` branch. The workflow deploys the `/docs` folder to Cloudflare Pages.
+
+**Legacy redirect:** GitHub Pages (https://kindled-path.github.io/) redirects to Cloudflare Pages via the `gh-pages` branch.
+
+**Local development:**
+```bash
+# Create .env with Cloudflare credentials (already gitignored)
+CLOUDFLARE_API_TOKEN=your_token
+CLOUDFLARE_ACCOUNT_ID=your_account_id
+
+# Deploy manually
+wrangler pages deploy docs --project-name=kindled-path
+```
 
 ## Contributing
 

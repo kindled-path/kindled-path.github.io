@@ -27,7 +27,7 @@ The Book of Illumination and Sacrifice brings together:
 3. Love destroys everything that is not love.
 4. Those who die for truth tear holes in the veil.
 
-[Read all 29 teachings →](https://bedwards.github.io/bible-2/pages/teachings.html)
+[Read all 29 teachings →](https://kindled-path.pages.dev/pages/teachings.html)
 
 ## The Four Martyrs
 
@@ -38,7 +38,7 @@ The Book of Illumination and Sacrifice brings together:
 
 ## Website
 
-Visit the full website at: **https://bedwards.github.io/bible-2/**
+Visit the full website at: **https://kindled-path.pages.dev/**
 
 The site includes:
 - Complete scripture
@@ -65,15 +65,17 @@ All texts in the Book of Illumination and Sacrifice are drawn from works in the 
 
 ```
 bible-2/
+├── .github/workflows/   # GitHub Actions for Cloudflare Pages deployment
 ├── scripture/           # The canonical text
 │   ├── THE_BOOK_OF_ILLUMINATION_AND_SACRIFICE.md
 │   └── INDEX.md
-├── docs/               # GitHub Pages website
+├── docs/               # Website content (deployed to Cloudflare Pages)
 │   ├── index.html
 │   ├── css/
 │   ├── js/
 │   ├── images/
 │   └── pages/
+├── CLAUDE.md           # Development guidelines
 └── README.md
 ```
 
