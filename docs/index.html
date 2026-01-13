@@ -3,316 +3,597 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="When machines can create art and write poetry, what is left for us? Ancient wisdom for modern seekers facing an age of transformation.">
-    <title>The Path of Illumination | Finding Meaning in an Age of Transformation</title>
+    <meta name="description" content="The Illumination: Ancient wisdom for those who sense there is more. When the old answers fail, the mystics and martyrs light the way.">
+    <title>The Illumination | Ancient Wisdom for Modern Seekers</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400&display=swap" rel="stylesheet">
     <style>
-        .opening-question {
+        /* HERO - Full viewport dramatic entrance */
+        .hero-dramatic {
             min-height: 100vh;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
             text-align: center;
-            background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
-            padding: var(--space-2xl);
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse 80% 50% at 50% 0%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 40% at 50% 100%, rgba(139, 58, 58, 0.1) 0%, transparent 50%),
+                linear-gradient(180deg, #050508 0%, #0a0a0f 30%, #0e0e14 70%, #0a0a0f 100%);
+        }
+        .hero-dramatic::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 1200px;
+            height: 1200px;
+            transform: translate(-50%, -50%);
+            background:
+                radial-gradient(circle at center, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at center, rgba(212, 175, 55, 0.03) 0%, transparent 70%);
+            animation: breathe 8s ease-in-out infinite;
+        }
+        @keyframes breathe {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+        }
+        .hero-dramatic::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><circle cx="100" cy="100" r="80" fill="none" stroke="rgba(212,175,55,0.03)" stroke-width="0.5"/><circle cx="100" cy="100" r="60" fill="none" stroke="rgba(212,175,55,0.02)" stroke-width="0.5"/><circle cx="100" cy="100" r="40" fill="none" stroke="rgba(212,175,55,0.02)" stroke-width="0.5"/></svg>') center center / 600px 600px no-repeat;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        .hero-content-main {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 var(--space-lg);
+        }
+        .brand-symbol {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto var(--space-xl);
             position: relative;
         }
-        .opening-question-content {
-            max-width: 800px;
-        }
-        .opening-question h1 {
-            font-family: var(--font-display);
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
-            color: var(--color-text-light);
-            font-weight: 300;
-            line-height: 1.6;
-            margin-bottom: var(--space-xl);
-        }
-        .opening-question h1 strong {
-            color: var(--color-text);
-            font-weight: 500;
-        }
-        .opening-question p {
-            font-family: var(--font-body);
-            font-size: 1.1rem;
-            color: var(--color-text-muted);
-            margin-bottom: var(--space-lg);
-            line-height: 1.8;
-        }
-        .opening-question .scroll-prompt {
-            margin-top: var(--space-2xl);
-            color: var(--color-gold);
-            font-size: 0.875rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-        .opening-question .scroll-prompt::after {
+        .brand-symbol::before {
             content: '';
-            display: block;
-            width: 1px;
-            height: 40px;
-            background: var(--color-gold-dark);
-            margin: var(--space-md) auto 0;
-            animation: pulse 2s ease-in-out infinite;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 60px;
+            height: 60px;
+            transform: translate(-50%, -50%);
+            border: 1px solid var(--color-gold);
+            border-radius: 50%;
+            animation: symbol-pulse 4s ease-in-out infinite;
         }
-        @keyframes pulse {
-            0%, 100% { opacity: 0.3; height: 40px; }
-            50% { opacity: 1; height: 60px; }
+        .brand-symbol::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 8px;
+            height: 8px;
+            transform: translate(-50%, -50%);
+            background: var(--color-gold);
+            border-radius: 50%;
+            box-shadow: 0 0 30px var(--color-gold), 0 0 60px rgba(212, 175, 55, 0.5);
         }
-        .recognition-section {
-            padding: var(--space-3xl) var(--space-lg);
-            background: var(--color-bg-alt);
+        @keyframes symbol-pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
         }
-        .recognition-content {
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .recognition-content h2 {
+        .hero-title-main {
             font-family: var(--font-display);
-            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            font-size: clamp(3.5rem, 10vw, 6rem);
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
             color: var(--color-text);
-            font-weight: 400;
-            line-height: 1.7;
-            margin-bottom: var(--space-xl);
+            margin-bottom: var(--space-md);
+            text-shadow: 0 0 80px rgba(212, 175, 55, 0.3);
         }
-        .feelings-list {
-            list-style: none;
-            margin: var(--space-xl) 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-md);
-        }
-        .feelings-list li {
+        .hero-subtitle-main {
             font-family: var(--font-display);
-            font-size: 1.1rem;
-            color: var(--color-text-light);
-            padding: var(--space-md) var(--space-lg);
-            background: var(--color-bg);
-            border-left: 2px solid transparent;
-            transition: all 0.3s ease;
-            cursor: default;
-            text-align: left;
-        }
-        .feelings-list li:hover {
-            border-left-color: var(--color-gold);
-            background: rgba(201, 169, 98, 0.05);
-        }
-        .feelings-list li em {
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
             color: var(--color-gold);
-            font-style: normal;
-        }
-        .answer-intro {
-            padding: var(--space-3xl) var(--space-lg);
-            background: var(--color-bg);
-        }
-        .answer-intro-content {
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .answer-intro h2 {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            color: var(--color-gold);
-            font-weight: 400;
-            margin-bottom: var(--space-lg);
-        }
-        .answer-intro p {
-            font-size: 1.1rem;
-            color: var(--color-text-light);
-            line-height: 1.9;
-            margin-bottom: var(--space-lg);
-        }
-        .ancient-wisdom-block {
-            background: var(--color-bg-alt);
-            padding: var(--space-xl);
-            margin: var(--space-xl) 0;
-            border-left: 3px solid var(--color-gold-dark);
-        }
-        .ancient-wisdom-block blockquote {
-            font-family: var(--font-display);
-            font-size: 1.3rem;
-            font-style: italic;
-            color: var(--color-text);
-            margin: 0 0 var(--space-md) 0;
-            padding: 0;
-            border: none;
-            line-height: 1.7;
-        }
-        .ancient-wisdom-block cite {
-            color: var(--color-gold);
-            font-size: 0.9rem;
-        }
-        .what-you-find {
-            padding: var(--space-3xl) var(--space-lg);
-            background: var(--color-bg-alt);
-        }
-        .what-you-find-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .what-you-find h2 {
-            text-align: center;
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            color: var(--color-text);
-            font-weight: 400;
             margin-bottom: var(--space-2xl);
         }
-        .find-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        .hero-wisdom {
+            font-family: var(--font-display);
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            font-style: italic;
+            font-weight: 300;
+            color: var(--color-text-light);
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto var(--space-2xl);
+        }
+        .hero-cta-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             gap: var(--space-lg);
         }
-        .find-card {
-            background: var(--color-bg);
-            padding: var(--space-xl);
-            border-top: 2px solid var(--color-gold-dark);
-        }
-        .find-card h3 {
+        .hero-cta-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-lg) var(--space-2xl);
+            background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-dark) 100%);
+            color: var(--color-bg);
             font-family: var(--font-display);
-            font-size: 1.1rem;
+            font-size: 1rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-cta-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s ease;
+        }
+        .hero-cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.4);
+            color: var(--color-bg);
+        }
+        .hero-cta-primary:hover::before {
+            left: 100%;
+        }
+        .hero-cta-secondary {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .hero-cta-secondary:hover {
             color: var(--color-gold);
-            margin-bottom: var(--space-sm);
         }
-        .find-card p {
-            color: var(--color-text-light);
-            font-size: 0.95rem;
-            line-height: 1.7;
+        .scroll-beacon {
+            position: absolute;
+            bottom: var(--space-xl);
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-sm);
+            color: var(--color-text-muted);
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            animation: float-down 3s ease-in-out infinite;
         }
-        .not-what-you-think {
+        .scroll-beacon span {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(180deg, var(--color-gold-dark), transparent);
+        }
+        @keyframes float-down {
+            0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
+            50% { opacity: 1; transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* RECOGNITION SECTION */
+        .recognition {
             padding: var(--space-3xl) var(--space-lg);
-            background: var(--color-bg);
+            background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
+            position: relative;
         }
-        .not-what-you-think-content {
-            max-width: 700px;
+        .recognition::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 80px;
+            background: linear-gradient(180deg, var(--color-gold-dark), transparent);
+        }
+        .recognition-inner {
+            max-width: 800px;
             margin: 0 auto;
             text-align: center;
         }
-        .not-what-you-think h2 {
+        .recognition h2 {
             font-family: var(--font-display);
-            font-size: 1.3rem;
-            color: var(--color-text-light);
-            font-weight: 400;
-            line-height: 1.7;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 300;
+            color: var(--color-text);
             margin-bottom: var(--space-xl);
+            line-height: 1.6;
         }
-        .not-list {
+        .pain-points {
             list-style: none;
-            padding: 0;
-            margin: var(--space-xl) 0;
             text-align: left;
+            max-width: 650px;
+            margin: 0 auto var(--space-xl);
         }
-        .not-list li {
-            padding: var(--space-sm) 0;
-            padding-left: var(--space-lg);
+        .pain-points li {
             position: relative;
+            padding: var(--space-md) 0 var(--space-md) var(--space-xl);
+            font-family: var(--font-display);
+            font-size: 1.1rem;
             color: var(--color-text-light);
+            line-height: 1.7;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
         }
-        .not-list li::before {
-            content: "—";
+        .pain-points li::before {
+            content: '';
             position: absolute;
             left: 0;
-            color: var(--color-gold-dark);
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: var(--color-gold-dark);
+            border-radius: 50%;
+            opacity: 0.6;
         }
-        .first-step-section {
+        .pain-points li:last-child {
+            border-bottom: none;
+        }
+        .pain-points em {
+            color: var(--color-gold);
+            font-style: normal;
+            font-weight: 500;
+        }
+        .recognition-affirmation {
+            font-size: 1.2rem;
+            color: var(--color-text);
+            margin-top: var(--space-xl);
+        }
+        .recognition-affirmation strong {
+            color: var(--color-gold);
+        }
+
+        /* OFFERING SECTION */
+        .offering {
             padding: var(--space-3xl) var(--space-lg);
-            background: linear-gradient(180deg, var(--color-bg-alt) 0%, var(--color-bg) 100%);
-            text-align: center;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+                var(--color-bg-alt);
         }
-        .first-step-content {
+        .offering-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .offering-header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+        .offering-header h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 300;
+            color: var(--color-text);
+            margin-bottom: var(--space-md);
+        }
+        .offering-header p {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
             max-width: 600px;
             margin: 0 auto;
         }
-        .first-step-content h2 {
+        .offering-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-lg);
+        }
+        .offering-card {
+            background: linear-gradient(145deg, var(--color-bg) 0%, var(--color-bg-light) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            padding: var(--space-xl);
+            position: relative;
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+        .offering-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .offering-card:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+        .offering-card:hover::before {
+            opacity: 1;
+        }
+        .offering-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: var(--space-lg);
+            position: relative;
+        }
+        .offering-icon::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--color-gold-dark);
+            border-radius: 50%;
+        }
+        .offering-card h3 {
             font-family: var(--font-display);
-            font-size: 1.5rem;
-            color: var(--color-text);
+            font-size: 1.4rem;
+            color: var(--color-gold);
+            margin-bottom: var(--space-md);
             font-weight: 400;
+        }
+        .offering-card p {
+            color: var(--color-text-light);
+            line-height: 1.8;
+            margin-bottom: var(--space-md);
+        }
+        .offering-card a {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            color: var(--color-gold);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            transition: gap 0.3s ease;
+        }
+        .offering-card a:hover {
+            gap: var(--space-md);
+        }
+        .offering-card a::after {
+            content: '→';
+        }
+
+        /* WISDOM SECTION */
+        .wisdom-section {
+            padding: var(--space-3xl) var(--space-lg);
+            background:
+                radial-gradient(ellipse at center, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+                var(--color-bg);
+            position: relative;
+        }
+        .wisdom-section::before,
+        .wisdom-section::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--color-gold-dark), transparent);
+        }
+        .wisdom-section::before { top: 0; }
+        .wisdom-section::after { bottom: 0; }
+        .wisdom-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .wisdom-quote {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-style: italic;
+            font-weight: 300;
+            color: var(--color-text);
+            line-height: 1.8;
             margin-bottom: var(--space-lg);
         }
-        .first-step-content p {
-            color: var(--color-text-light);
+        .wisdom-source {
+            font-size: 1rem;
+            color: var(--color-gold);
+            letter-spacing: 0.1em;
+        }
+
+        /* MARTYRS PREVIEW */
+        .martyrs-section {
+            padding: var(--space-3xl) var(--space-lg);
+            background: linear-gradient(180deg, var(--color-bg-alt) 0%, var(--color-bg) 100%);
+        }
+        .martyrs-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .martyrs-header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+        .martyrs-header h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 300;
+            color: var(--color-text);
+            margin-bottom: var(--space-md);
+        }
+        .martyrs-header p {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+        .martyrs-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-md);
+        }
+        .martyr-preview {
+            background: var(--color-bg-alt);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            padding: var(--space-lg);
+            text-align: center;
+            transition: all 0.4s ease;
+            text-decoration: none;
+        }
+        .martyr-preview:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        .martyr-preview h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--color-text);
+            margin-bottom: var(--space-xs);
+            font-weight: 400;
+        }
+        .martyr-preview .dates {
+            font-size: 0.8rem;
+            color: var(--color-gold);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-sm);
+        }
+        .martyr-preview .epithet {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+        .martyrs-cta {
+            text-align: center;
+            margin-top: var(--space-xl);
+        }
+        .martyrs-cta a {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            color: var(--color-gold);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding-bottom: 4px;
+            border-bottom: 1px solid var(--color-gold-dark);
+            transition: all 0.3s ease;
+        }
+        .martyrs-cta a:hover {
+            border-color: var(--color-gold);
+            color: var(--color-gold-light);
+        }
+
+        /* CALL TO ACTION */
+        .cta-final {
+            padding: var(--space-3xl) var(--space-lg);
+            background:
+                radial-gradient(ellipse at 50% 100%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
+            text-align: center;
+            position: relative;
+        }
+        .cta-final-inner {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .cta-final h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 300;
+            color: var(--color-text);
+            margin-bottom: var(--space-lg);
+        }
+        .cta-final p {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
             margin-bottom: var(--space-xl);
             line-height: 1.8;
         }
-        .entry-points {
+        .cta-buttons {
             display: flex;
-            flex-direction: column;
             gap: var(--space-md);
-            margin: var(--space-xl) 0;
+            justify-content: center;
+            flex-wrap: wrap;
         }
-        .entry-point {
-            display: block;
-            padding: var(--space-lg);
-            background: var(--color-bg-alt);
-            border: 1px solid var(--color-gold-dark);
-            color: var(--color-text);
+        .cta-btn-primary {
+            display: inline-block;
+            padding: var(--space-md) var(--space-xl);
+            background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-dark) 100%);
+            color: var(--color-bg);
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
             text-decoration: none;
             transition: all 0.3s ease;
         }
-        .entry-point:hover {
-            background: var(--color-gold-dark);
+        .cta-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.3);
             color: var(--color-bg);
         }
-        .entry-point .entry-title {
+        .cta-btn-secondary {
+            display: inline-block;
+            padding: var(--space-md) var(--space-xl);
+            background: transparent;
+            color: var(--color-text);
             font-family: var(--font-display);
-            font-size: 1.1rem;
-            display: block;
-            margin-bottom: var(--space-xs);
-        }
-        .entry-point .entry-desc {
-            font-size: 0.875rem;
-            opacity: 0.8;
-        }
-        .traditional-nav {
-            padding: var(--space-2xl) var(--space-lg);
-            background: var(--color-bg);
-            border-top: 1px solid var(--color-bg-alt);
-        }
-        .traditional-nav-content {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .traditional-nav h3 {
-            text-align: center;
-            font-family: var(--font-display);
-            font-size: 0.875rem;
-            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: var(--space-xl);
-        }
-        .nav-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: var(--space-md);
-        }
-        .nav-link {
-            display: block;
-            padding: var(--space-md);
-            background: var(--color-bg-alt);
-            color: var(--color-text-light);
             text-decoration: none;
-            text-align: center;
-            font-family: var(--font-display);
-            transition: all 0.2s ease;
+            border: 1px solid var(--color-gold-dark);
+            transition: all 0.3s ease;
         }
-        .nav-link:hover {
+        .cta-btn-secondary:hover {
+            border-color: var(--color-gold);
             color: var(--color-gold);
-            background: var(--color-bg);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .offering-grid {
+                grid-template-columns: 1fr;
+            }
+            .martyrs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 600px) {
+            .martyrs-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-title-main {
+                letter-spacing: 0.1em;
+            }
+            .hero-subtitle-main {
+                letter-spacing: 0.2em;
+            }
         }
     </style>
 </head>
 <body>
     <nav class="main-nav">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">The Path</a>
+            <a href="index.html" class="nav-logo">The Illumination</a>
             <button class="nav-toggle" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
@@ -320,136 +601,133 @@
             </button>
             <ul class="nav-links">
                 <li><a href="pages/scripture.html">Scripture</a></li>
+                <li><a href="pages/teachings.html">Teachings</a></li>
                 <li><a href="pages/deep-studies.html">Deep Studies</a></li>
-                <li><a href="pages/why-now.html">Why Now</a></li>
                 <li><a href="pages/martyrs.html">The Martyrs</a></li>
-                <li><a href="pages/study-guide.html">Study Guide</a></li>
-                <li><a href="pages/about.html">About</a></li>
+                <li><a href="pages/practices.html">Practices</a></li>
             </ul>
         </div>
     </nav>
 
-    <section class="opening-question">
-        <div class="opening-question-content">
-            <h1>When machines can create art, write poetry, and do the work you trained your whole life for...<br><br><strong>What is left that makes you human?</strong></h1>
-            <p>You feel it. Something is ending. Something else is trying to begin.</p>
-            <p>The old answers don't work anymore. But maybe they never did.</p>
-            <div class="scroll-prompt">There is another way</div>
+    <!-- HERO -->
+    <section class="hero-dramatic">
+        <div class="hero-content-main">
+            <div class="brand-symbol"></div>
+            <h1 class="hero-title-main">The Illumination</h1>
+            <p class="hero-subtitle-main">Ancient Wisdom for Modern Seekers</p>
+            <p class="hero-wisdom">"That which you seek, you already are. But to know this, you must die to everything you believe yourself to be."</p>
+            <div class="hero-cta-group">
+                <a href="pages/start.html" class="hero-cta-primary">Begin Your Journey</a>
+                <a href="pages/why-now.html" class="hero-cta-secondary">Why this matters now</a>
+            </div>
+        </div>
+        <div class="scroll-beacon">
+            Discover
+            <span></span>
         </div>
     </section>
 
-    <section class="recognition-section">
-        <div class="recognition-content">
-            <h2>Perhaps you've been feeling...</h2>
-            <ul class="feelings-list">
-                <li>Like your skills and knowledge are being <em>made obsolete</em> faster than you can adapt</li>
-                <li>That the things you were told to pursue — career, achievement, security — feel <em>hollow</em> now</li>
-                <li>A strange grief for a world that's disappearing, even though you can't name <em>what's being lost</em></li>
-                <li>Disconnected from meaning, from purpose, from any sense that <em>your existence matters</em></li>
-                <li>That you're supposed to be afraid of AI, but what you really fear is <em>your own irrelevance</em></li>
-                <li>A desperate hunger for something <em>true</em> — something that can't be automated, simulated, or disrupted</li>
+    <!-- RECOGNITION -->
+    <section class="recognition">
+        <div class="recognition-inner">
+            <h2>You sense that something is missing.</h2>
+            <ul class="pain-points">
+                <li>The career you built feels <em>hollow</em> now that machines can do what you trained your whole life to do</li>
+                <li>The achievements you were promised would bring fulfillment brought only <em>more wanting</em></li>
+                <li>You've tried the philosophies, the self-help, the meditation apps — and still feel <em>disconnected from meaning</em></li>
+                <li>Something in you knows there's <em>more</em>, but you can't find it in the usual places</li>
             </ul>
-            <p>If any of this resonates, you are not alone. And you are not wrong to feel this way.</p>
-            <p>What you're experiencing is not a personal failure. It's a symptom of a world in transformation.</p>
+            <p class="recognition-affirmation">This is not failure. <strong>This is awakening.</strong></p>
         </div>
     </section>
 
-    <section class="answer-intro">
-        <div class="answer-intro-content">
-            <h2>What if this crisis is the beginning of your awakening?</h2>
-            <p>Seven hundred years ago, in a world that was also changing faster than anyone could understand, seekers faced similar questions. They left behind texts that speak directly to our moment — texts that have been nearly forgotten, overshadowed by religions of doctrine and philosophies of escape.</p>
-            <p>These texts don't offer comfort. They offer transformation.</p>
-            <div class="ancient-wisdom-block">
-                <blockquote>"That which you seek, you already are. But to know this, you must die to everything you believe yourself to be."</blockquote>
-                <cite>— The Conference of the Birds, 12th century Persia</cite>
+    <!-- OFFERING -->
+    <section class="offering">
+        <div class="offering-inner">
+            <div class="offering-header">
+                <h2>What the Mystics and Martyrs Left for Us</h2>
+                <p>Seven centuries of wisdom, gathered. Four lives that embody it. A path that transforms.</p>
             </div>
-            <p>The mystics knew what the world is now discovering: that everything built on external foundations will eventually crumble. Your job can be automated. Your skills can be replicated. Your achievements can be forgotten.</p>
-            <p>But there is something in you that cannot be automated, cannot be replicated, cannot be taken away. The mystics spent their lives trying to point us toward it. The martyrs died to demonstrate it.</p>
-            <p>Now, in the crisis of the present moment, perhaps we are finally ready to hear them.</p>
-        </div>
-    </section>
-
-    <section class="what-you-find">
-        <div class="what-you-find-content">
-            <h2>What You'll Find Here</h2>
-            <div class="find-grid">
-                <div class="find-card">
-                    <h3>Ancient Wisdom, Gathered</h3>
-                    <p>Sufi poetry on the journey of the soul. Alchemical texts on transformation. Christian mystics who found light in darkness. Jakob Böhme's visions from a shoemaker's bench. All woven together, all in the public domain, all speaking to the present moment.</p>
+            <div class="offering-grid">
+                <div class="offering-card">
+                    <div class="offering-icon"></div>
+                    <h3>The Sacred Texts</h3>
+                    <p>Sufi poetry on the soul's journey. Alchemical teachings on transformation. Christian mystics who found light in darkness. All woven together, speaking directly to our moment of crisis.</p>
+                    <a href="pages/scripture.html">Enter the Scripture</a>
                 </div>
-                <div class="find-card">
-                    <h3>Lives That Embody It</h3>
-                    <p>Four revolutionaries who died in 1833-1849, whose lives demonstrate what the ancient texts describe. Not religious martyrs, but political ones — proving that the Pattern of transformation through sacrifice is universal, not sectarian.</p>
+                <div class="offering-card">
+                    <div class="offering-icon"></div>
+                    <h3>The 29 Teachings</h3>
+                    <p>The distilled wisdom of seven centuries, extracted and refined. Each teaching a doorway. Each doorway opening onto the same light.</p>
+                    <a href="pages/teachings.html">Explore the Teachings</a>
                 </div>
-                <div class="find-card">
-                    <h3>Practices That Transform</h3>
-                    <p>Not beliefs to accept, but practices to live. Daily disciplines, contemplative exercises, and ways of seeing that gradually reveal what was always present. The work is not to acquire but to uncover.</p>
+                <div class="offering-card">
+                    <div class="offering-icon"></div>
+                    <h3>Deep Studies</h3>
+                    <p>Seven-day courses addressing the crises of our time: uncertainty, authoritarianism, surveillance, determinism. Ancient wisdom applied to modern suffering.</p>
+                    <a href="pages/deep-studies.html">Begin a Study</a>
                 </div>
-                <div class="find-card">
-                    <h3>A Path Forward</h3>
-                    <p>Not escape from the world, but deeper engagement with it. Not resignation to change, but transformation through it. Not answers that close questions, but questions that open you.</p>
+                <div class="offering-card">
+                    <div class="offering-icon"></div>
+                    <h3>The Practices</h3>
+                    <p>Not beliefs to accept, but disciplines to embody. Daily attention, weekly reflection, seasonal renewal. The work is not to acquire but to uncover.</p>
+                    <a href="pages/practices.html">Learn the Practices</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="not-what-you-think">
-        <div class="not-what-you-think-content">
-            <h2>This is not what you might think it is.</h2>
-            <ul class="not-list">
-                <li>Not a religion that asks you to believe things you can't verify</li>
-                <li>Not a philosophy that stays safely in your head</li>
-                <li>Not a self-help program promising quick fixes</li>
-                <li>Not nostalgia for a past that never existed</li>
-                <li>Not an escape from the real world into spiritual fantasy</li>
-            </ul>
-            <p>This is ancient wisdom for people who think. For people who doubt. For people who have tried the easy answers and found them wanting. For people who sense that there's something more, but can't find it in the usual places.</p>
-            <div class="ancient-wisdom-block">
-                <blockquote>"Die before you die and find that there is no death. The wound is the place where the Light enters you."</blockquote>
-                <cite>— Rumi, 13th century</cite>
+    <!-- WISDOM -->
+    <section class="wisdom-section">
+        <div class="wisdom-inner">
+            <p class="wisdom-quote">"Die before you die and find that there is no death. The wound is the place where the Light enters you."</p>
+            <p class="wisdom-source">Rumi, 13th Century Persia</p>
+        </div>
+    </section>
+
+    <!-- MARTYRS -->
+    <section class="martyrs-section">
+        <div class="martyrs-inner">
+            <div class="martyrs-header">
+                <h2>Those Who Embodied It</h2>
+                <p>Four revolutionaries who died between 1833 and 1849. Their lives prove that the Pattern of transformation through sacrifice is universal, not sectarian.</p>
+            </div>
+            <div class="martyrs-grid">
+                <a href="pages/martyrs.html#jacopo" class="martyr-preview">
+                    <h3>Jacopo Ruffini</h3>
+                    <p class="dates">1805 – 1833</p>
+                    <p class="epithet">The Silent Witness</p>
+                </a>
+                <a href="pages/martyrs.html#attilio" class="martyr-preview">
+                    <h3>Attilio Bandiera</h3>
+                    <p class="dates">1810 – 1844</p>
+                    <p class="epithet">The Noble Sacrifice</p>
+                </a>
+                <a href="pages/martyrs.html#emilio" class="martyr-preview">
+                    <h3>Emilio Bandiera</h3>
+                    <p class="dates">1819 – 1844</p>
+                    <p class="epithet">The Younger Brother</p>
+                </a>
+                <a href="pages/martyrs.html#sandor" class="martyr-preview">
+                    <h3>Sándor Petőfi</h3>
+                    <p class="dates">1823 – 1849</p>
+                    <p class="epithet">The Poet Warrior</p>
+                </a>
+            </div>
+            <div class="martyrs-cta">
+                <a href="pages/martyrs.html">Read Their Stories</a>
             </div>
         </div>
     </section>
 
-    <section class="first-step-section">
-        <div class="first-step-content">
-            <h2>The First Step</h2>
-            <p>You don't have to commit to anything. You don't have to believe anything. You just have to be curious enough to look.</p>
-            <div class="entry-points">
-                <a href="pages/study-guide.html" class="entry-point">
-                    <span class="entry-title">Start the Four-Week Journey</span>
-                    <span class="entry-desc">A guided introduction with daily readings, reflections, and practices</span>
-                </a>
-                <a href="pages/scripture.html#chapter-1" class="entry-point">
-                    <span class="entry-title">Read the Conference of the Birds</span>
-                    <span class="entry-desc">The story that begins the scripture — thirty birds seeking their king</span>
-                </a>
-                <a href="pages/martyrs.html#jacopo" class="entry-point">
-                    <span class="entry-title">Meet Jacopo Ruffini</span>
-                    <span class="entry-desc">A young man who chose death rather than betray his friends</span>
-                </a>
-                <a href="pages/teachings.html" class="entry-point">
-                    <span class="entry-title">Browse the 29 Teachings</span>
-                    <span class="entry-desc">The distilled wisdom extracted from seven centuries of seeking</span>
-                </a>
-            </div>
-            <p>The path is open to all who seek sincerely. The doors are not locked.</p>
-        </div>
-    </section>
-
-    <section class="traditional-nav">
-        <div class="traditional-nav-content">
-            <h3>Explore</h3>
-            <div class="nav-grid">
-                <a href="pages/scripture.html" class="nav-link">Scripture</a>
-                <a href="pages/teachings.html" class="nav-link">Teachings</a>
-                <a href="pages/martyrs.html" class="nav-link">The Martyrs</a>
-                <a href="pages/practices.html" class="nav-link">Practices</a>
-                <a href="pages/study-guide.html" class="nav-link">Study Guide</a>
-                <a href="pages/glossary.html" class="nav-link">Glossary</a>
-                <a href="pages/history.html" class="nav-link">History</a>
-                <a href="pages/sources.html" class="nav-link">Sources</a>
-                <a href="pages/about.html" class="nav-link">About</a>
+    <!-- FINAL CTA -->
+    <section class="cta-final">
+        <div class="cta-final-inner">
+            <h2>The Path is Open</h2>
+            <p>You don't have to believe anything. You don't have to commit to anything. You just have to be curious enough to take the first step.</p>
+            <div class="cta-buttons">
+                <a href="pages/start.html" class="cta-btn-primary">Begin the Journey</a>
+                <a href="pages/study-guide.html" class="cta-btn-secondary">Four-Week Introduction</a>
             </div>
         </div>
     </section>
@@ -458,37 +736,37 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>The Path of Illumination</h4>
-                    <p>Ancient wisdom for modern seekers. All source texts are in the public domain.</p>
+                    <h4>The Illumination</h4>
+                    <p>Ancient wisdom for modern seekers. A path for those who sense there is more. All source texts are in the public domain.</p>
                 </div>
                 <div class="footer-section">
-                    <h4>Scripture</h4>
+                    <h4>The Scripture</h4>
                     <ul>
-                        <li><a href="pages/scripture.html#part1">Part I: The Whisperings</a></li>
-                        <li><a href="pages/scripture.html#part2">Part II: The Illuminations</a></li>
+                        <li><a href="pages/scripture.html">The Book of Light</a></li>
                         <li><a href="pages/teachings.html">The 29 Teachings</a></li>
+                        <li><a href="pages/glossary.html">Glossary of Terms</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Learn</h4>
+                    <h4>The Practice</h4>
                     <ul>
-                        <li><a href="pages/study-guide.html">Study Guide</a></li>
-                        <li><a href="pages/glossary.html">Glossary</a></li>
-                        <li><a href="pages/practices.html">Practices</a></li>
+                        <li><a href="pages/practices.html">Daily Disciplines</a></li>
+                        <li><a href="pages/deep-studies.html">Deep Studies</a></li>
+                        <li><a href="pages/study-guide.html">Four-Week Journey</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>About</h4>
+                    <h4>The Witness</h4>
                     <ul>
-                        <li><a href="pages/about.html">The Path</a></li>
+                        <li><a href="pages/martyrs.html">The Four Martyrs</a></li>
+                        <li><a href="pages/why-now.html">Why This Matters Now</a></li>
                         <li><a href="pages/sources.html">Source Texts</a></li>
-                        <li><a href="https://github.com/bedwards/bible-2">GitHub</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 The Path of Illumination. All sacred texts are in the public domain.</p>
-                <p class="footer-quote">&ldquo;Live as if life matters&mdash;because it does. Die when you must&mdash;because death is transformation.&rdquo;</p>
+                <p>&copy; 2026 The Illumination. All sacred texts are in the public domain.</p>
+                <p class="footer-quote">"That which you seek, you already are."</p>
             </div>
         </div>
     </footer>

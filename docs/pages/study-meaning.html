@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A 7-day deep study on finding meaning when free will seems illusory: what the mystics understood about choice, determinism, and authentic living.">
+    <title>Meaning Despite Determinism | 7-Day Study | The Path</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        .study-hero { padding: calc(80px + var(--space-2xl)) var(--space-lg) var(--space-2xl); background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-alt) 100%); text-align: center; }
+        .study-hero-content { max-width: 700px; margin: 0 auto; }
+        .study-badge { display: inline-block; padding: var(--space-xs) var(--space-md); background: var(--color-gold-dark); color: var(--color-bg); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-lg); }
+        .study-hero h1 { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem); color: var(--color-text); font-weight: 300; margin-bottom: var(--space-lg); }
+        .study-hero .lead { color: var(--color-text-light); font-size: 1.1rem; line-height: 1.8; margin-bottom: var(--space-xl); }
+        .study-meta { display: flex; justify-content: center; gap: var(--space-xl); color: var(--color-text-muted); font-size: 0.9rem; }
+        .day-nav { background: var(--color-bg-alt); padding: var(--space-md) var(--space-lg); position: sticky; top: 80px; z-index: 50; overflow-x: auto; }
+        .day-nav-inner { max-width: 800px; margin: 0 auto; display: flex; gap: var(--space-sm); justify-content: center; }
+        .day-btn { padding: var(--space-sm) var(--space-md); background: transparent; border: 1px solid var(--color-bg); color: var(--color-text-muted); font-size: 0.875rem; cursor: pointer; white-space: nowrap; transition: all 0.2s ease; }
+        .day-btn:hover { border-color: var(--color-gold-dark); color: var(--color-gold); }
+        .day-btn.active { background: var(--color-gold-dark); border-color: var(--color-gold-dark); color: var(--color-bg); }
+        .day-btn.completed::after { content: " ✓"; color: var(--color-gold); }
+        .day-content { max-width: 800px; margin: 0 auto; padding: var(--space-2xl) var(--space-lg); }
+        .day-section { display: none; }
+        .day-section.active { display: block; }
+        .day-header { margin-bottom: var(--space-2xl); }
+        .day-header h2 { font-family: var(--font-display); font-size: 1.75rem; color: var(--color-text); font-weight: 400; margin-bottom: var(--space-sm); }
+        .day-header .subtitle { color: var(--color-gold); font-size: 0.9rem; }
+        .reading-block { background: var(--color-bg-alt); padding: var(--space-xl); margin: var(--space-xl) 0; }
+        .reading-block h3 { color: var(--color-gold); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--space-md); }
+        .reading-block .scripture { font-family: var(--font-display); font-style: italic; font-size: 1.1rem; color: var(--color-text); line-height: 1.8; margin-bottom: var(--space-md); }
+        .reading-block cite { color: var(--color-text-muted); font-size: 0.875rem; }
+        .teaching-block { padding: var(--space-xl) 0; border-bottom: 1px solid var(--color-bg-alt); }
+        .teaching-block:last-child { border-bottom: none; }
+        .teaching-block h3 { font-family: var(--font-display); font-size: 1.25rem; color: var(--color-text); font-weight: 400; margin-bottom: var(--space-md); }
+        .teaching-block p { color: var(--color-text-light); line-height: 1.9; margin-bottom: var(--space-lg); }
+        .teaching-block ul { color: var(--color-text-light); line-height: 1.9; margin-left: var(--space-lg); margin-bottom: var(--space-lg); }
+        .reflection-block { background: linear-gradient(135deg, rgba(201, 169, 98, 0.1) 0%, transparent 100%); border: 1px solid var(--color-gold-dark); padding: var(--space-xl); margin: var(--space-xl) 0; }
+        .reflection-block h3 { color: var(--color-gold); font-size: 1rem; margin-bottom: var(--space-md); }
+        .reflection-block p { color: var(--color-text-light); line-height: 1.8; margin-bottom: var(--space-md); }
+        .reflection-block textarea { width: 100%; min-height: 100px; padding: var(--space-md); background: var(--color-bg); border: 1px solid var(--color-bg); color: var(--color-text); font-family: var(--font-body); font-size: 1rem; line-height: 1.7; resize: vertical; }
+        .reflection-block textarea::placeholder { color: var(--color-text-muted); }
+        .practice-block { background: var(--color-bg-alt); padding: var(--space-xl); margin: var(--space-xl) 0; border-left: 3px solid var(--color-gold); }
+        .practice-block h3 { color: var(--color-gold); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--space-md); }
+        .practice-block p { color: var(--color-text-light); line-height: 1.8; margin-bottom: var(--space-md); }
+        .practice-block p:last-child { margin-bottom: 0; }
+        .day-complete { text-align: center; padding: var(--space-2xl) 0; margin-top: var(--space-xl); border-top: 1px solid var(--color-bg-alt); }
+        .complete-btn { padding: var(--space-md) var(--space-2xl); background: var(--color-gold-dark); border: none; color: var(--color-bg); font-size: 1rem; cursor: pointer; transition: all 0.3s ease; }
+        .complete-btn:hover { background: var(--color-gold); }
+        .complete-btn.completed { background: transparent; border: 1px solid var(--color-gold); color: var(--color-gold); }
+        .next-day-link { display: block; margin-top: var(--space-md); color: var(--color-text-muted); font-size: 0.9rem; cursor: pointer; }
+        .next-day-link:hover { color: var(--color-gold); }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">The Illumination</a>
+            <button class="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+            <ul class="nav-links">
+                <li><a href="scripture.html">Scripture</a></li>
+                <li><a href="deep-studies.html">Deep Studies</a></li>
+                <li><a href="why-now.html">Why Now</a></li>
+                <li><a href="martyrs.html">The Martyrs</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="study-hero">
+        <div class="study-hero-content">
+            <span class="study-badge">7-Day Deep Study</span>
+            <h1>Meaning Despite Determinism</h1>
+            <p class="lead">If your choices are determined by prior causes, if your brain decides before "you" are aware, if free will is an illusion — then what? The mystics found meaning beyond the either/or of freedom versus determinism.</p>
+            <div class="study-meta">
+                <span>7 days</span>
+                <span>~15 min/day</span>
+                <span>Readings + Practices</span>
+            </div>
+        </div>
+    </header>
+
+    <nav class="day-nav">
+        <div class="day-nav-inner">
+            <button class="day-btn active" data-day="1">Day 1</button>
+            <button class="day-btn" data-day="2">Day 2</button>
+            <button class="day-btn" data-day="3">Day 3</button>
+            <button class="day-btn" data-day="4">Day 4</button>
+            <button class="day-btn" data-day="5">Day 5</button>
+            <button class="day-btn" data-day="6">Day 6</button>
+            <button class="day-btn" data-day="7">Day 7</button>
+        </div>
+    </nav>
+
+    <main class="day-content">
+
+        <!-- DAY 1 -->
+        <section class="day-section active" data-day="1">
+            <div class="day-header">
+                <h2>Day 1: The Problem of Free Will</h2>
+                <p class="subtitle">Facing the challenge honestly</p>
+            </div>
+
+            <div class="teaching-block">
+                <h3>The Scientific Challenge</h3>
+                <p>Neuroscience has revealed uncomfortable truths. Brain imaging shows that decisions are made milliseconds before conscious awareness of them. Your sense of choosing may be a retrospective narrative, not a causal force. The feeling of free will, however vivid, may be exactly that — a feeling, not a fact.</p>
+                <p>Physics suggests the same. If the universe operates according to laws, and if your brain is part of the universe, then its states follow from prior states. Where is the gap for "free choice" to enter?</p>
+                <p>These insights can feel devastating. If you don't really choose, what is the point of deliberation, of ethics, of effort? If your future was determined at the Big Bang, why do anything?</p>
+            </div>
+
+            <div class="reading-block">
+                <h3>Today's Reading</h3>
+                <p class="scripture">"The human being is the microcosm. Everything that exists in the universe exists also in you. The stars are within you. The metals are within you. Heaven and hell are within you. Do not seek outside for what can only be found inside."</p>
+                <cite>— Journey 18:5, The Key</cite>
+            </div>
+
+            <div class="teaching-block">
+                <h3>A Different Starting Point</h3>
+                <p>Notice something: the mystics didn't start from the question "Is my will free or determined?" They started from the question "Who is the one asking?" The question of free will assumes a "self" that either has or lacks freedom. But what is this self?</p>
+                <p>The mystics discovered that the self we think we are — the self that worries about free will — is itself a construction. This doesn't solve the free will problem as usually posed. It dissolves it, by revealing that the problem rests on an assumption that doesn't hold.</p>
+            </div>
+
+            <div class="reflection-block">
+                <h3>Reflection Questions</h3>
+                <p>Has the question of free will disturbed you? When you make a decision, what does it feel like from the inside? Do you experience yourself as choosing, or as discovering what was already decided?</p>
+                <textarea placeholder="Write your reflection..." data-key="meaning-day1"></textarea>
+            </div>
+
+            <div class="practice-block">
+                <h3>Today's Practice</h3>
+                <p><strong>Notice the Decider.</strong> Today, when you make a small decision (what to eat, which way to walk), pause and look for the one who decides. Where is this decider located? What is it made of? Can you actually find it, or do you only find the decision arising?</p>
+            </div>
+
+            <div class="day-complete">
+                <button class="complete-btn" data-day="1">Mark Day 1 Complete</button>
+                <span class="next-day-link" data-next="2">Continue to Day 2 →</span>
+            </div>
+        </section>
+
+        <!-- DAY 2 -->
+        <section class="day-section" data-day="2">
+            <div class="day-header">
+                <h2>Day 2: Beyond Either/Or</h2>
+                <p class="subtitle">The mystics' third option</p>
+            </div>
+
+            <div class="teaching-block">
+                <h3>The False Dilemma</h3>
+                <p>The free will debate assumes two options: either your choices are free (and therefore meaningful), or they are determined (and therefore meaningless). The mystics saw through this false dilemma.</p>
+                <p>Consider: what if "free" and "determined" are both inadequate descriptions? What if the reality of action is something that neither concept captures?</p>
+            </div>
+
+            <div class="reading-block">
+                <h3>Today's Reading</h3>
+                <p class="scripture">"I was a hidden treasure and I loved to be known, so I created the world that I might be known. The Many came forth from the One, not as something separate, but as the One knowing Itself through infinite mirrors."</p>
+                <cite>— Journey 5:1, The Hidden Treasure</cite>
+            </div>
+
+            <div class="teaching-block">
+                <h3>Participation Rather Than Control</h3>
+                <p>Al-Ghazali described human beings as mirrors in which the Divine sees itself. We are not separate agents controlling our actions from outside the universe. We are the universe becoming conscious of itself, the One expressing itself through the Many.</p>
+                <p>From this perspective, the question changes. It's not "Do I have free will?" but "What is expressing itself through me?" Not "Am I causing my actions?" but "Am I aligned with the creative force that is expressing itself as this life?"</p>
+                <p>This is neither classical free will nor classical determinism. It's participation — the sense of being a vehicle through which reality expresses itself, not separate from that reality but an intimate part of it.</p>
+            </div>
+
+            <div class="reflection-block">
+                <h3>Reflection Questions</h3>
+                <p>Have you ever felt like a channel for something larger than your individual will? What was that like? What if that experience is closer to the truth than your usual sense of being a separate decider?</p>
+                <textarea placeholder="Write your reflection..." data-key="meaning-day2"></textarea>
+            </div>
+
+            <div class="practice-block">
+                <h3>Today's Practice</h3>
+                <p><strong>Notice Flow States.</strong> Today, watch for moments when action happens without effortful choice — when you're absorbed in work, conversation, or creative activity and things just happen. This is life expressing itself through you without the interference of "I am deciding." What does it feel like?</p>
+            </div>
+
+            <div class="day-complete">
+                <button class="complete-btn" data-day="2">Mark Day 2 Complete</button>
+                <span class="next-day-link" data-next="3">Continue to Day 3 →</span>
+            </div>
+        </section>
+
+        <!-- DAY 3 -->
+        <section class="day-section" data-day="3">
+            <div class="day-header">
+                <h2>Day 3: The Transformed Will</h2>
+                <p class="subtitle">What the mystics meant by surrender</p>
+            </div>
+
+            <div class="teaching-block">
+                <h3>Beyond Personal Will</h3>
+                <p>The mystics consistently taught "surrender of the will." But what does this mean? Not passivity, not resignation, not giving up on action. Rather, it means releasing the illusion that your personal will is separate from the universal will.</p>
+                <p>When you align with the deeper flow — what the Sufis called the will of God, what the alchemists called the Work, what Böhme called the divine process expressing itself through creation — you act, but the action is not "yours" in the way you usually think.</p>
+            </div>
+
+            <div class="reading-block">
+                <h3>Today's Reading</h3>
+                <p class="scripture">"Love is reckless; not reason. Reason seeks a profit. Love comes on strong, consuming herself, unabashed. Yet in the midst of suffering, Love proceeds like a millstone, hard-surfaced and straightforward. Having died to self-interest, she risks everything and asks for nothing."</p>
+                <cite>— Journey 3:6, The Divan of Shams</cite>
+            </div>
+
+            <div class="reading-block">
+                <h3>Second Reading</h3>
+                <p class="scripture">"The rose is without why; it blooms because it blooms. It pays no attention to itself, asks not if it is seen. Be as the rose. Ask not why you exist. Bloom because you are. That is sufficient reason."</p>
+                <cite>— Journey 27:3, The Silesian Angelus</cite>
+            </div>
+
+            <div class="teaching-block">
+                <h3>Choiceless Choice</h3>
+                <p>The rose blooms "without why." It doesn't calculate whether to bloom. It doesn't weigh options. It blooms because blooming is its nature.</p>
+                <p>When you are aligned with your deepest nature, your actions arise similarly — not from calculation, not from "free will" as usually conceived, but from the expression of what you are. This is what the mystics called "dying to self-interest" — not suppression of action but liberation into authentic action.</p>
+                <p>Rumi describes love proceeding "like a millstone, hard-surfaced and straightforward." This is not weakness or passivity. It is action freed from the interference of the anxious ego asking "Should I? What will happen? Is this my choice?"</p>
+            </div>
+
+            <div class="reflection-block">
+                <h3>Reflection Questions</h3>
+                <p>When you act from deep alignment rather than calculation, does the question of free will even arise? What would it mean to act "without why"?</p>
+                <textarea placeholder="Write your reflection..." data-key="meaning-day3"></textarea>
+            </div>
+
+            <div class="practice-block">
+                <h3>Today's Practice</h3>
+                <p><strong>The Wordless Yes.</strong> Today, when something presents itself — a task, a request, an opportunity — pause and feel whether there is a "yes" that arises before thought. Not forced positivity, but genuine alignment. When you find it, act from there. Notice how different this feels from deliberated choice.</p>
+            </div>
+
+            <div class="day-complete">
+                <button class="complete-btn" data-day="3">Mark Day 3 Complete</button>
+                <span class="next-day-link" data-next="4">Continue to Day 4 →</span>
+            </div>
+        </section>
+
+        <!-- DAY 4 -->
+        <section class="day-section" data-day="4">
+            <div class="day-header">
+                <h2>Day 4: The Meaning of Action</h2>
+                <p class="subtitle">Why effort matters even without classical free will</p>
+            </div>
+
+            <div class="teaching-block">
+                <h3>A Common Objection</h3>
+                <p>"If free will is an illusion, why bother doing anything? Why try to improve? Why make any effort?"</p>
+                <p>This objection assumes that effort makes sense only if you're the ultimate source of that effort. But consider: does a river's flow toward the sea lose meaning because the river doesn't "choose" to flow? Does an oak tree's growth lose meaning because the tree doesn't "decide" to grow?</p>
+            </div>
+
+            <div class="reading-block">
+                <h3>Today's Reading</h3>
+                <p class="scripture">"Every action matters infinitely. Every choice reverberates eternally. For you are not a separate creature doing separate deeds — you are the hands and eyes and voice of the Infinite. When you weep, the Divine weeps through you. When you laugh, the Divine laughs through you. When you love, the Divine loves through you."</p>
+                <cite>— Journey 5:4, The Hidden Treasure</cite>
+            </div>
+
+            <div class="teaching-block">
+                <h3>Meaning Without Ultimate Control</h3>
+                <p>Al-Ghazali's teaching reframes everything. You are not a separate agent whose actions matter only if "freely" chosen. You are the Divine experiencing itself through finite form. Every action is the universe expressing itself. Every experience is Reality coming to know itself through you.</p>
+                <p>From this perspective, action has infinite meaning — not because you control it from some transcendent vantage point, but because it is the creative process itself, happening through you. The effort you make is the universe making effort. The love you feel is the universe loving.</p>
+                <p>This doesn't eliminate ethics or effort. It transforms their meaning. You still act. You still strive. You still grow. But the striving is not separate from the unfolding it's embedded in. It's part of the river's flow.</p>
+            </div>
+
+            <div class="reflection-block">
+                <h3>Reflection Questions</h3>
+                <p>If your actions were the universe acting through you, how would that change their meaning? Would you act differently — or would the meaning of your action change while the action itself remained?</p>
+                <textarea placeholder="Write your reflection..." data-key="meaning-day4"></textarea>
+            </div>
+
+            <div class="practice-block">
+                <h3>Today's Practice</h3>
+                <p><strong>Hands of the Infinite.</strong> Choose one physical activity today — washing dishes, walking, typing. As you do it, imagine that these are not your hands but the hands of the universe, doing what the universe does through this particular form. Notice if this changes the quality of attention you bring.</p>
+            </div>
+
+            <div class="day-complete">
+                <button class="complete-btn" data-day="4">Mark Day 4 Complete</button>
+                <span class="next-day-link" data-next="5">Continue to Day 5 →</span>
+            </div>
+        </section>
+
+        <!-- DAY 5 -->
+        <section class="day-section" data-day="5">
+            <div class="day-header">
+                <h2>Day 5: The Martyrs' Choice</h2>
+                <p class="subtitle">How they acted without knowing outcomes</p>
+            </div>
+
+            <div class="teaching-block">
+                <h3>Beyond Calculation</h3>
+                <p>The martyrs of 1848-1849 faced a peculiar challenge. They couldn't know if their sacrifices would matter. They couldn't calculate whether their deaths would produce good outcomes. From a purely rational standpoint, their actions might have been "determined" to accomplish nothing.</p>
+                <p>Yet they acted anyway. Not from certainty about outcomes, but from something deeper — alignment with what they knew to be true, regardless of consequences.</p>
+            </div>
+
+            <div class="reading-block">
+                <h3>Today's Reading</h3>
+                <p class="scripture">"I die for the German liberty that I have fought for my whole life. Do not mourn me too long. I have lived according to my convictions, and I die according to them. This is more than most people can say."</p>
+                <cite>— Robert Blum's final letter</cite>
+            </div>
+
+            <div class="teaching-block">
+                <h3>Living According to Convictions</h3>
+                <p>Robert Blum didn't say "I chose to die and that choice was free." He said he lived and died according to his convictions. There's a subtle but crucial difference.</p>
+                <p>Convictions are not the same as calculated choices. They are deep alignments that may themselves have been "determined" by prior causes — his upbringing, his experiences, his character. Yet acting from conviction feels different from either being pushed by external forces or calculating optimal outcomes.</p>
+                <p>Perhaps the answer to the free will problem lies not in proving that our choices are causally independent, but in discovering convictions worth living and dying for, regardless of their causal origins.</p>
+            </div>
+
+            <div class="reflection-block">
+                <h3>Reflection Questions</h3>
+                <p>What convictions do you hold that feel non-negotiable, regardless of how they arose? Does it matter whether these convictions were "freely chosen" or whether they emerged from your nature and history?</p>
+                <textarea placeholder="Write your reflection..." data-key="meaning-day5"></textarea>
+            </div>
+
+            <div class="practice-block">
+                <h3>Today's Practice</h3>
+                <p><strong>Name Your Convictions.</strong> Write down three things you believe are worth suffering for, or worth dying for if circumstances required it. Don't worry about whether you "chose" these convictions. Simply name them. These are your north stars, regardless of their causal origins.</p>
+            </div>
+
+            <div class="day-complete">
+                <button class="complete-btn" data-day="5">Mark Day 5 Complete</button>
+                <span class="next-day-link" data-next="6">Continue to Day 6 →</span>
+            </div>
+        </section>
+
+        <!-- DAY 6 -->
+        <section class="day-section" data-day="6">
+            <div class="day-header">
+                <h2>Day 6: The Death of the Question</h2>
+                <p class="subtitle">Why the problem dissolves</p>
+            </div>
+
+            <div class="teaching-block">
+                <h3>The Questioner is the Question</h3>
+                <p>The free will problem arises because we imagine ourselves as separate beings who either have or lack control over our actions. The mystics discovered that this separation is itself an illusion — not a stable reality but a constructed sense of self.</p>
+                <p>When the illusion of separation dissolves, the question dissolves with it. There is no longer a separate "I" that needs to be free or is worried about being determined. There is just life happening, action arising, reality expressing itself.</p>
+            </div>
+
+            <div class="reading-block">
+                <h3>Today's Reading</h3>
+                <p class="scripture">"Die before you die and find that there is no death. The wound is the place where the Light enters you. Don't turn away. Keep your gaze on the bandaged place. That's where the light enters you."</p>
+                <cite>— Journey 3:8, The Divan of Shams</cite>
+            </div>
+
+            <div class="teaching-block">
+                <h3>What Dies, What Remains</h3>
+                <p>When the separate self "dies" — not physically, but psychologically — what dies is not the capacity for action but the illusion that there is an agent separate from the action. What remains is action without actor, doing without doer, life living itself.</p>
+                <p>This sounds abstract, but it can be experienced directly. In moments of complete absorption — in creative work, in love, in flow — the sense of separate self temporarily dissolves, and action happens without the usual sense of "I am doing this." These moments don't feel meaningless. They often feel more meaningful than ordinary experience.</p>
+                <p>The question "Do I have free will?" arises from the same illusion that makes us feel separate and anxious. When the illusion drops, the question loses its force. Not because we've answered it, but because we've outgrown the confusion from which it arose.</p>
+            </div>
+
+            <div class="reflection-block">
+                <h3>Reflection Questions</h3>
+                <p>Have you ever experienced action without the sense of a separate actor? What was that like? Did the question of free will arise in that moment, or did it seem beside the point?</p>
+                <textarea placeholder="Write your reflection..." data-key="meaning-day6"></textarea>
+            </div>
+
+            <div class="practice-block">
+                <h3>Today's Practice</h3>
+                <p><strong>Watch the Self Arise.</strong> Sit quietly for ten minutes. Watch thoughts and sensations arise. When the thought "I" appears — "I am thinking," "I should do something," "I wonder if..." — notice that this "I" is itself a thought, arising like other thoughts. What notices this? That awareness is prior to the "I" that asks about free will.</p>
+            </div>
+
+            <div class="day-complete">
+                <button class="complete-btn" data-day="6">Mark Day 6 Complete</button>
+                <span class="next-day-link" data-next="7">Continue to Day 7 →</span>
+            </div>
+        </section>
+
+        <!-- DAY 7 -->
+        <section class="day-section" data-day="7">
+            <div class="day-header">
+                <h2>Day 7: Living the Answer</h2>
+                <p class="subtitle">Integration and ongoing practice</p>
+            </div>
+
+            <div class="teaching-block">
+                <h3>What You've Learned</h3>
+                <ul>
+                    <li>Day 1: The scientific challenge to free will — and the question beneath the question</li>
+                    <li>Day 2: Beyond either/or — participation rather than control</li>
+                    <li>Day 3: The transformed will — acting "without why"</li>
+                    <li>Day 4: The meaning of action when you're the universe expressing itself</li>
+                    <li>Day 5: Convictions that matter regardless of their causal origins</li>
+                    <li>Day 6: The dissolution of the question when the separate self dissolves</li>
+                </ul>
+                <p>Today, we integrate these insights into a way of living.</p>
+            </div>
+
+            <div class="reading-block">
+                <h3>Today's Reading</h3>
+                <p class="scripture">"The work is eternal. There is no final completion, only ever-higher turns of the spiral. Each arrival is a new departure. Each ending is a new beginning. The journey has no destination because the journey itself is the destination."</p>
+                <cite>— Journey 18:7, The Key</cite>
+            </div>
+
+            <div class="teaching-block">
+                <h3>A Different Relationship with Choice</h3>
+                <p>You will continue to experience the sense of choosing. You will continue to deliberate, to weigh options, to feel that some actions are "yours." This phenomenology doesn't disappear with intellectual insight.</p>
+                <p>But you can hold it more lightly. You can recognize that the "I" who seems to choose is itself a phenomenon arising within awareness. You can act from alignment rather than anxious calculation. You can trust the process that is expressing itself through you.</p>
+                <p>This doesn't answer the free will question in philosophical terms. It transforms your relationship with it. The question becomes less pressing, less important, less a source of existential anxiety. Life goes on. Action happens. Meaning is found — not in proving that you're the ultimate source of your actions, but in the quality of presence you bring to whatever arises.</p>
+            </div>
+
+            <div class="reflection-block">
+                <h3>Final Reflection</h3>
+                <p>Has your relationship with the free will question changed this week? What practices will you carry forward? How will you live with this insight?</p>
+                <textarea placeholder="Write your final reflection..." data-key="meaning-day7"></textarea>
+            </div>
+
+            <div class="practice-block">
+                <h3>Ongoing Practices</h3>
+                <p><strong>1. Notice Flow.</strong> Pay attention to moments when action happens without effortful choice. These are glimpses of what life looks like when the "free will problem" dissolves.</p>
+                <p><strong>2. Act from Alignment.</strong> Before significant actions, check for the "wordless yes" — the sense of alignment that comes before thought. Trust it.</p>
+                <p><strong>3. Watch the "I."</strong> Regularly notice that the sense of a separate self is itself a phenomenon, not the ground of experience.</p>
+                <p><strong>4. Hold Questions Lightly.</strong> When philosophical anxiety arises about free will, meaning, or control — notice it, hold it lightly, and continue living.</p>
+            </div>
+
+            <div class="day-complete">
+                <button class="complete-btn" data-day="7">Complete the Study</button>
+                <div style="margin-top: var(--space-xl);">
+                    <a href="deep-studies.html" style="color: var(--color-gold); text-decoration: none;">Return to Deep Studies →</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 The Illumination.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        const dayBtns = document.querySelectorAll('.day-btn');
+        const daySections = document.querySelectorAll('.day-section');
+        function showDay(day) {
+            dayBtns.forEach(btn => btn.classList.remove('active'));
+            daySections.forEach(section => section.classList.remove('active'));
+            document.querySelector(`.day-btn[data-day="${day}"]`).classList.add('active');
+            document.querySelector(`.day-section[data-day="${day}"]`).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        dayBtns.forEach(btn => { btn.addEventListener('click', () => showDay(btn.dataset.day)); });
+        document.querySelectorAll('.next-day-link').forEach(link => { link.addEventListener('click', () => showDay(link.dataset.next)); });
+        document.querySelectorAll('.reflection-block textarea').forEach(textarea => {
+            const key = textarea.dataset.key;
+            const saved = localStorage.getItem(key);
+            if (saved) textarea.value = saved;
+            textarea.addEventListener('input', function() { localStorage.setItem(key, this.value); });
+        });
+        const completeBtns = document.querySelectorAll('.complete-btn');
+        function updateCompletionUI() {
+            const completed = JSON.parse(localStorage.getItem('meaning-study-completed') || '[]');
+            completeBtns.forEach(btn => { const day = parseInt(btn.dataset.day); if (completed.includes(day)) { btn.textContent = 'Completed'; btn.classList.add('completed'); } });
+            dayBtns.forEach(btn => { const day = parseInt(btn.dataset.day); if (completed.includes(day)) { btn.classList.add('completed'); } });
+        }
+        completeBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const day = parseInt(this.dataset.day);
+                let completed = JSON.parse(localStorage.getItem('meaning-study-completed') || '[]');
+                if (!completed.includes(day)) { completed.push(day); localStorage.setItem('meaning-study-completed', JSON.stringify(completed)); updateCompletionUI(); }
+            });
+        });
+        updateCompletionUI();
+    </script>
+</body>
+</html>
