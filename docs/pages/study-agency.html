@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A 7-day deep study on maintaining agency, autonomy, and authentic selfhood in an age of surveillance, data harvesting, and algorithmic manipulation.">
+    <title>Agency Under Surveillance | 7-Day Study | The Path</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        .study-hero { padding: calc(80px + var(--space-2xl)) var(--space-lg) var(--space-2xl); background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-alt) 100%); text-align: center; }
+        .study-hero-content { max-width: 700px; margin: 0 auto; }
+        .study-badge { display: inline-block; padding: var(--space-xs) var(--space-md); background: var(--color-gold-dark); color: var(--color-bg); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-lg); }
+        .study-hero h1 { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem); color: var(--color-text); font-weight: 300; margin-bottom: var(--space-lg); }
+        .study-hero .lead { color: var(--color-text-light); font-size: 1.1rem; line-height: 1.8; margin-bottom: var(--space-xl); }
+        .study-meta { display: flex; justify-content: center; gap: var(--space-xl); color: var(--color-text-muted); font-size: 0.9rem; }
+        .day-nav { background: var(--color-bg-alt); padding: var(--space-md) var(--space-lg); position: sticky; top: 80px; z-index: 50; overflow-x: auto; }
+        .day-nav-inner { max-width: 800px; margin: 0 auto; display: flex; gap: var(--space-sm); justify-content: center; }
+        .day-btn { padding: var(--space-sm) var(--space-md); background: transparent; border: 1px solid var(--color-bg); color: var(--color-text-muted); font-size: 0.875rem; cursor: pointer; white-space: nowrap; transition: all 0.2s ease; }
+        .day-btn:hover { border-color: var(--color-gold-dark); color: var(--color-gold); }
+        .day-btn.active { background: var(--color-gold-dark); border-color: var(--color-gold-dark); color: var(--color-bg); }
+        .day-btn.completed::after { content: " ✓"; color: var(--color-gold); }
+        .day-content { max-width: 800px; margin: 0 auto; padding: var(--space-2xl) var(--space-lg); }
+        .day-section { display: none; }
+        .day-section.active { display: block; }
+        .day-header { margin-bottom: var(--space-2xl); }
+        .day-header h2 { font-family: var(--font-display); font-size: 1.75rem; color: var(--color-text); font-weight: 400; margin-bottom: var(--space-sm); }
+        .day-header .subtitle { color: var(--color-gold); font-size: 0.9rem; }
+        .reading-block { background: var(--color-bg-alt); padding: var(--space-xl); margin: var(--space-xl) 0; }
+        .reading-block h3 { color: var(--color-gold); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--space-md); }
+        .reading-block .scripture { font-family: var(--font-display); font-style: italic; font-size: 1.1rem; color: var(--color-text); line-height: 1.8; margin-bottom: var(--space-md); }
+        .reading-block cite { color: var(--color-text-muted); font-size: 0.875rem; }
+        .teaching-block { padding: var(--space-xl) 0; border-bottom: 1px solid var(--color-bg-alt); }
+        .teaching-block:last-child { border-bottom: none; }
+        .teaching-block h3 { font-family: var(--font-display); font-size: 1.25rem; color: var(--color-text); font-weight: 400; margin-bottom: var(--space-md); }
+        .teaching-block p { color: var(--color-text-light); line-height: 1.9; margin-bottom: var(--space-lg); }
+        .teaching-block ul { color: var(--color-text-light); line-height: 1.9; margin-left: var(--space-lg); margin-bottom: var(--space-lg); }
+        .reflection-block { background: linear-gradient(135deg, rgba(201, 169, 98, 0.1) 0%, transparent 100%); border: 1px solid var(--color-gold-dark); padding: var(--space-xl); margin: var(--space-xl) 0; }
+        .reflection-block h3 { color: var(--color-gold); font-size: 1rem; margin-bottom: var(--space-md); }
+        .reflection-block p { color: var(--color-text-light); line-height: 1.8; margin-bottom: var(--space-md); }
+        .reflection-block textarea { width: 100%; min-height: 100px; padding: var(--space-md); background: var(--color-bg); border: 1px solid var(--color-bg); color: var(--color-text); font-family: var(--font-body); font-size: 1rem; line-height: 1.7; resize: vertical; }
+        .reflection-block textarea::placeholder { color: var(--color-text-muted); }
+        .practice-block { background: var(--color-bg-alt); padding: var(--space-xl); margin: var(--space-xl) 0; border-left: 3px solid var(--color-gold); }
+        .practice-block h3 { color: var(--color-gold); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--space-md); }
+        .practice-block p { color: var(--color-text-light); line-height: 1.8; margin-bottom: var(--space-md); }
+        .practice-block p:last-child { margin-bottom: 0; }
+        .day-complete { text-align: center; padding: var(--space-2xl) 0; margin-top: var(--space-xl); border-top: 1px solid var(--color-bg-alt); }
+        .complete-btn { padding: var(--space-md) var(--space-2xl); background: var(--color-gold-dark); border: none; color: var(--color-bg); font-size: 1rem; cursor: pointer; transition: all 0.3s ease; }
+        .complete-btn:hover { background: var(--color-gold); }
+        .complete-btn.completed { background: transparent; border: 1px solid var(--color-gold); color: var(--color-gold); }
+        .next-day-link { display: block; margin-top: var(--space-md); color: var(--color-text-muted); font-size: 0.9rem; cursor: pointer; }
+        .next-day-link:hover { color: var(--color-gold); }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">The Path</a>
+            <button class="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+            <ul class="nav-links">
+                <li><a href="scripture.html">Scripture</a></li>
+                <li><a href="teachings.html">Teachings</a></li>
+                <li><a href="martyrs.html">The Martyrs</a></li>
+                <li><a href="study-guide.html">Study Guide</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="study-hero">
+        <div class="study-hero-content">
+            <span class="study-badge">7-Day Deep Study</span>
+            <h1>Agency Under Surveillance</h1>
+            <p class="lead">You are watched, tracked, predicted, and nudged. Algorithms know your patterns better than you know yourself. How do you maintain authentic agency when your every move is data? The mystics who were watched by inquisitors have something to teach us.</p>
+            <div class="study-meta">
+                <span>7 days</span>
+                <span>~15 min/day</span>
+                <span>Readings + Practices</span>
+            </div>
+        </div>
+    </header>
+
+    <nav class="day-nav">
+        <div class="day-nav-inner">
+            <button class="day-btn active" data-day="1">Day 1</button>
+            <button class="day-btn" data-day="2">Day 2</button>
+            <button class="day-btn" data-day="3">Day 3</button>
+            <button class="day-btn" data-day="4">Day 4</button>
+            <button class="day-btn" data-day="5">Day 5</button>
+            <button class="day-btn" data-day="6">Day 6</button>
+            <button class="day-btn" data-day="7">Day 7</button>
+        </div>
+    </nav>
+
+    <main class="day-content">
+
+        <!-- DAY 1 -->
+        <section class="day-section active" data-day="1">
+            <div class="day-header">
+                <h2>Day 1: The Watching</h2>
+                <p class="subtitle">Acknowledging the surveillance environment</p>
+            </div>
+
+            <div class="teaching-block">
+                <h3>The New Inquisition</h3>
+                <p>Every click is recorded. Every purchase is logged. Every movement is tracked by the phone in your pocket. Algorithms analyze your patterns, predict your behavior, and nudge you toward outcomes you didn't choose. You are the product. Your attention is harvested. Your preferences are commodified. Your future behavior is sold before you've decided it.</p>
+                <p>This is not paranoia. It is the documented business model of the attention economy. The question is not whether you are being watched — you are — but what this watching does to your sense of agency, authenticity, and inner freedom.</p>
+                <p>The mystics whose writings form this scripture knew surveillance. Böhme was watched by Lutheran authorities who eventually silenced him. Molinos was monitored by the Inquisition, which eventually imprisoned him. Juan de la Cruz was observed by his own religious order, which eventually jailed him. They had to develop inner practices that remained free regardless of external monitoring.</p>
+            </div>
+
+            <div class="reading-block">
+                <h3>Today's Reading</h3>
+                <p class="scripture">"My enemies were not defenders of truth but protectors of their own power. They watched me because they feared what I might awaken in others. But they could only watch the outside. The inside remained mine."</p>
+                <cite>— Adapted from Miguel de Molinos, Journey 28</cite>
+            </div>
+
+            <div class="teaching-block">
+                <h3>What They Couldn't Touch</h3>
+                <p>The mystics discovered that surveillance could control the external but not the internal. The Inquisition could monitor their words, their writings, their associations — but not their thoughts, their prayers, their inner stance. They developed practices that cultivated inner freedom precisely because outer freedom was constrained.</p>
+                <p>We face a different kind of surveillance, but the principle holds. The algorithms can track your behavior, predict your choices, manipulate your attention — but they cannot enter your inner sanctuary. They cannot control how you respond to their manipulation. They cannot determine the quality of your presence.</p>
+            </div>
+
+            <div class="reflection-block">
+                <h3>Reflection Questions</h3>
+                <p>Where do you feel watched? What behaviors have you changed because you know you're being tracked? What parts of yourself have you hidden from the surveillance apparatus?</p>
+                <textarea placeholder="Write your reflection..." data-key="agency-day1"></textarea>
+            </div>
+
+            <div class="practice-block">
+                <h3>Today's Practice</h3>
+                <p><strong>Surveillance Awareness.</strong> Today, notice when you are being tracked. Each time you use your phone, interact with an ad, make a purchase, or move through a space with cameras, silently note: "I am being watched here." Don't judge it. Just notice.</p>
+                <p>Awareness is the first step. Before you can claim inner freedom, you must see the constraints.</p>
+            </div>
+
+            <div class="day-complete">
+                <button class="complete-btn" data-day="1">Mark Day 1 Complete</button>
+                <span class="next-day-link" data-next="2">Continue to Day 2 →</span>
+            </div>
+        </section>
+
+        <!-- DAY 2 -->
+        <section class="day-section" data-day="2">
+            <div class="day-header">
+                <h2>Day 2: The Manipulation</h2>
+                <p class="subtitle">Understanding how choice is shaped</p>
+            </div>
+
+            <div class="teaching-block">
+                <h3>Designed for Addiction</h3>
+                <p>The platforms are not neutral tools. They are designed by teams of engineers whose explicit goal is to capture and hold your attention. Variable reward schedules, social validation loops, infinite scroll, notification patterns — these are not accidents. They are applications of behavioral psychology to create compulsion.</p>
+                <p>Your choices are not as free as they feel. The menu of options is curated. The order of presentation is optimized. The timing of notifications is calculated. You think you're choosing, but you're choosing from a pre-shaped set of choices, arranged to produce particular outcomes.</p>
+            </div>
+
+            <div class="reading-block">
+                <h3>Today's Reading</h3>
+                <p class="scripture">"The path requires surrender of the need to understand before you experience. The analyzing mind is useful, but it cannot lead. It can map territory it has never entered. But the territory itself must be walked."</p>
+                <cite>— Journey 20:4</cite>
+            </div>
+
+            <div class="teaching-block">
+                <h3>Beyond the Algorithm</h3>
+                <p>The algorithms predict based on past behavior. They assume you will continue to be who you have been. They cannot predict transformation. They cannot model awakening. Every moment of genuine presence escapes their grasp.</p>
+                <p>This is where agency lives. Not in the choices the algorithm presents to you, but in your capacity to step outside the pattern entirely. To pause. To become aware of the manipulation. To choose — not from the menu offered, but from a deeper source.</p>
+                <p>The mystics called this "dying to the world." It doesn't mean rejecting technology, but refusing to let technology define you. The algorithm knows your past self. It cannot know the self you might become in the next moment of genuine choice.</p>
+            </div>
+
+            <div class="reflection-block">
+                <h3>Reflection Questions</h3>
+                <p>Where do you feel manipulated? What loops are you caught in? When you pick up your phone or open an app, is it a genuine choice or an automatic habit?</p>
+                <textarea placeholder="Write your reflection..." data-key="agency-day2"></textarea>
+            </div>
+
+            <div class="practice-block">
+                <h3>Today's Practice</h3>
+                <p><strong>Pause Before Action.</strong> Each time you reach for your phone or are about to click, pause for three seconds. Ask: "Am I choosing this, or is something choosing for me?" You don't have to change your behavior. Just notice.</p>
+            </div>
+
+            <div class="day-complete">
+                <button class="complete-btn" data-day="2">Mark Day 2 Complete</button>
+                <span class="next-day-link" data-next="3">Continue to Day 3 →</span>
+            </div>
+        </section>
+
+        <!-- DAY 3 -->
+        <section class="day-section" data-day="3">
+            <div class="day-header">
+                <h2>Day 3: The Inner Sanctuary</h2>
+                <p class="subtitle">What cannot be surveilled</p>
+            </div>
+
+            <div class="teaching-block">
+                <h3>The Cloud of Unknowing</h3>
+                <p>The medieval mystic who wrote <em>The Cloud of Unknowing</em> taught that there is a place within us that thought cannot reach. It is accessed not through analysis but through surrender. Not through knowledge but through unknowing.</p>
+                <p>This place is beyond the reach of any algorithm. It cannot be tracked because it leaves no traces. It cannot be predicted because it operates outside patterns. It is the wellspring of genuine choice.</p>
+            </div>
+
+            <div class="reading-block">
+                <h3>Today's Reading</h3>
+                <p class="scripture">"Forget what you know. Forget what you have learned. Forget even your desire to know. For God is not found in knowledge but in unknowing, not in the light of the mind but in the cloud that obscures all mental light."</p>
+                <cite>— Journey 19:1, The Cloud of Unknowing</cite>
+            </div>
+
+            <div class="reading-block">
+                <h3>Second Reading</h3>
+                <p class="scripture">"This cloud stands between you and God. You cannot penetrate it with thought, only with love. Thought divides; love unites. Thought grasps; love surrenders."</p>
+                <cite>— Journey 19:2</cite>
+            </div>
+
+            <div class="teaching-block">
+                <h3>The Untrackable Self</h3>
+                <p>When you enter the cloud of unknowing, you disappear from the algorithmic map. You are no longer the sum of your data points. You are not your browsing history, your purchase patterns, your social media footprint. You are the awareness that is aware of all these things.</p>
+                <p>This awareness cannot be captured. It is not a behavior; it is the witness of behavior. It is not a pattern; it is the space in which patterns arise and dissolve. Every moment you rest in this awareness, you exercise a freedom no surveillance can touch.</p>
+            </div>
+
+            <div class="reflection-block">
+                <h3>Reflection Questions</h3>
+                <p>What is your inner sanctuary? Where do you go when you want to be completely yourself, beyond any performance or tracking? Do you have such a place?</p>
+                <textarea placeholder="Write your reflection..." data-key="agency-day3"></textarea>
+            </div>
+
+            <div class="practice-block">
+                <h3>Today's Practice</h3>
+                <p><strong>Enter the Cloud.</strong> Find a quiet place. Put away all devices. Set a timer for ten minutes. Sit in silence. When thoughts arise — especially thoughts about what you should be doing, what you're missing, what's happening online — let them pass. Sink beneath them into the silence.</p>
+                <p>In this silence, you are untrackable. You are off the grid — the inner grid of compulsion as well as the outer grid of surveillance.</p>
+            </div>
+
+            <div class="day-complete">
+                <button class="complete-btn" data-day="3">Mark Day 3 Complete</button>
+                <span class="next-day-link" data-next="4">Continue to Day 4 →</span>
+            </div>
+        </section>
+
+        <!-- DAY 4 -->
+        <section class="day-section" data-day="4">
+            <div class="day-header">
+                <h2>Day 4: Strategic Opacity</h2>
+                <p class="subtitle">Protecting your inner life</p>
+            </div>
+
+            <div class="teaching-block">
+                <h3>The Right to Be Unknown</h3>
+                <p>Not everything needs to be shared. Not every thought needs to be posted. Not every feeling needs to be performed for an audience. There is wisdom in keeping certain things private — not because you're hiding something shameful, but because some things are too precious to expose to the harvesting apparatus.</p>
+                <p>The mystics wrote in codes and symbols partly to protect their teachings from those who would misunderstand, and partly to protect themselves from authorities who would punish them. They understood that some truths need protection.</p>
+            </div>
+
+            <div class="reading-block">
+                <h3>Today's Reading</h3>
+                <p class="scripture">"Our gold is not the common gold. Our mercury is not the common mercury. Our sulphur is not the common sulphur. Seek not in the marketplace what can only be found within."</p>
+                <cite>— Journey 10:4, The Rosarium</cite>
+            </div>
+
+            <div class="teaching-block">
+                <h3>Intentional Boundaries</h3>
+                <p>There is a difference between privacy paranoia and strategic opacity. Paranoia is fear-based and exhausting. Strategic opacity is a conscious choice about what to share and what to keep.</p>
+                <p>Consider: Does the algorithm need to know this? Does posting this serve my deeper purposes or just the platform's engagement metrics? Would this thought, feeling, or insight be diminished by performance?</p>
+                <p>Some things are meant only for you. Some are meant only for intimate relationships. Some are meant for wider sharing. The algorithm flattens these distinctions. Your task is to maintain them.</p>
+            </div>
+
+            <div class="reflection-block">
+                <h3>Reflection Questions</h3>
+                <p>What have you shared that you wish you hadn't? What are you keeping appropriately private? Where do you feel pressure to share more than you want to?</p>
+                <textarea placeholder="Write your reflection..." data-key="agency-day4"></textarea>
+            </div>
+
+            <div class="practice-block">
+                <h3>Today's Practice</h3>
+                <p><strong>Keep One Thing Private.</strong> Today, when you have an experience that you would normally share — a thought, a meal, a moment of beauty — keep it to yourself. Don't post it. Don't tell anyone. Let it be yours alone. Notice what that feels like.</p>
+            </div>
+
+            <div class="day-complete">
+                <button class="complete-btn" data-day="4">Mark Day 4 Complete</button>
+                <span class="next-day-link" data-next="5">Continue to Day 5 →</span>
+            </div>
+        </section>
+
+        <!-- DAY 5 -->
+        <section class="day-section" data-day="5">
+            <div class="day-header">
+                <h2>Day 5: Authentic Action</h2>
+                <p class="subtitle">Acting from depth, not manipulation</p>
+            </div>
+
+            <div class="teaching-block">
+                <h3>The Signature of the Soul</h3>
+                <p>Böhme taught that everything bears the mark of its origin. Your actions carry a signature that reveals their source. Actions that arise from compulsion bear the mark of compulsion. Actions that arise from authentic choice bear the mark of authenticity.</p>
+                <p>The algorithm may be able to predict your compulsive behaviors, but it cannot predict what you do when you act from your deepest truth. That kind of action is unpredictable precisely because it comes from a source the algorithm cannot map.</p>
+            </div>
+
+            <div class="reading-block">
+                <h3>Today's Reading</h3>
+                <p class="scripture">"Everything bears the mark of its origin. The outward form reveals the inward essence. This is the doctrine of signatures. So too with human beings. The face, the hands, the posture, the voice — all bear the signature of the inner state."</p>
+                <cite>— Journey 15:1-2, The Signature of All Things</cite>
+            </div>
+
+            <div class="teaching-block">
+                <h3>Acting from the Center</h3>
+                <p>When you act from your center — from the inner sanctuary we explored on Day 3 — your actions carry a different signature. They are not reactive but responsive. They are not compelled but chosen. They serve your deeper purposes, not the platform's engagement metrics.</p>
+                <p>This doesn't mean never using technology. It means using it from choice rather than compulsion. It means letting your actions arise from depth rather than from the shallow patterns the algorithm knows and exploits.</p>
+            </div>
+
+            <div class="reflection-block">
+                <h3>Reflection Questions</h3>
+                <p>When do your actions feel authentic? When do they feel compelled? What would it look like to act from your center more consistently?</p>
+                <textarea placeholder="Write your reflection..." data-key="agency-day5"></textarea>
+            </div>
+
+            <div class="practice-block">
+                <h3>Today's Practice</h3>
+                <p><strong>The Center Check.</strong> Before any significant action today — especially any digital action — pause. Take three breaths. Ask: "Am I acting from my center or from my surface?" Act only from the center.</p>
+            </div>
+
+            <div class="day-complete">
+                <button class="complete-btn" data-day="5">Mark Day 5 Complete</button>
+                <span class="next-day-link" data-next="6">Continue to Day 6 →</span>
+            </div>
+        </section>
+
+        <!-- DAY 6 -->
+        <section class="day-section" data-day="6">
+            <div class="day-header">
+                <h2>Day 6: Unpredictable Grace</h2>
+                <p class="subtitle">The freedom that cannot be modeled</p>
+            </div>
+
+            <div class="teaching-block">
+                <h3>What Escapes Prediction</h3>
+                <p>Algorithms predict based on patterns. If you always check your phone first thing in the morning, they know to send notifications then. If you always click on certain kinds of content, they serve you more of it. The model improves by learning your regularities.</p>
+                <p>But there is something in human beings that is radically irregular. The mystics called it grace — an inbreaking from beyond the system, an unpredictable novelty, a choice that breaks the pattern. Every moment of genuine awakening is a data point the algorithm cannot integrate.</p>
+            </div>
+
+            <div class="reading-block">
+                <h3>Today's Reading</h3>
+                <p class="scripture">"Die before you die and find that there is no death. The wound is the place where the Light enters you. Don't turn away. Keep your gaze on the bandaged place. That's where the light enters you."</p>
+                <cite>— Journey 3:8, The Divan of Shams</cite>
+            </div>
+
+            <div class="teaching-block">
+                <h3>The Transformative Moment</h3>
+                <p>Every time you die to an old pattern and are reborn into something new, you escape the predictive model. The algorithm knew the old you. It does not know — cannot know — the you that emerges from transformation.</p>
+                <p>This is why the mystics emphasized death and rebirth. It's not just spiritual poetry; it's a description of how genuine freedom works. The self that is trapped in patterns must die for the self that is free to be born. Each such death is an act of resistance against the systems that profit from your predictability.</p>
+            </div>
+
+            <div class="reflection-block">
+                <h3>Reflection Questions</h3>
+                <p>When have you surprised yourself? When have you broken a pattern you thought was unbreakable? What would it take to be more unpredictable — not randomly, but through genuine transformation?</p>
+                <textarea placeholder="Write your reflection..." data-key="agency-day6"></textarea>
+            </div>
+
+            <div class="practice-block">
+                <h3>Today's Practice</h3>
+                <p><strong>Break a Pattern.</strong> Identify one behavioral pattern the algorithm has certainly learned about you. Today, deliberately break it. Not just to be contrarian, but to experience the freedom of choosing differently. Notice what it feels like to escape the predictive model.</p>
+            </div>
+
+            <div class="day-complete">
+                <button class="complete-btn" data-day="6">Mark Day 6 Complete</button>
+                <span class="next-day-link" data-next="7">Continue to Day 7 →</span>
+            </div>
+        </section>
+
+        <!-- DAY 7 -->
+        <section class="day-section" data-day="7">
+            <div class="day-header">
+                <h2>Day 7: Living Free</h2>
+                <p class="subtitle">Integration and ongoing practice</p>
+            </div>
+
+            <div class="teaching-block">
+                <h3>What You've Learned</h3>
+                <ul>
+                    <li>Day 1: The reality of surveillance and what it cannot touch</li>
+                    <li>Day 2: How manipulation works and the pause that breaks it</li>
+                    <li>Day 3: The inner sanctuary beyond any tracking</li>
+                    <li>Day 4: Strategic opacity and the right to privacy</li>
+                    <li>Day 5: Acting from the center rather than from compulsion</li>
+                    <li>Day 6: Transformation as escape from predictability</li>
+                </ul>
+                <p>Today, we integrate these insights into sustainable practice.</p>
+            </div>
+
+            <div class="reading-block">
+                <h3>Today's Reading</h3>
+                <p class="scripture">"I write these words from my prison cell. They have taken my freedom but not my faith. They have condemned my body but not my soul. In this darkness, I find the Light more present than ever. They have done me a favor: stripping away every distraction, they have left me alone with God."</p>
+                <cite>— Journey 28:5, The Spiritual Guide</cite>
+            </div>
+
+            <div class="teaching-block">
+                <h3>Agency in the Age of AI</h3>
+                <p>We are not going to escape the surveillance apparatus. We are not going to opt out of the algorithmic environment. We cannot return to a pre-digital world, and we shouldn't try.</p>
+                <p>But we can maintain our inner freedom. We can cultivate the inner sanctuary. We can act from the center rather than from compulsion. We can be strategically opaque where appropriate. We can surprise the systems by transforming in ways they cannot predict.</p>
+                <p>The mystics were watched by inquisitors, monitored by authorities, surveilled by their own religious orders — and they found freedom. Their outer freedom was constrained; their inner freedom was complete. We can learn from them.</p>
+                <p>The algorithm will continue to track and predict and nudge. Let it. What it touches is only the surface. The depth remains yours — if you cultivate it.</p>
+            </div>
+
+            <div class="reflection-block">
+                <h3>Final Reflection</h3>
+                <p>What has shifted for you this week? What practices will you carry forward? How will you maintain your agency in the surveillance environment?</p>
+                <textarea placeholder="Write your final reflection..." data-key="agency-day7"></textarea>
+            </div>
+
+            <div class="practice-block">
+                <h3>Ongoing Practices</h3>
+                <p><strong>1. Daily Silence.</strong> Each day, spend at least ten minutes in device-free silence. Enter the cloud of unknowing. Be untrackable.</p>
+                <p><strong>2. The Pause.</strong> Before acting on digital impulse, pause for three breaths. Ask: "Center or surface?" Act only from center.</p>
+                <p><strong>3. Strategic Opacity.</strong> Consciously choose what to share and what to keep. Some things are too precious for the harvesting apparatus.</p>
+                <p><strong>4. Pattern Breaking.</strong> Regularly, deliberately break a pattern. Remind yourself — and the algorithm — that you are not your data.</p>
+            </div>
+
+            <div class="day-complete">
+                <button class="complete-btn" data-day="7">Complete the Study</button>
+                <div style="margin-top: var(--space-xl);">
+                    <a href="study-guide.html" style="color: var(--color-gold); text-decoration: none;">Return to Study Guide →</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 The Path of Illumination.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        const dayBtns = document.querySelectorAll('.day-btn');
+        const daySections = document.querySelectorAll('.day-section');
+        function showDay(day) {
+            dayBtns.forEach(btn => btn.classList.remove('active'));
+            daySections.forEach(section => section.classList.remove('active'));
+            document.querySelector(`.day-btn[data-day="${day}"]`).classList.add('active');
+            document.querySelector(`.day-section[data-day="${day}"]`).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        dayBtns.forEach(btn => { btn.addEventListener('click', () => showDay(btn.dataset.day)); });
+        document.querySelectorAll('.next-day-link').forEach(link => { link.addEventListener('click', () => showDay(link.dataset.next)); });
+        document.querySelectorAll('.reflection-block textarea').forEach(textarea => {
+            const key = textarea.dataset.key;
+            const saved = localStorage.getItem(key);
+            if (saved) textarea.value = saved;
+            textarea.addEventListener('input', function() { localStorage.setItem(key, this.value); });
+        });
+        const completeBtns = document.querySelectorAll('.complete-btn');
+        function updateCompletionUI() {
+            const completed = JSON.parse(localStorage.getItem('agency-study-completed') || '[]');
+            completeBtns.forEach(btn => { const day = parseInt(btn.dataset.day); if (completed.includes(day)) { btn.textContent = 'Completed'; btn.classList.add('completed'); } });
+            dayBtns.forEach(btn => { const day = parseInt(btn.dataset.day); if (completed.includes(day)) { btn.classList.add('completed'); } });
+        }
+        completeBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const day = parseInt(this.dataset.day);
+                let completed = JSON.parse(localStorage.getItem('agency-study-completed') || '[]');
+                if (!completed.includes(day)) { completed.push(day); localStorage.setItem('agency-study-completed', JSON.stringify(completed)); updateCompletionUI(); }
+            });
+        });
+        updateCompletionUI();
+    </script>
+</body>
+</html>
