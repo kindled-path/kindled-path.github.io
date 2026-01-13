@@ -91,3 +91,41 @@ Each agent:
 - Verify source links work
 - Merge to main
 - Deploy
+
+---
+
+## Continuous Deployment Process
+
+### Automated Workflow
+1. **Feature branches** created from main for each content section
+2. **Git worktrees** allow parallel work without conflicts
+3. **Background agents** verify content independently
+4. **PRs created** for review before merging
+5. **GitHub Actions** auto-deploys to Cloudflare Pages on merge
+
+### Current Worktrees
+```
+/Users/bedwards/bible-2           # main branch
+/Users/bedwards/bible-2-davis     # feature/verify-davis-content
+/Users/bedwards/bible-2-limits    # feature/verify-limits-continuation
+/Users/bedwards/bible-2-witnesses # feature/verify-witnesses
+```
+
+### Content Verification Rules
+1. **NEVER remove existing content** - only add missing text
+2. **Match scripture exactly** - use verbatim text from markdown
+3. **Preserve source links** - keep all Historical Sources boxes
+4. **Use consistent styling** - follow chapter-content patterns
+
+### After Merging
+```bash
+# Clean up worktrees
+git worktree remove /Users/bedwards/bible-2-davis
+git worktree remove /Users/bedwards/bible-2-limits
+git worktree remove /Users/bedwards/bible-2-witnesses
+
+# Delete feature branches
+git branch -d feature/verify-davis-content
+git branch -d feature/verify-limits-continuation
+git branch -d feature/verify-witnesses
+```
