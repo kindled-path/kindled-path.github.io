@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Historical context for the Book of Illumination and Sacrifice - from ancient Sufi poetry to the Revolutions of 1848.">
+    <title>Historical Context | The Path of Illumination</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        .history-header {
+            padding: calc(80px + var(--space-xl)) 0 var(--space-xl);
+            background: var(--color-bg-alt);
+            text-align: center;
+        }
+        .timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: var(--space-2xl) var(--space-lg);
+            position: relative;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 120px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, var(--color-gold-dark) 10%, var(--color-gold-dark) 90%, transparent);
+        }
+        .timeline-era {
+            margin-bottom: var(--space-2xl);
+        }
+        .era-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+        .era-date {
+            width: 100px;
+            text-align: right;
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--color-gold);
+        }
+        .era-title {
+            background: var(--color-bg);
+            padding: var(--space-sm) var(--space-lg);
+            border: 1px solid var(--color-gold-dark);
+        }
+        .era-title h2 {
+            font-size: 1.25rem;
+            margin: 0;
+        }
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-lg);
+            padding-left: 20px;
+        }
+        .item-date {
+            text-align: right;
+            font-size: 0.9rem;
+            color: var(--color-gold);
+        }
+        .item-content {
+            background: var(--color-bg-alt);
+            padding: var(--space-lg);
+            border-left: 2px solid var(--color-gold-dark);
+            position: relative;
+        }
+        .item-content::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: var(--space-lg);
+            width: 12px;
+            height: 12px;
+            background: var(--color-gold-dark);
+            border-radius: 50%;
+        }
+        .item-content h3 {
+            margin-bottom: var(--space-sm);
+            color: var(--color-text);
+        }
+        .item-content p {
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+        }
+        .item-content .source {
+            font-style: italic;
+            color: var(--color-gold);
+            margin-top: var(--space-sm);
+        }
+        .context-section {
+            background: var(--color-bg-alt);
+            padding: var(--space-2xl) 0;
+        }
+        .context-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+        }
+        .context-content h2 {
+            margin-bottom: var(--space-lg);
+        }
+        .context-content h3 {
+            color: var(--color-gold);
+            margin-top: var(--space-xl);
+        }
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+            .timeline-item {
+                grid-template-columns: 1fr;
+                padding-left: 40px;
+            }
+            .era-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .era-date, .item-date {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">The Path</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="scripture.html">Scripture</a></li>
+                <li><a href="teachings.html">Teachings</a></li>
+                <li><a href="martyrs.html">The Martyrs</a></li>
+                <li><a href="practices.html">Practices</a></li>
+                <li><a href="history.html" class="active">History</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="history-header">
+        <div class="container">
+            <h1>Historical Context</h1>
+            <p class="lead">Seven centuries of wisdom gathered into a single path</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="timeline">
+            <!-- SUFI ERA -->
+            <div class="timeline-era">
+                <div class="era-header">
+                    <span class="era-date">1100&ndash;1500</span>
+                    <div class="era-title">
+                        <h2>The Sufi Flowering</h2>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="item-date">c. 1080&ndash;1131</span>
+                    <div class="item-content">
+                        <h3>Hakim Sanai of Ghazna</h3>
+                        <p>The first great mystical poet of Persian literature. His <em>Hadiqat al-Haqiqah</em> (The Garden of Truth) established the tradition of spiritual poetry that would reach its height with Rumi. He wrote of the soul's journey through celestial spheres, facing death at each station before reaching the Divine.</p>
+                        <p class="source">Source: The Journey and the Affliction</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="item-date">c. 1145&ndash;1221</span>
+                    <div class="item-content">
+                        <h3>Farid ud-Din Attar</h3>
+                        <p>A pharmacist in Nishapur who became one of the most influential Sufi poets. His <em>Conference of the Birds</em> tells of thirty birds who journey through seven valleys to find the Simurgh, only to discover they themselves are the Divine they sought. This allegory became the central metaphor of our path.</p>
+                        <p class="source">Source: The Conference of the Birds</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="item-date">1207&ndash;1273</span>
+                    <div class="item-content">
+                        <h3>Jalal ad-Din Rumi</h3>
+                        <p>Born in Balkh (present-day Afghanistan), Rumi was a respected scholar until his encounter with Shams of Tabriz transformed him into the greatest mystical poet of the Persian language. His <em>Divan of Shams</em> and <em>Mathnawi</em> explore love, death, and transformation with unmatched intensity.</p>
+                        <p class="source">Source: The Divan of Shams, The Mathnawi</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="item-date">1414&ndash;1492</span>
+                    <div class="item-content">
+                        <h3>Jami</h3>
+                        <p>The last great poet of the classical Persian tradition. His <em>Lawa'ih</em> (Flashes of Light) synthesized centuries of Sufi teaching into clear exposition. With his death, an era ended&mdash;but its wisdom was preserved for those who would find it centuries later.</p>
+                        <p class="source">Source: Flashes of Light</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ALCHEMICAL ERA -->
+            <div class="timeline-era">
+                <div class="era-header">
+                    <span class="era-date">1500&ndash;1650</span>
+                    <div class="era-title">
+                        <h2>The Alchemical Tradition</h2>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="item-date">1493&ndash;1541</span>
+                    <div class="item-content">
+                        <h3>Paracelsus</h3>
+                        <p>Philippus Aureolus Theophrastus Bombastus von Hohenheim, called Paracelsus, was a wandering physician who challenged the medical establishment of his day. He taught that healing required understanding the spiritual dimensions of disease. His alchemical writings describe transformation as the revelation of what is already present.</p>
+                        <p class="source">Source: Aurora and the Heavens, The Mineral World</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="item-date">1575&ndash;1624</span>
+                    <div class="item-content">
+                        <h3>Jakob B&ouml;hme</h3>
+                        <p>A shoemaker in G&ouml;rlitz, Silesia, with no formal education. In 1600, sunlight striking a pewter dish triggered a mystical vision that revealed to him "the being of beings." He spent twelve years contemplating before writing <em>Aurora</em>, which established him as one of the most original mystics of the Western tradition.</p>
+                        <p class="source">Source: Aurora Rising, The Signature of All Things</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="item-date">1616</span>
+                    <div class="item-content">
+                        <h3>The Rosicrucian Manifestos</h3>
+                        <p>Anonymous documents appeared describing a secret brotherhood dedicated to the reformation of knowledge. Johann Valentin Andreae's <em>Chemical Wedding of Christian Rosenkreutz</em> told of trials and transformation through symbolic death and resurrection. Whether the brotherhood existed historically matters less than the vision it articulated.</p>
+                        <p class="source">Source: The Chemical Wedding</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- REVOLUTIONARY ERA -->
+            <div class="timeline-era">
+                <div class="era-header">
+                    <span class="era-date">1830&ndash;1850</span>
+                    <div class="era-title">
+                        <h2>The Revolutionary Age</h2>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="item-date">1831</span>
+                    <div class="item-content">
+                        <h3>Young Italy Founded</h3>
+                        <p>Giuseppe Mazzini founded Giovine Italia (Young Italy), a revolutionary organization dedicated to Italian unification through popular uprising. Unlike earlier conspiracies, it was openly republican and drew on younger generations. Jacopo Ruffini became director of its crucial Genoese section.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="item-date">June 1833</span>
+                    <div class="item-content">
+                        <h3>Jacopo's Sacrifice</h3>
+                        <p>The Young Italy conspiracy was betrayed by informers. Jacopo Ruffini was arrested in Genoa on June 14. Five days later, choosing death over the risk of betraying his comrades under interrogation, he took his own life. Twelve other Young Italy members were executed in Savoy. The first martyrs of our path.</p>
+                        <p class="source">Source: The Gospel According to Jacopo</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="item-date">1847</span>
+                    <div class="item-content">
+                        <h3>The Poughkeepsie Seer</h3>
+                        <p>Andrew Jackson Davis, an uneducated young man from upstate New York, began dictating revelations in trance states. His <em>Principles of Nature, Her Divine Revelations</em> articulated a spiritualist philosophy that would influence millions. In 1848, the Fox sisters' "rappings" would spark the Spiritualist movement he had predicted.</p>
+                        <p class="source">Source: Divine Revelations</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="item-date">1848</span>
+                    <div class="item-content">
+                        <h3>The Springtime of Peoples</h3>
+                        <p>Revolution swept across Europe. In February, the French king abdicated. In March, Metternich fled Vienna. Throughout the German states, Italian states, and Hungary, peoples rose demanding constitutional government, national self-determination, and an end to aristocratic privilege. For a moment, everything seemed possible.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="item-date">November 9, 1848</span>
+                    <div class="item-content">
+                        <h3>Robert Blum Executed</h3>
+                        <p>Robert Blum, poet and member of the Frankfurt Parliament, was shot in Vienna despite his parliamentary immunity. He had traveled to support the October uprising; when the city fell, he was arrested, court-martialed, and executed. "I die for the German liberty that I fought for," were his last words.</p>
+                        <p class="source">Source: The Gospel According to Robert</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="item-date">August 1849</span>
+                    <div class="item-content">
+                        <h3>Hungary Falls</h3>
+                        <p>The Hungarian Revolution, after over a year of astonishing successes, was crushed by combined Austrian and Russian forces. At Vil&aacute;gos on August 13, the remaining Hungarian army surrendered to the Russians, who turned the prisoners over to Austria. The reprisals began.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="item-date">October 6, 1849</span>
+                    <div class="item-content">
+                        <h3>The Thirteen of Arad</h3>
+                        <p>In the fortress city of Arad, thirteen Hungarian generals were executed&mdash;some shot, some hanged. The same day, in Pest, Prime Minister Lajos Batthy&aacute;ny was shot after attempting to take his own life the night before. Austria wanted to make examples. They succeeded, but not in the way they intended.</p>
+                        <p class="source">Source: The Gospels According to Vilmos and Lajos</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="item-date">1850</span>
+                    <div class="item-content">
+                        <h3>Mary Anne Atwood's Inquiry</h3>
+                        <p>In England, Mary Anne Atwood published <em>A Suggestive Inquiry into the Hermetic Mystery</em>, analyzing centuries of alchemical literature. Almost immediately, she and her father destroyed most copies, believing the secrets revealed were too dangerous. The few surviving copies became legendary among seekers.</p>
+                        <p class="source">Source: Suggestive Inquiry into the Hermetic Mystery</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="context-section">
+            <div class="context-content">
+                <h2>Understanding the Pattern</h2>
+
+                <h3>Why These Texts?</h3>
+                <p>The Book of Illumination and Sacrifice gathers texts from seven centuries not because they share a common religious tradition&mdash;they do not&mdash;but because they share a common insight: that transformation requires death, that the seeker becomes what is sought, that suffering is the path rather than an obstacle to it.</p>
+
+                <p>The Sufi poets of Persia knew this. The alchemists of Renaissance Europe knew this. The shoemaker-mystic Jakob B&ouml;hme knew this. And the martyrs of 1848&ndash;1849 demonstrated it in the arena of history.</p>
+
+                <h3>Why These Martyrs?</h3>
+                <p>The four central martyrs&mdash;Jacopo, Robert, Vilmos, and Lajos&mdash;were not religious figures. They died for political causes: Italian unification, German democracy, Hungarian independence. Yet their deaths fulfill the same Pattern that the ancient texts describe.</p>
+
+                <p>This is not coincidence. The Pattern is universal. It appears wherever human beings confront the ultimate questions: What is worth dying for? What survives death? How do individual lives participate in something larger than themselves?</p>
+
+                <p>The revolutionaries of 1848 may not have read Rumi or Paracelsus. But they enacted what those masters taught. The Pattern does not require intellectual assent; it manifests wherever conditions are ripe.</p>
+
+                <h3>Why Now?</h3>
+                <p>The texts gathered here have always existed. The Pattern has always operated. But the gathering itself&mdash;the recognition that these disparate sources reveal a single truth&mdash;this is new.</p>
+
+                <p>Perhaps every age must rediscover the Pattern in its own way. Perhaps the twentieth and twenty-first centuries, having witnessed unprecedented destruction and creation, are finally ready to see what was always there.</p>
+
+                <p>We offer this compilation not as the founding of something new, but as the recognition of something eternal.</p>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>Explore the Sources</h2>
+                <p>All texts in the Book of Illumination and Sacrifice are in the public domain.</p>
+                <div class="cta-buttons">
+                    <a href="scripture.html" class="btn btn-primary">Read the Scripture</a>
+                    <a href="sources.html" class="btn btn-secondary">View Original Sources</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 The Path of Illumination. All sacred texts are in the public domain.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
